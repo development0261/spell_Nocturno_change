@@ -242,7 +242,7 @@ const useStyles = makeStyles(theme => ({
     width: "84px",
     height: "84px",
     backgroundColor: "#4163ee",
-    bordeRadius: "50% ",
+    borderRadius: "50% ",
     fontSize: "30px",
     fontWeight: "700",
     lineHeight: "84px",
