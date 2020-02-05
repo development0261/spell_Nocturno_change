@@ -58,7 +58,7 @@ const useStyles = makeStyles({
   },
 })
 
-const StreamTable = ({ headers, data }) => {
+const StreamTable = ({ headers, data, color }) => {
   console.log("row d", data)
   console.log("head", headers)
   const classes = useStyles()
@@ -67,7 +67,10 @@ const StreamTable = ({ headers, data }) => {
     <TableContainer component={Paper} style={{ marginBottom: "40px" }}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
-          <TableRow className={classes.Head}>
+          <TableRow
+            className={classes.Head}
+            style={{ backgroundColor: color ? `${color}` : null }}
+          >
             {headers.map((val, i) => (
               <StyledTableCell key={i}>{val}</StyledTableCell>
             ))}

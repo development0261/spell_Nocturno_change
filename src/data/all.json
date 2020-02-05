@@ -112,49 +112,8 @@
     ]
   },
   {
-    "slug": "quinielaplus",
-    "heading": "El Quiniela Plus de Hoy - al instante -",
-    "name": "Quiniela Plus",
-    "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
-    "winningNums": [
-      "10",
-      "06",
-      "30",
-      "02",
-      "13",
-      "10",
-      "22",
-      "12",
-      "55",
-      "65",
-      "14",
-      "31"
-    ],
-    "tableHeaders": ["Premio", "Apuestas Ganadoras", "Premio por Apuesta ($)"],
-    "tableData": [
-      {
-        "rowData": ["3 aciertos", "12.734", "32"]
-      },
-      {
-        "rowData": ["4 aciertos", "1.066", "55"]
-      },
-      {
-        "rowData": ["5 aciertos", "23", "88"]
-      },
-      {
-        "rowData": ["6 aciertos", "11", "10"]
-      }
-    ],
-    "prize": ["Pozo Estimado 15 Aciertos Para El Proximo Sorteo", "73,000,000"],
-    "description": [
-      "La Quiniela es un juego de azar muy común en Argentina, de hecho el más famoso y de mayor arrastre. Dicho juego está bajo el control de la Loterías de cada una de las Provincias del país. En la mayoría de los casos la jurisdicción de cada Provincia establece el llamado tope de banca.",
-      "La quiniela se compone de un grupo de 20 números de 4 cifras, que van desde unidades a unidades de millar, los números corresponden a 20 recompensas, una por cada uno. Los números se definen usando cinco máquinas bolilleras de tipo manual o automatizado La primer bola da lugar a la unidad de millar de la cifra, la bola siguiente a la centena, y así sucesivamente hasta el extracto.",
-      "Las quinielas más famosas son las que se efectúan en las jurisdicciones más importantes de la Nación, desde luego en la zona metropolitana: Ciudad de Buenos Aires, y el Gran Buenos Aires. Un detalle importante es que en la Ciudad y GBA se trabaja en forma de sorteo de letras, lo cual significa que a cada apostador se les dan aleatoriamente 4 letras y son las 4 letras las que participan en la quiniela.",
-      "El nivel económico de la recompensa en juego se decide en la programación de los organizadores. Otras que también revisten importante relevancia son las que se llevan a cabo en las jurisdicciones de: Provincia de Entre Ríos y Provincia de Santa Fe."
-    ]
-  },
-  {
     "slug": "quiniela_poceada",
+    "color": "#49C765",
     "heading": "Quiniela Poceada de Hoy - al instante -",
     "name": "Toto Bingo",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
@@ -183,6 +142,7 @@
   },
   {
     "slug": "quiniplus",
+    "color": "#1C8A9F",
     "heading": "Quini Plus de Hoy - al instante -",
     "name": "Quini Plus",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },

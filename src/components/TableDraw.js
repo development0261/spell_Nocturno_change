@@ -104,12 +104,13 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
   },
   avatar: {
-    flexBasis: "17%",
+    flexBasis: "15%",
     fontWeight: "bold",
     fontFamily: "'Montserrat', sans-serif;",
     backgroundColor: "#4163ee",
     marginTop: "15px",
     marginRight: "10px",
+    boxShadow: "5px",
     width: theme.spacing(8),
     height: theme.spacing(12),
     [theme.breakpoints.down("md")]: {
@@ -118,11 +119,13 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       width: theme.spacing(5),
+      flexBasis: "18%",
       // height: theme.spacing(8),
     },
     [theme.breakpoints.down("xs")]: {
-      width: theme.spacing(2),
-      // height: theme.spacing(5),
+      flexBasis: "20%",
+      width: theme.spacing(4),
+      height: theme.spacing(10),
     },
   },
   circle: {
@@ -138,7 +141,7 @@ const useStyles = makeStyles(theme => ({
     flexWrap: "wrap",
     justifyContent: "center",
     marginTop: "3rem",
-    padding: "0px 12px",
+    padding: "0px 15px",
     [theme.breakpoints.down("xs")]: {
       margin: "1rem",
       padding: "0",
@@ -231,7 +234,15 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function LiveStream({ wins, img, sort, tableHeaders, tableData, prize }) {
+function LiveStream({
+  wins,
+  img,
+  sort,
+  tableHeaders,
+  tableData,
+  prize,
+  color,
+}) {
   console.log("draw wins", wins)
   const classes = useStyles()
   const data = useStaticQuery(graphql`
@@ -315,11 +326,10 @@ function LiveStream({ wins, img, sort, tableHeaders, tableData, prize }) {
       }
     }
   `)
-  console.log("img", img)
   let image =
     (img === "brinco" && data.brinco.childImageSharp.fluid) ||
     (img === "telekino" && data.telekino.childImageSharp.fluid) ||
-    (img === "quiniplus" && data.quini.childImageSharp.fluid) ||
+    (img === "quinielaplus" && data.quini.childImageSharp.fluid) ||
     (img === "loto5" && data.loto5.childImageSharp.fluid) ||
     (img === "quiniela_poceada" && data.quiniela_poceada.childImageSharp.fluid)
   return (
@@ -334,7 +344,10 @@ function LiveStream({ wins, img, sort, tableHeaders, tableData, prize }) {
           </Typography>
         </div>
 
-        <div className={classes.brincoContainer}>
+        <div
+          className={classes.brincoContainer}
+          style={{ backgroundColor: color ? `${color}` : null }}
+        >
           <Img
             fluid={image}
             className={classes.brinco}
@@ -345,9 +358,19 @@ function LiveStream({ wins, img, sort, tableHeaders, tableData, prize }) {
         {sort && (
           <div className={classes.sort}>
             <span className={classes.sortSpan}>Sorteo#:</span>
-            <strong className={classes.sortStrong}>{sort.sorteo}</strong>{" "}
+            <strong
+              className={classes.sortStrong}
+              style={{ backgroundColor: color ? `${color}` : null }}
+            >
+              {sort.sorteo}
+            </strong>{" "}
             <span className={classes.sortSpan}>Fetcha:</span>
-            <strong className={classes.sortStrong}>{sort.Fetcha}</strong>
+            <strong
+              className={classes.sortStrong}
+              style={{ backgroundColor: color ? `${color}` : null }}
+            >
+              {sort.Fetcha}
+            </strong>
           </div>
         )}
 
@@ -362,7 +385,15 @@ function LiveStream({ wins, img, sort, tableHeaders, tableData, prize }) {
         </div>
         <div className={classes.numbers}>
           {wins.map(num => (
-            <Avatar className={classes.avatar}>{num}</Avatar>
+            <Avatar
+              className={classes.avatar}
+              style={{
+                backgroundColor: color ? `${color}` : null,
+                borderShadow: "inset 3px 3px 4px #000",
+              }}
+            >
+              {num}
+            </Avatar>
           ))}
         </div>
         <div className={classes.Premiados}>
@@ -374,7 +405,7 @@ function LiveStream({ wins, img, sort, tableHeaders, tableData, prize }) {
             Distribucion de Premios
           </Typography>
         </div>
-        <Table headers={tableHeaders} data={tableData} />
+        <Table headers={tableHeaders} data={tableData} color={color} />
         {prize && (
           <div className={classes.Pozo}>
             <Typography

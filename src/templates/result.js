@@ -90,6 +90,7 @@ export const dataQuery = graphql`
           }
           winningNums
           prize
+          color
           description
         }
       }
@@ -109,6 +110,7 @@ const App = props => {
     tableHeaders,
     tableData,
     prize,
+    color,
   } = props.data.allAllJson.edges[0].node
 
   console.log("template", heading)
@@ -128,6 +130,7 @@ const App = props => {
               tableHeaders={tableHeaders}
               tableData={tableData}
               prize={prize}
+              color={color}
             />
             <TableDescription descData={description} heading={heading} />
             <LoadableRemind />
