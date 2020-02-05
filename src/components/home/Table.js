@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { withStyles, makeStyles } from "@material-ui/core/styles"
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth"
 import Grid from "@material-ui/core/Grid"
@@ -128,104 +128,110 @@ function StreamTable({ width }) {
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
       <TableContainer component={Paper} className={classes.tableContainer}>
-          <Table className={classes.table} aria-label="customized table">
-            <TableHead>
-              <TableRow className={classes.Head}>
-                <StyledTableCell width>Quiniela</StyledTableCell>
-                <StyledTableCell
-                  align="center"
-                  color="#150898"
-                  display="flex"
-                  style={{
-                    color: "#150898",
-                  }}
-                >
-                  <span className={classes.headerArrow}>
-                    <span>{tableHeader[0]}</span>
-                    <Img
-                      fluid={dataQuery.iconarrow.childImageSharp.fluid}
-                      fadeIn={false}
-                      alt="Arrow"
-                      className={classes.headerImage}
-                    />
-                  </span>
-                </StyledTableCell>
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow className={classes.Head}>
+              <StyledTableCell width>Quiniela</StyledTableCell>
+              <StyledTableCell
+                align="center"
+                color="#150898"
+                display="flex"
+                style={{
+                  color: "#150898",
+                }}
+              >
+                <span className={classes.headerArrow}>
+                  <span>{tableHeader[0]}</span>
+                  <Img
+                    fluid={dataQuery.iconarrow.childImageSharp.fluid}
+                    fadeIn={false}
+                    alt="Arrow"
+                    className={classes.headerImage}
+                  />
+                </span>
+              </StyledTableCell>
 
-                <StyledTableCell
-                  align="center"
-                  style={{
-                    color: "#150898",
-                  }}
-                >
-                  <span className={classes.headerArrow}>
-                    <span>{tableHeader[1]}</span>
-                    <Img
-                      fluid={dataQuery.iconarrow.childImageSharp.fluid}
-                      fadeIn={false}
-                      alt="Arrow"
-                      className={classes.headerImage}
-                    />
-                  </span>
-                </StyledTableCell>
-                <StyledTableCell
-                  align="center"
-                  style={{
-                    color: "#150898",
-                  }}
-                >
-                  <span className={classes.headerArrow}>
-                    <span>{tableHeader[2]}</span>
-                    <Img
-                      fluid={dataQuery.iconarrow.childImageSharp.fluid}
-                      fadeIn={false}
-                      alt="Arrow"
-                      className={classes.headerImage}
-                    />
-                  </span>
-                </StyledTableCell>
-                <StyledTableCell
-                  align="center"
-                  style={{
-                    color: "#150898",
-                  }}
-                >
-                  <span className={classes.headerArrow}>
-                    <span>{tableHeader[3]}</span>
-                    <Img
-                      fluid={dataQuery.iconarrow.childImageSharp.fluid}
-                      fadeIn={false}
-                      alt="Arrow"
-                      className={classes.headerImage}
-                    />
-                  </span>
-                </StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data &&
-                data.map((row, index) => (
-                  <StyledTableRow className={classes.Row}>
+              <StyledTableCell
+                align="center"
+                style={{
+                  color: "#150898",
+                }}
+              >
+                <span className={classes.headerArrow}>
+                  <span>{tableHeader[1]}</span>
+                  <Img
+                    fluid={dataQuery.iconarrow.childImageSharp.fluid}
+                    fadeIn={false}
+                    alt="Arrow"
+                    className={classes.headerImage}
+                  />
+                </span>
+              </StyledTableCell>
+              <StyledTableCell
+                align="center"
+                style={{
+                  color: "#150898",
+                }}
+              >
+                <span className={classes.headerArrow}>
+                  <span>{tableHeader[2]}</span>
+                  <Img
+                    fluid={dataQuery.iconarrow.childImageSharp.fluid}
+                    fadeIn={false}
+                    alt="Arrow"
+                    className={classes.headerImage}
+                  />
+                </span>
+              </StyledTableCell>
+              <StyledTableCell
+                align="center"
+                style={{
+                  color: "#150898",
+                }}
+              >
+                <span className={classes.headerArrow}>
+                  <span>{tableHeader[3]}</span>
+                  <Img
+                    fluid={dataQuery.iconarrow.childImageSharp.fluid}
+                    fadeIn={false}
+                    alt="Arrow"
+                    className={classes.headerImage}
+                  />
+                </span>
+              </StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data &&
+              data.map((row, index) => (
+                <StyledTableRow className={classes.Row}>
+                  <StyledTableCell
+                    scope="row"
+                    style={{
+                      border: "2px solid #feebbf",
+                      backgroundColor: "none",
+                    }}
+                  >
+                    {row.name}
+                  </StyledTableCell>
+                  {mappingKeys.map(key => (
                     <StyledTableCell
-                      scope="row"
-                      style={{
-                        border: "2px solid #feebbf",
-                        backgroundColor: "none",
-                      }}
+                      style={{ border: "2px solid #feebbf" }}
+                      align="center"
                     >
-                      {row.name}
+                      {row.values[key] ? (
+                        row.values[key].value ? (
+                          row.values[key].value
+                        ) : (
+                          <TableCellLoader />
+                        )
+                      ) : null}
                     </StyledTableCell>
-                    {mappingKeys.map(key => (
-                      <StyledTableCell
-                        style={{ border: "2px solid #feebbf" }}
-                        align="center"
-                      >
-                        {row.values[key] ? (row.values[key].value? row.values[key].value: <TableCellLoader/>):null}
-                      </StyledTableCell>
-                    ))}
-                  </StyledTableRow>
-                ))}
-            </TableBody>
-          </Table>
+                  ))}
+                </StyledTableRow>
+              ))}
+          </TableBody>
+        </Table>
       </TableContainer>
     </Grid>
   )

@@ -1,17 +1,17 @@
-import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import rowsData from '../../data/brinco.json'
+import React from "react"
+import { withStyles, makeStyles } from "@material-ui/core/styles"
+import Table from "@material-ui/core/Table"
+import TableBody from "@material-ui/core/TableBody"
+import TableCell from "@material-ui/core/TableCell"
+import TableContainer from "@material-ui/core/TableContainer"
+import TableHead from "@material-ui/core/TableHead"
+import TableRow from "@material-ui/core/TableRow"
+import Paper from "@material-ui/core/Paper"
+import rowsData from "../data/brinco.json"
 
 const StyledTableCell = withStyles(theme => ({
-  root:{
-    padding:14
+  root: {
+    padding: 14,
   },
   head: {
     backgroundColor: "#6681f1",
@@ -20,49 +20,46 @@ const StyledTableCell = withStyles(theme => ({
     fontWeight: "bold",
     borderRight: "4px solid #c2cdf9",
     textAlign: "center",
-    [theme.breakpoints.down("xs")]:{
+    [theme.breakpoints.down("xs")]: {
       fontSize: "1rem",
-    }
+    },
   },
   body: {
     fontSize: "1.2rem",
     backgroundColor: "#fff",
-    '&:first-child':{
-      fontWeight:'bold'
+    "&:first-child": {
+      fontWeight: "bold",
     },
-    [theme.breakpoints.down("xs")]:{
+    [theme.breakpoints.down("xs")]: {
       fontSize: "0.8rem",
-    }
-    
-  }
-}))(TableCell);
+    },
+  },
+}))(TableCell)
 
 const StyledTableRow = withStyles(theme => ({
   root: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default
-    }
-  }
-}))(TableRow);
-
+      backgroundColor: theme.palette.background.default,
+    },
+  },
+}))(TableRow)
 
 const useStyles = makeStyles({
   table: {
     padding: "10px",
     border: "4px solid #6681f1 !important",
-    textAlign: "center"
+    textAlign: "center",
   },
   Body: {
-    fontWeight: 600
+    fontWeight: 600,
   },
   th: {
-    
-    textAlign: "center"
-  }
-});
+    textAlign: "center",
+  },
+})
 
 function StreamTable() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <TableContainer component={Paper}>
@@ -113,7 +110,7 @@ function StreamTable() {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }
 
-export default StreamTable;
+export default StreamTable

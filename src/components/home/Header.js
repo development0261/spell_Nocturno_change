@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
   Logo: {
     marginLeft: -16,
-    marginTop:4.5,
+    marginTop: 4.5,
     [theme.breakpoints.down("sm")]: {
       width: "70%",
       marginLeft: 10,
@@ -159,7 +159,7 @@ function Header() {
   `)
 
   const classes = useStyles()
-  const [ menuOpen, setMenuOpen ] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <div className={classes.root}>
@@ -194,161 +194,163 @@ function Header() {
         lg={12}
         className={classes.imagesContainer}
       >
-        {menuOpen && (<Container className={classes.container}>
-          <div className={classes.images}>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Link to="/">
+        {menuOpen && (
+          <Container className={classes.container}>
+            <div className={classes.images}>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
+                <Link to="/">
+                  <Img
+                    fluid={data.quiniela.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="La quiniela de hoy"
+                  />
+                </Link>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
+                <Link to="/telekino/">
+                  <Img
+                    fluid={data.telekino.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="Telekino de hoy"
+                  />
+                </Link>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
+                <Link to="/quini6/">
+                  <Img
+                    fluid={data.quini6.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="Quini6 de hoy"
+                  />
+                </Link>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
+                <Link to="/brinco/">
+                  <Img
+                    fluid={data.brinco.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="Brinco de hoy"
+                  />
+                </Link>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
+                <Link to="/lotoplus/">
+                  <Img
+                    fluid={data.lotoPlus.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="Loto Plus de hoy"
+                  />
+                </Link>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
+                <Link to="/quinielaplus/">
+                  <Img
+                    fluid={data.quini.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="Quiniela Plus de hoy"
+                  />
+                </Link>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
+                <Link to="/totobingo/">
+                  <Img
+                    fluid={data.totobingo.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="Toto Bingo de hoy"
+                  />
+                </Link>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
                 <Img
-                  fluid={data.quiniela.childImageSharp.fluid}
+                  fluid={data.quinielaPoceada.childImageSharp.fluid}
                   className={classes.img}
                   fadeIn={false}
-                  alt="La quiniela de hoy"
+                  alt="Quiniela Poceada de hoy"
                 />
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Link to="/telekino/">
-                <Img
-                  fluid={data.telekino.childImageSharp.fluid}
-                  className={classes.img}
-                  fadeIn={false}
-                  alt="Telekino de hoy"
-                />
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Link to="/quini6/">
-                <Img
-                  fluid={data.quini6.childImageSharp.fluid}
-                  className={classes.img}
-                  fadeIn={false}
-                  alt="Quini6 de hoy"
-                />
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Link to="/brinco/">
-                <Img
-                  fluid={data.brinco.childImageSharp.fluid}
-                  className={classes.img}
-                  fadeIn={false}
-                  alt="Brinco de hoy"
-                />
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Link to="/lotoplus/">
-                <Img
-                  fluid={data.lotoPlus.childImageSharp.fluid}
-                  className={classes.img}
-                  fadeIn={false}
-                  alt="Loto Plus de hoy"
-                />
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Link to="/quinielaplus/">
-                <Img
-                  fluid={data.quini.childImageSharp.fluid}
-                  className={classes.img}
-                  fadeIn={false}
-                  alt="Quiniela Plus de hoy"
-                />
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Link to="/totobingo/">
-                <Img
-                  fluid={data.totobingo.childImageSharp.fluid}
-                  className={classes.img}
-                  fadeIn={false}
-                  alt="Toto Bingo de hoy"
-                />
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Img
-                fluid={data.quinielaPoceada.childImageSharp.fluid}
-                className={classes.img}
-                fadeIn={false}
-                alt="Quiniela Poceada de hoy"
-              />
-            </Grid>
-            <Grid
-              item
-              xs={3}
-              sm={3}
-              md={12}
-              lg={12}
-              className={classes.imgContainer}
-            >
-              <Link to="/loto5/">
-                <Img
-                  fluid={data.loto5.childImageSharp.fluid}
-                  className={classes.img}
-                  fadeIn={false}
-                  alt="Loto 5 de hoy"
-                />
-              </Link>
-            </Grid>
-          </div>
-        </Container>)}
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                sm={3}
+                md={12}
+                lg={12}
+                className={classes.imgContainer}
+              >
+                <Link to="/loto5/">
+                  <Img
+                    fluid={data.loto5.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="Loto 5 de hoy"
+                  />
+                </Link>
+              </Grid>
+            </div>
+          </Container>
+        )}
       </Grid>
     </div>
   )

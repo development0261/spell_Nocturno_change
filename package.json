@@ -21,6 +21,7 @@
     "gatsby-plugin-sitemap": "^2.2.26",
     "gatsby-plugin-webfonts": "^1.1.2",
     "gatsby-source-filesystem": "^2.1.40",
+    "gatsby-transformer-json": "^2.2.26",
     "gatsby-transformer-sharp": "^2.3.7",
     "import": "^0.0.6",
     "luxon": "^1.21.3",

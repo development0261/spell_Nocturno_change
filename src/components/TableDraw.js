@@ -2,10 +2,10 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Avatar from "@material-ui/core/Avatar"
 import Typography from "@material-ui/core/Typography"
-import SecondTable from "./SecondTable"
-import Icons from "./Icons"
+import SecondTable from "../components/home/SecondTable"
+import Icons from "../components/home/Icons"
 import Button from "@material-ui/core/Button"
-
+import Table from "../components/Table"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -128,7 +128,8 @@ const useStyles = makeStyles(theme => ({
   numbers: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
     marginTop: "3rem",
     padding: "0px 12px",
     [theme.breakpoints.down("xs")]: {
@@ -188,21 +189,122 @@ const useStyles = makeStyles(theme => ({
       fontSize: "1.3rem",
     },
   },
+  sort: {
+    display: "flex",
+    justifyContent: "space-around",
+    margin: "30px 0px 50px 0px",
+    alignItems: "center",
+  },
+  sortSpan: {
+    fontSize: "30px",
+    fontWeight: "700",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "20px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "16px",
+    },
+  },
+
+  sortStrong: {
+    fontSize: "30px",
+    fontWeight: "700",
+    color: "#fff",
+    backgroundColor: "orange",
+    padding: "20px 30px",
+    borderRadius: "40px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "20px",
+      padding: "15px 30px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "16px",
+      padding: "10px 10px",
+    },
+  },
 }))
 
-function LiveStream() {
+function LiveStream({ wins, img, sort }) {
+  console.log("draw wins", wins)
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
+      logo: file(relativePath: { eq: "quinielashoylogo.png" }) {
+        childImageSharp {
+          fixed(width: 280) {
+            ...GatsbyImageSharpFixed_tracedSVG
+          }
+        }
+      }
+      quiniela: file(relativePath: { eq: "quiniela.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      telekino: file(relativePath: { eq: "telekino.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      quini6: file(relativePath: { eq: "quini6.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
       brinco: file(relativePath: { eq: "brinco.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_noBase64
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      lotoPlus: file(relativePath: { eq: "loto_plus.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      quini: file(relativePath: { eq: "quini.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      totobingo: file(relativePath: { eq: "totobingo.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      quinielaPoceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      loto5: file(relativePath: { eq: "loto5.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
     }
   `)
+  console.log("img", img)
+  let image =
+    (img === "brinco" && data.brinco.childImageSharp.fluid) ||
+    (img === "telekino" && data.telekino.childImageSharp.fluid)
   return (
     <div className={classes.root} id={"bronco-section"}>
       <div className={classes.Border}>
@@ -217,12 +319,21 @@ function LiveStream() {
 
         <div className={classes.brincoContainer}>
           <Img
-            fluid={data.brinco.childImageSharp.fluid}
+            fluid={image}
             className={classes.brinco}
             fadeIn={false}
             alt="Brinco de hoy"
           />
         </div>
+        {sort && (
+          <div className={classes.sort}>
+            <span className={classes.sortSpan}>Sorteo#:</span>
+            <strong className={classes.sortStrong}>{sort.sorteo}</strong>{" "}
+            <span className={classes.sortSpan}>Fetcha:</span>
+            <strong className={classes.sortStrong}>{sort.Fetcha}</strong>
+          </div>
+        )}
+
         <div className={classes.Premiados}>
           <Typography
             variant="h4"
@@ -233,12 +344,9 @@ function LiveStream() {
           </Typography>
         </div>
         <div className={classes.numbers}>
-          <Avatar className={classes.avatar}>11</Avatar>
-          <Avatar className={classes.avatar}>06</Avatar>
-          <Avatar className={classes.avatar}>30</Avatar>
-          <Avatar className={classes.avatar}>02</Avatar>
-          <Avatar className={classes.avatar}>13</Avatar>
-          <Avatar className={classes.avatar}>10</Avatar>
+          {wins.map(num => (
+            <Avatar className={classes.avatar}>{num}</Avatar>
+          ))}
         </div>
         <div className={classes.Premiados}>
           <Typography
@@ -249,7 +357,7 @@ function LiveStream() {
             Distribucion de Premios
           </Typography>
         </div>
-        <SecondTable />
+        <Table />
         <div className={classes.Pozo}>
           <Typography
             variant="h3"

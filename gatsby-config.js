@@ -6,6 +6,16 @@ module.exports = {
     siteUrl: `https://www.quinielashoy.com`,
   },
   plugins: [
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `jsondata`,
+        // typeName: ({ node, object, isArray }) => object.level,
+        path: `./src/data/`,
+      },
+    },
+
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -31,12 +41,12 @@ module.exports = {
           google: [
             {
               family: `Montserrat`,
-              variants: [`400`,`500`,`700`]
+              variants: [`400`, `500`, `700`],
             },
             {
-              family:`Open Sans`,
-              variants: [`400`,`700`]
-            }
+              family: `Open Sans`,
+              variants: [`400`, `700`],
+            },
           ],
         },
       },
@@ -55,6 +65,6 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-preact`,
-    `gatsby-plugin-sitemap`
+    `gatsby-plugin-sitemap`,
   ],
 }
