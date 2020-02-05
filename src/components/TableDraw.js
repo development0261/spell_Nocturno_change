@@ -104,28 +104,28 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
   },
   avatar: {
-    flexBasis: "15%",
+    // flexBasis: "15%",
     fontWeight: "bold",
     fontFamily: "'Montserrat', sans-serif;",
     backgroundColor: "#4163ee",
     marginTop: "15px",
     marginRight: "10px",
+    marginLeft: "10px",
     boxShadow: "5px",
-    width: theme.spacing(8),
-    height: theme.spacing(12),
-    [theme.breakpoints.down("md")]: {
-      width: theme.spacing(9),
-      // height: theme.spacing(9),
-    },
+    width: "84px",
+    height: "84px",
+    // [theme.breakpoints.down("md")]: {
+    //   width: theme.spacing(9),
+    //   height: theme.spacing(9),
+    // },
     [theme.breakpoints.down("sm")]: {
-      width: theme.spacing(5),
-      flexBasis: "18%",
-      // height: theme.spacing(8),
+      width: "50px",
+      height: "50px",
     },
     [theme.breakpoints.down("xs")]: {
-      flexBasis: "20%",
-      width: theme.spacing(4),
-      height: theme.spacing(10),
+      // flexBasis: "18%",
+      width: "40px",
+      height: "40px",
     },
   },
   circle: {
@@ -230,6 +230,38 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       fontSize: "16px",
       padding: "10px 10px",
+    },
+  },
+  numRow: {
+    display: "flex",
+    justifyContent: "space-around",
+    margin: "0px auto 30px auto",
+    maxWidth: "630px",
+  },
+  num: {
+    width: "84px",
+    height: "84px",
+    backgroundColor: "#4163ee",
+    bordeRadius: "50% ",
+    fontSize: "30px",
+    fontWeight: "700",
+    lineHeight: "84px",
+    textAlign: "center",
+    color: "#fff",
+    boxShadow: "inset 0px 0px 40px 0px rgba(0, 0, 0, 0.3)",
+
+    [theme.breakpoints.down("sm")]: {
+      width: "50px",
+      height: "50px",
+      fontSize: "20px",
+      lineHeight: "50px",
+      boxShadow: "inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3)",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "40px",
+      height: "40px",
+      lineHeight: "40px",
+      fontSize: "16px",
     },
   },
 }))
@@ -383,8 +415,29 @@ function LiveStream({
             Numeros Premiados
           </Typography>
         </div>
-        <div className={classes.numbers}>
-          {wins.map(num => (
+        {/* <div className={classes.numbers}> */}
+        <div className={classes.numRow}>
+          <div className={classes.num}>10</div>
+          <div className={classes.num}>06</div>
+          <div className={classes.num}>30</div>
+          <div className={classes.num}>02</div>
+          <div className={classes.num}>13</div>
+        </div>
+        <div className={classes.numRow}>
+          <div className={classes.num}>13</div>
+          <div className={classes.num}>22</div>
+          <div className={classes.num}>55</div>
+          <div className={classes.num}>02</div>
+          <div className={classes.num}>12</div>
+        </div>
+        <div className={classes.numRow}>
+          <div className={classes.num}>17</div>
+          <div className={classes.num}>76</div>
+          <div className={classes.num}>36</div>
+          <div className={classes.num}>01</div>
+          <div className={classes.num}>52</div>
+        </div>
+        {/* {wins.map(num => (
             <Avatar
               className={classes.avatar}
               style={{
@@ -394,8 +447,8 @@ function LiveStream({
             >
               {num}
             </Avatar>
-          ))}
-        </div>
+          ))} */}
+        {/* </div> */}
         <div className={classes.Premiados}>
           <Typography
             variant="h3"
@@ -405,7 +458,9 @@ function LiveStream({
             Distribucion de Premios
           </Typography>
         </div>
-        <Table headers={tableHeaders} data={tableData} color={color} />
+        <div style={{ padding: "0 0.8rem" }}>
+          <Table headers={tableHeaders} data={tableData} color={color} />
+        </div>
         {prize && (
           <div className={classes.Pozo}>
             <Typography

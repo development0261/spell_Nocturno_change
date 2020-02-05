@@ -3,7 +3,23 @@
     "slug": "brinco",
     "name": "Brinco",
     "heading": "El Binco de Hoy - al instante -",
-    "winningNums": ["10", "06", "30", "02", "13", "11"],
+    "winningNums": [
+      "10",
+      "06",
+      "30",
+      "02",
+      "13",
+      "10",
+      "22",
+      "12",
+      "55",
+      "65",
+      "14",
+      "31",
+      "44",
+      "67",
+      "69"
+    ],
     "tableHeaders": ["Premio", "Apuestas Ganadoras", "Premio por Apuesta ($)"],
     "tableData": [
       {
@@ -44,7 +60,10 @@
       "55",
       "65",
       "14",
-      "31"
+      "31",
+      "44",
+      "67",
+      "69"
     ],
     "tableHeaders": ["Premio", "Apuestas Ganadoras", "Premio por Apuesta ($)"],
     "tableData": [
@@ -86,7 +105,10 @@
       "55",
       "65",
       "14",
-      "31"
+      "31",
+      "44",
+      "67",
+      "69"
     ],
     "tableHeaders": ["Premio", "Apuestas Ganadoras", "Premio por Apuesta ($)"],
     "tableData": [

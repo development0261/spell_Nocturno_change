@@ -74,16 +74,6 @@ const StreamTable = ({ headers, data, color }) => {
             {headers.map((val, i) => (
               <StyledTableCell key={i}>{val}</StyledTableCell>
             ))}
-
-            {/* <StyledTableCell
-            // align="center"
-            // color="black"
-            // display="flex"
-            // className={classes.Cell}
-            >
-              Apuestas
-              <br /> Ganadoras
-            </StyledTableCell> */}
           </TableRow>
         </TableHead>
 
