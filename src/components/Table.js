@@ -58,53 +58,46 @@ const useStyles = makeStyles({
   },
 })
 
-function StreamTable() {
+const StreamTable = ({ headers, data }) => {
+  console.log("row d", data)
+  console.log("head", headers)
   const classes = useStyles()
-
+  console.log("data from table ", data)
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow className={classes.Head}>
-            <StyledTableCell>Premio</StyledTableCell>
-            <StyledTableCell
-              align="center"
-              color="black"
-              display="flex"
-              className={classes.Cell}
+            {headers.map((val, i) => (
+              <StyledTableCell key={i}>{val}</StyledTableCell>
+            ))}
+
+            {/* <StyledTableCell
+            // align="center"
+            // color="black"
+            // display="flex"
+            // className={classes.Cell}
             >
               Apuestas
               <br /> Ganadoras
-            </StyledTableCell>
-            <StyledTableCell align="center" className={classes.Cell}>
-              Premio pro
-              <br /> Apuesta ($)
-            </StyledTableCell>
+            </StyledTableCell> */}
           </TableRow>
         </TableHead>
+
         <TableBody className={classes.Body}>
-          {rowsData.map(row => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell
-                style={{ borderBottom: "4px solid #6681f1" }}
-                scope="row"
-              >
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell
-                align="center"
-                style={{ border: "4px solid #6681f1" }}
-                className={classes.Cells}
-              >
-                {row.values.winningBet.value}
-              </StyledTableCell>
-              <StyledTableCell
-                align="center"
-                style={{ borderBottom: "4px solid #6681f1" }}
-                className={classes.Cells}
-              >
-                {row.values.betAward.value}
-              </StyledTableCell>
+          {data.map((element, i) => (
+            <StyledTableRow key={i}>
+              {console.log("row", i + 1)}
+              {element.rowData.map((td, index) => (
+                <StyledTableCell
+                  align="center"
+                  style={{ border: "4px solid #6681f1" }}
+                  scope="row"
+                >
+                  {console.log("row data", index + 1)}
+                  {td}
+                </StyledTableCell>
+              ))}
             </StyledTableRow>
           ))}
         </TableBody>

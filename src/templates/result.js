@@ -84,6 +84,10 @@ export const dataQuery = graphql`
             Fetcha
             sorteo
           }
+          tableHeaders
+          tableData {
+            rowData
+          }
           winningNums
           prize
           description
@@ -102,11 +106,11 @@ const App = props => {
     winningNums,
     sort,
     slug,
+    tableHeaders,
+    tableData,
   } = props.data.allAllJson.edges[0].node
-  // const heading = props.data.allAllJson.edges[0].node.heading
-  // const winningNums = props.data.allAllJson.edges[0].node.winningNums
+
   console.log("template", heading)
-  // const winNums = props.data.allAllJson.edges[0].node.description
 
   return (
     <LoadableLayout title={"Brinco | Resultados de Brinco - al instante"}>
@@ -116,7 +120,13 @@ const App = props => {
           <Paper className={classes.root}>
             {/* <LoadableNextDraw /> */}
             {/* <LoadableBrincoDesc /> */}
-            <TableDraw wins={winningNums} img={slug} sort={sort} />
+            <TableDraw
+              wins={winningNums}
+              img={slug}
+              sort={sort}
+              tableHeaders={tableHeaders}
+              tableData={tableData}
+            />
             <TableDescription descData={description} heading={heading} />
             <LoadableRemind />
           </Paper>

@@ -104,18 +104,20 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
   },
   avatar: {
+    flexBasis: "15%",
     fontWeight: "bold",
     fontFamily: "'Montserrat', sans-serif;",
     backgroundColor: "#4163ee",
+    marginTop: "15px",
     width: theme.spacing(10),
-    height: theme.spacing(10),
+    height: theme.spacing(12),
     [theme.breakpoints.down("sm")]: {
-      width: theme.spacing(7),
-      height: theme.spacing(7),
+      width: theme.spacing(8),
+      height: theme.spacing(11),
     },
     [theme.breakpoints.down("xs")]: {
       width: theme.spacing(6),
-      height: theme.spacing(6),
+      height: theme.spacing(9),
     },
   },
   circle: {
@@ -224,7 +226,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function LiveStream({ wins, img, sort }) {
+function LiveStream({ wins, img, sort, tableHeaders, tableData }) {
   console.log("draw wins", wins)
   const classes = useStyles()
   const data = useStaticQuery(graphql`
@@ -304,7 +306,8 @@ function LiveStream({ wins, img, sort }) {
   console.log("img", img)
   let image =
     (img === "brinco" && data.brinco.childImageSharp.fluid) ||
-    (img === "telekino" && data.telekino.childImageSharp.fluid)
+    (img === "telekino" && data.telekino.childImageSharp.fluid) ||
+    (img === "quiniplus" && data.quini.childImageSharp.fluid)
   return (
     <div className={classes.root} id={"bronco-section"}>
       <div className={classes.Border}>
@@ -357,7 +360,7 @@ function LiveStream({ wins, img, sort }) {
             Distribucion de Premios
           </Typography>
         </div>
-        <Table />
+        <Table headers={tableHeaders} data={tableData} />
         <div className={classes.Pozo}>
           <Typography
             variant="h3"

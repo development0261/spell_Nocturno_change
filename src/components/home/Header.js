@@ -155,6 +155,11 @@ function Header() {
           }
         }
       }
+      allAllJson {
+        nodes {
+          slug
+        }
+      }
     }
   `)
 
