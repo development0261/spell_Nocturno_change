@@ -417,25 +417,130 @@ function LiveStream({
         </div>
         {/* <div className={classes.numbers}> */}
         <div className={classes.numRow}>
-          <div className={classes.num}>10</div>
-          <div className={classes.num}>06</div>
-          <div className={classes.num}>30</div>
-          <div className={classes.num}>02</div>
-          <div className={classes.num}>13</div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            10
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            06
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            30
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            02
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            13
+          </div>
         </div>
         <div className={classes.numRow}>
-          <div className={classes.num}>13</div>
-          <div className={classes.num}>22</div>
-          <div className={classes.num}>55</div>
-          <div className={classes.num}>02</div>
-          <div className={classes.num}>12</div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            13
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            22
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            55
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            02
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            12
+          </div>
         </div>
         <div className={classes.numRow}>
-          <div className={classes.num}>17</div>
-          <div className={classes.num}>76</div>
-          <div className={classes.num}>36</div>
-          <div className={classes.num}>01</div>
-          <div className={classes.num}>52</div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            17
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            76
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            36
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            01
+          </div>
+          <div
+            className={classes.num}
+            style={{
+              backgroundColor: color ? `${color}` : null,
+            }}
+          >
+            52
+          </div>
         </div>
         {/* {wins.map(num => (
             <Avatar
