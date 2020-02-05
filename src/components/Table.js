@@ -84,7 +84,7 @@ const StreamTable = ({ headers, data, color }) => {
               {element.rowData.map((td, index) => (
                 <StyledTableCell
                   align="center"
-                  style={{ border: "4px solid #6681f1" }}
+                  style={{ border: "4px solid #6681f1", width: "33%" }}
                   scope="row"
                 >
                   {console.log("row data", index + 1)}
