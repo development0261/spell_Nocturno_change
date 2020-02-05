@@ -108,12 +108,13 @@ const App = props => {
     slug,
     tableHeaders,
     tableData,
+    prize,
   } = props.data.allAllJson.edges[0].node
 
   console.log("template", heading)
 
   return (
-    <LoadableLayout title={"Brinco | Resultados de Brinco - al instante"}>
+    <LoadableLayout title={heading}>
       <div className={classes.maincontainer}>
         <LoadableHeader />
         <Container className={classes.container}>
@@ -126,6 +127,7 @@ const App = props => {
               sort={sort}
               tableHeaders={tableHeaders}
               tableData={tableData}
+              prize={prize}
             />
             <TableDescription descData={description} heading={heading} />
             <LoadableRemind />

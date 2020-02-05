@@ -104,20 +104,25 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
   },
   avatar: {
-    flexBasis: "15%",
+    flexBasis: "17%",
     fontWeight: "bold",
     fontFamily: "'Montserrat', sans-serif;",
     backgroundColor: "#4163ee",
     marginTop: "15px",
-    width: theme.spacing(10),
+    marginRight: "10px",
+    width: theme.spacing(8),
     height: theme.spacing(12),
+    [theme.breakpoints.down("md")]: {
+      width: theme.spacing(9),
+      // height: theme.spacing(9),
+    },
     [theme.breakpoints.down("sm")]: {
-      width: theme.spacing(8),
-      height: theme.spacing(11),
+      width: theme.spacing(5),
+      // height: theme.spacing(8),
     },
     [theme.breakpoints.down("xs")]: {
-      width: theme.spacing(6),
-      height: theme.spacing(9),
+      width: theme.spacing(2),
+      // height: theme.spacing(5),
     },
   },
   circle: {
@@ -131,7 +136,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     flexWrap: "wrap",
-    justifyContent: "space-around",
+    justifyContent: "center",
     marginTop: "3rem",
     padding: "0px 12px",
     [theme.breakpoints.down("xs")]: {
@@ -226,7 +231,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function LiveStream({ wins, img, sort, tableHeaders, tableData }) {
+function LiveStream({ wins, img, sort, tableHeaders, tableData, prize }) {
   console.log("draw wins", wins)
   const classes = useStyles()
   const data = useStaticQuery(graphql`
@@ -301,13 +306,22 @@ function LiveStream({ wins, img, sort, tableHeaders, tableData }) {
           }
         }
       }
+      quiniela_poceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
     }
   `)
   console.log("img", img)
   let image =
     (img === "brinco" && data.brinco.childImageSharp.fluid) ||
     (img === "telekino" && data.telekino.childImageSharp.fluid) ||
-    (img === "quiniplus" && data.quini.childImageSharp.fluid)
+    (img === "quiniplus" && data.quini.childImageSharp.fluid) ||
+    (img === "loto5" && data.loto5.childImageSharp.fluid) ||
+    (img === "quiniela_poceada" && data.quiniela_poceada.childImageSharp.fluid)
   return (
     <div className={classes.root} id={"bronco-section"}>
       <div className={classes.Border}>
@@ -361,18 +375,20 @@ function LiveStream({ wins, img, sort, tableHeaders, tableData }) {
           </Typography>
         </div>
         <Table headers={tableHeaders} data={tableData} />
-        <div className={classes.Pozo}>
-          <Typography
-            variant="h3"
-            component="h2"
-            className={classes.PremiadosHeading}
-          >
-            Pozo Estimado para la Proxima <br /> Jugada
-          </Typography>
-          <Button variant="contained" color="primary" className={classes.Btn}>
-            $ 73.000.000
-          </Button>
-        </div>
+        {prize && (
+          <div className={classes.Pozo}>
+            <Typography
+              variant="h3"
+              component="h2"
+              className={classes.PremiadosHeading}
+            >
+              {prize[0]}
+            </Typography>
+            <Button variant="contained" color="primary" className={classes.Btn}>
+              ${prize[1]}
+            </Button>
+          </div>
+        )}
       </div>
       <div className={classes.icons}>
         <Icons />

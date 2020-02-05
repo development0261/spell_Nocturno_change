@@ -64,7 +64,7 @@ const StreamTable = ({ headers, data }) => {
   const classes = useStyles()
   console.log("data from table ", data)
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{ marginBottom: "40px" }}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow className={classes.Head}>

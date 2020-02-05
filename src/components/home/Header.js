@@ -143,7 +143,7 @@ function Header() {
       }
       quinielaPoceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
         childImageSharp {
-          fluid(maxWidth: 100) {
+          fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid_tracedSVG
           }
         }
@@ -329,12 +329,14 @@ function Header() {
                 lg={12}
                 className={classes.imgContainer}
               >
-                <Img
-                  fluid={data.quinielaPoceada.childImageSharp.fluid}
-                  className={classes.img}
-                  fadeIn={false}
-                  alt="Quiniela Poceada de hoy"
-                />
+                <Link to="/quiniela_poceada/">
+                  <Img
+                    fluid={data.quinielaPoceada.childImageSharp.fluid}
+                    className={classes.img}
+                    fadeIn={false}
+                    alt="Quiniela Poceada de hoy"
+                  />
+                </Link>
               </Grid>
               <Grid
                 item
