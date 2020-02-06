@@ -149,6 +149,7 @@ const useStyles = makeStyles(theme => ({
   },
   icons: {
     marginBottom: "5rem",
+    backgroundColor: "transparent",
     [theme.breakpoints.down("xs")]: {
       marginBottom: "2rem",
     },
@@ -156,6 +157,7 @@ const useStyles = makeStyles(theme => ({
   Btn: {
     width: "fit-content",
     padding: "1rem 3rem",
+    color: "white",
     borderRadius: "50px",
     fontSize: "2rem",
     marginTop: "3rem",
@@ -181,7 +183,7 @@ const useStyles = makeStyles(theme => ({
     margin: "3rem 0",
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
-      margin: "1rem 0",
+      margin: "2rem 0",
     },
   },
   Loader: {
@@ -234,11 +236,16 @@ const useStyles = makeStyles(theme => ({
   },
   numRow: {
     display: "flex",
+    width: "80%",
     justifyContent: "space-around",
     margin: "0px auto 30px auto",
     maxWidth: "630px",
+    flexWrap: "wrap",
   },
   num: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     width: "84px",
     height: "84px",
     backgroundColor: "#4163ee",
@@ -251,8 +258,8 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "inset 0px 0px 40px 0px rgba(0, 0, 0, 0.3)",
 
     [theme.breakpoints.down("sm")]: {
-      width: "50px",
-      height: "50px",
+      width: "70px",
+      height: "70px",
       fontSize: "20px",
       lineHeight: "50px",
       boxShadow: "inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3)",
@@ -392,14 +399,18 @@ function LiveStream({
             <span className={classes.sortSpan}>Sorteo#:</span>
             <strong
               className={classes.sortStrong}
-              style={{ backgroundColor: color ? `${color}` : null }}
+              style={{
+                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+              }}
             >
               {sort.sorteo}
             </strong>{" "}
             <span className={classes.sortSpan}>Fetcha:</span>
             <strong
               className={classes.sortStrong}
-              style={{ backgroundColor: color ? `${color}` : null }}
+              style={{
+                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+              }}
             >
               {sort.Fetcha}
             </strong>
@@ -417,143 +428,29 @@ function LiveStream({
         </div>
         {/* <div className={classes.numbers}> */}
         <div className={classes.numRow}>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            10
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            06
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            30
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            02
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            13
-          </div>
+          {wins.map((a, i) => {
+            return (
+              <div
+                style={{
+                  flexBasis: "20%",
+                  display: "flex",
+                  justifyContent: "center",
+                  marginBottom: "30px",
+                }}
+              >
+                <div
+                  className={classes.num}
+                  style={{
+                    backgroundColor: color ? `${color}` : null,
+                  }}
+                >
+                  {a}
+                </div>
+              </div>
+            )
+          })}
         </div>
-        <div className={classes.numRow}>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            13
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            22
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            55
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            02
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            12
-          </div>
-        </div>
-        <div className={classes.numRow}>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            17
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            76
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            36
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            01
-          </div>
-          <div
-            className={classes.num}
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-          >
-            52
-          </div>
-        </div>
-        {/* {wins.map(num => (
-            <Avatar
-              className={classes.avatar}
-              style={{
-                backgroundColor: color ? `${color}` : null,
-                borderShadow: "inset 3px 3px 4px #000",
-              }}
-            >
-              {num}
-            </Avatar>
-          ))} */}
-        {/* </div> */}
+
         <div className={classes.Premiados}>
           <Typography
             variant="h3"
@@ -575,15 +472,21 @@ function LiveStream({
             >
               {prize[0]}
             </Typography>
-            <Button variant="contained" color="primary" className={classes.Btn}>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: color ? `${color}` : null,
+              }}
+              className={classes.Btn}
+            >
               ${prize[1]}
             </Button>
           </div>
         )}
       </div>
-      <div className={classes.icons}>
+      {/* <div className={classes.icons}>
         <Icons />
-      </div>
+      </div> */}
     </div>
   )
 }

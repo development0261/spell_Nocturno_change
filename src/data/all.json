@@ -1,6 +1,7 @@
 [
   {
     "slug": "brinco",
+    "color": "#3B51B5",
     "name": "Brinco",
     "heading": "El Binco de Hoy - al instante -",
     "winningNums": [
@@ -45,6 +46,7 @@
   },
   {
     "slug": "loto5",
+    "color": "#3B51B5",
     "heading": "El Loto de Hoy - al instante -",
     "name": "Loto Plus",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
@@ -90,6 +92,7 @@
   },
   {
     "slug": "telekino",
+    "color": "#F4A200",
     "heading": "El Tele de Hoy - al instante -",
     "name": "Tele Kino",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
@@ -139,7 +142,23 @@
     "heading": "Quiniela Poceada de Hoy - al instante -",
     "name": "Toto Bingo",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
-    "winningNums": ["10", "06", "30", "02", "13", "10", "22", "23", "55"],
+    "winningNums": [
+      "10",
+      "06",
+      "30",
+      "02",
+      "13",
+      "10",
+      "22",
+      "12",
+      "55",
+      "65",
+      "14",
+      "31",
+      "44",
+      "67",
+      "69"
+    ],
     "tableHeaders": ["Premio", "Apuestas Ganadoras", "Premio por Apuesta ($)"],
     "tableData": [
       {
@@ -163,12 +182,28 @@
     ]
   },
   {
-    "slug": "quiniplus",
+    "slug": "quinielaplus",
     "color": "#1C8A9F",
     "heading": "Quini Plus de Hoy - al instante -",
     "name": "Quini Plus",
-    "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
-    "winningNums": ["10", "06", "30", "02", "13", "10", "22", "23", "55"],
+    "sort": { "sorteo": "1448", "Fetcha": "19/1/2020", "color": "#E3003B" },
+    "winningNums": [
+      "10",
+      "06",
+      "30",
+      "02",
+      "13",
+      "10",
+      "22",
+      "12",
+      "55",
+      "65",
+      "14",
+      "31",
+      "44",
+      "67",
+      "69"
+    ],
     "tableHeaders": ["Premio", "Apuestas Ganadoras", "Premio por Apuesta ($)"],
     "tableData": [
       {
@@ -182,6 +217,12 @@
       },
       {
         "rowData": ["6 aciertos", "11", "10"]
+      },
+      {
+        "rowData": ["10 aciertos", "16", "5"]
+      },
+      {
+        "rowData": ["12 aciertos", "15", "40"]
       }
     ],
     "description": [

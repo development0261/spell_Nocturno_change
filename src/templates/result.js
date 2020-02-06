@@ -9,6 +9,7 @@ import Paper from "@material-ui/core/Paper"
 import { useStaticQuery, graphql } from "gatsby"
 import TableDescription from "../components/TableDesc"
 import TableDraw from "../components/TableDraw"
+import Icons from "../components/home/Icons"
 
 const LoaderPlaceholder = () => (
   <div style={{ height: "100vh", width: "100vh" }}></div>
@@ -48,8 +49,9 @@ const useStyles = makeStyles(theme => ({
   maincontainer: {
     width: "100%",
     fontFamily: "'Montserrat', sans-serif",
+    backgroundColor: "#F3F4FE",
     [theme.breakpoints.up("md")]: {
-      backgroundColor: "#F3F4FE",
+      // backgroundColor: "#F3F4FE",
     },
   },
   container: {
@@ -61,7 +63,14 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       boxShadow: "none",
     },
-    backgroundColor: "#F3F4FE",
+    // backgroundColor: "#F3F4FE",
+  },
+  icons: {
+    marginBottom: "5rem",
+    backgroundColor: "transparent",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "2rem",
+    },
   },
 }))
 
@@ -83,6 +92,7 @@ export const dataQuery = graphql`
           sort {
             Fetcha
             sorteo
+            color
           }
           tableHeaders
           tableData {
@@ -132,9 +142,12 @@ const App = props => {
               prize={prize}
               color={color}
             />
-            <TableDescription descData={description} heading={heading} />
             <LoadableRemind />
           </Paper>
+          <div className={classes.icons}>
+            <Icons />
+          </div>
+          <TableDescription descData={description} heading={heading} />
         </Container>
         <LoadableFooter />
       </div>

@@ -14,11 +14,11 @@ const StyledTableCell = withStyles(theme => ({
     padding: 14,
   },
   head: {
-    backgroundColor: "#6681f1",
+    // backgroundColor: "#6681f1",
     color: "#ffffff",
     fontSize: "1.2rem",
     fontWeight: "bold",
-    borderRight: "4px solid #c2cdf9",
+    borderRight: "2px solid #c2cdf9",
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
       fontSize: "1rem",
@@ -47,7 +47,7 @@ const StyledTableRow = withStyles(theme => ({
 const useStyles = makeStyles({
   table: {
     padding: "10px",
-    border: "4px solid #6681f1 !important",
+    // border: "2px solid #6681f1 !important",
     textAlign: "center",
   },
   Body: {
@@ -65,7 +65,11 @@ const StreamTable = ({ headers, data, color }) => {
   console.log("data from table ", data)
   return (
     <TableContainer component={Paper} style={{ marginBottom: "40px" }}>
-      <Table className={classes.table} aria-label="customized table">
+      <Table
+        className={classes.table}
+        style={{ backgroundColor: `${color}`, border: `2px solid ${color}` }}
+        aria-label="customized table"
+      >
         <TableHead>
           <TableRow
             className={classes.Head}
@@ -84,7 +88,7 @@ const StreamTable = ({ headers, data, color }) => {
               {element.rowData.map((td, index) => (
                 <StyledTableCell
                   align="center"
-                  style={{ border: "4px solid #6681f1", width: "33%" }}
+                  style={{ border: `2px solid ${color}`, width: "33%" }}
                   scope="row"
                 >
                   {console.log("row data", index + 1)}
