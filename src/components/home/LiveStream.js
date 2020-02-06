@@ -63,8 +63,8 @@ const useStyles = makeStyles(theme => ({
   quinielaImg: {
     width: "24%",
     [theme.breakpoints.down("xs")]: {
-      width: "36%",
-      height: 60,
+      width: "30%",
+      // height: 60,/
     },
   },
 }))
