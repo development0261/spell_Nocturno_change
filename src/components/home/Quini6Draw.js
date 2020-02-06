@@ -189,10 +189,10 @@ const useStyles = makeStyles(theme => ({
     margin: "30px 0 0 0",
     padding: "25px 10px",
     textAlign: "center",
-    [theme.breakpoints.down("sm")]: {
-      height: "20vh",
-      padding: "px 10px",
-    },
+    // [theme.breakpoints.down("sm")]: {
+    //   height: "25vh",
+    //   padding: "px 10px",
+    // },
   },
   Loader: {
     width: "25px",
