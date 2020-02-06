@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
   toolBar: {
     display: "flex",
     justifyContent: "space-between",
+    width: "95%",
     padding: 16,
     [theme.breakpoints.down("xs")]: {
       padding: "5px",

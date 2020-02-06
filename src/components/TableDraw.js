@@ -182,12 +182,12 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-    height: "30vh",
+    height: "25vh",
     margin: "30px 0 0 0",
     padding: "10px 10px",
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
-      margin: "2rem 0",
+      // margin: "2rem 0",
     },
   },
   Loader: {

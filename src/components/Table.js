@@ -21,7 +21,7 @@ const StyledTableCell = withStyles(theme => ({
     color: "#ffffff",
     fontSize: "1.2rem",
     fontWeight: "bold",
-    borderRight: "2px solid #c2cdf9",
+
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
       fontSize: "1em",
@@ -61,15 +61,12 @@ const useStyles = makeStyles({
 })
 
 const StreamTable = ({ headers, data, color }) => {
-  console.log("row d", data)
-  console.log("head", headers)
   const classes = useStyles()
-  console.log("data from table ", data)
   return (
     <TableContainer component={Paper} style={{ marginBottom: "40px" }}>
       <Table
         className={classes.table}
-        style={{ backgroundColor: `${color}`, border: `2px solid ${color}` }}
+        style={{ backgroundColor: `${color}` }}
         aria-label="customized table"
       >
         <TableHead>
@@ -78,7 +75,17 @@ const StreamTable = ({ headers, data, color }) => {
             style={{ backgroundColor: color ? `${color}` : null }}
           >
             {headers.map((val, i) => (
-              <StyledTableCell key={i}>{val}</StyledTableCell>
+              <StyledTableCell
+                style={{
+                  borderRight:
+                    headers.length === i + 1
+                      ? `1px solid ${color}`
+                      : "1px solid white",
+                }}
+                key={i}
+              >
+                {val}
+              </StyledTableCell>
             ))}
           </TableRow>
         </TableHead>
@@ -86,14 +93,12 @@ const StreamTable = ({ headers, data, color }) => {
         <TableBody className={classes.Body}>
           {data.map((element, i) => (
             <StyledTableRow key={i}>
-              {console.log("row", i + 1)}
               {element.rowData.map((td, index) => (
                 <StyledTableCell
                   align="center"
-                  style={{ border: `2px solid ${color}`, width: "33%" }}
+                  style={{ border: `1px solid ${color}`, width: "33%" }}
                   scope="row"
                 >
-                  {console.log("row data", index + 1)}
                   {td}
                 </StyledTableCell>
               ))}

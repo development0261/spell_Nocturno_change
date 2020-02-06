@@ -335,7 +335,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "1.4rem",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "0.9rem",
+      fontSize: "0.8rem",
     },
   },
   h5: {
@@ -345,7 +345,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: "1.1rem",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "0.8rem",
+      fontSize: "0.7rem",
     },
   },
   h6: {
