@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   Border: {
-    border: "1px solid #b5adad",
+    border: "1px solid #dbecf8",
     borderRadius: "4px",
     boxShadow:
       "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
@@ -57,15 +57,15 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
-      height: 80,
+      // height: 80,
     },
   },
   brinco: {
     width: "15%",
     margin: "1rem",
     [theme.breakpoints.down("xs")]: {
-      width: 60,
-      height: 45,
+      // width: 60,
+      // height: 45,
     },
   },
   Premiados: {
@@ -244,7 +244,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     width: "80%",
     justifyContent: "space-around",
-    margin: "0px auto 30px auto",
+    margin: "0 auto",
     maxWidth: "630px",
     flexWrap: "wrap",
     [theme.breakpoints.down("xs")]: {

@@ -1,24 +1,26 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import Avatar from "@material-ui/core/Avatar"
+// import Avatar from "@material-ui/core/Avatar"
 import Typography from "@material-ui/core/Typography"
-import SecondTable from "../components/home/SecondTable"
-import Icons from "../components/home/Icons"
+
 import Button from "@material-ui/core/Button"
-import Table from "../components/Table"
+// import Table from "../components/Table"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import Table from "../Table"
+import Icons from "./Icons"
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     padding: "1rem 0.2rem 0 0.2rem",
+    fontFamily: "Montserrat, sans-serif",
     [theme.breakpoints.down("sm")]: {
       padding: "6px",
     },
   },
   Border: {
-    border: "1px solid #b5adad",
+    border: "1px solid #dbecf8",
     borderRadius: "4px",
     boxShadow:
       "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
@@ -55,21 +57,21 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
-      // height: 80,
+      //   height: 80,
     },
   },
   brinco: {
-    width: "15%",
+    width: "25%",
     margin: "1rem",
     [theme.breakpoints.down("xs")]: {
-      // width: 60,
-      // height: 45,
+      width: "25%",
+      //   height: "15%",
     },
   },
   Premiados: {
     display: "flex",
     flexDirection: "column",
-    margin: "3rem 0",
+    margin: "2rem 0",
     [theme.breakpoints.down("xs")]: {
       margin: "1.5rem 0",
     },
@@ -81,8 +83,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "'Montserrat', sans-serif;",
-    fontWeight: "bold",
-    fontSize: "1.7rem",
+    fontWeight: "bolder",
+    fontSize: "2rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.5rem",
     },
@@ -240,11 +242,15 @@ const useStyles = makeStyles(theme => ({
   },
   numRow: {
     display: "flex",
-    width: "80%",
-    justifyContent: "space-around",
-    margin: "0px auto 30px auto",
-    maxWidth: "630px",
+    width: "100%",
+    justifyContent: "space-between",
+    margin: "0 auto",
+    padding: "0 1rem",
+    // maxWidth: "630px",
     flexWrap: "wrap",
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+    },
   },
   num: {
     display: "flex",
@@ -252,19 +258,19 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     width: "84px",
     height: "84px",
-    backgroundColor: "#4163ee",
+    backgroundColor: "#fff",
     borderRadius: "50% ",
     fontSize: "30px",
     fontWeight: "700",
     lineHeight: "84px",
     textAlign: "center",
-    color: "#fff",
-    boxShadow: "inset 0px 0px 40px 0px rgba(0, 0, 0, 0.3)",
+    color: "black",
+    // boxShadow: "inset 0px 0px 40px 0px rgba(0, 0, 0, 0.3)",
 
     [theme.breakpoints.down("sm")]: {
       width: "70px",
       height: "70px",
-      fontSize: "20px",
+      fontSize: "24px",
       lineHeight: "50px",
       boxShadow: "inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3)",
     },
@@ -272,96 +278,111 @@ const useStyles = makeStyles(theme => ({
       width: "40px",
       height: "40px",
       lineHeight: "40px",
-      fontSize: "16px",
+      fontSize: "18px",
+    },
+  },
+  alert: {
+    fontSize: "12px",
+    position: "absolute",
+    top: "-25px",
+    left: "0px",
+    lineHeight: "15px",
+    color: "#000",
+  },
+  plusDesc: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    width: "95%",
+    padding: "5px .8rem",
+    marginBottom: "20px",
+
+    [theme.breakpoints.down("xs")]: {
+      width: "90%",
+      padding: "5px 0",
+    },
+  },
+  row: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    width: "100%",
+    borderBottom: "2px solid #000",
+    padding: "10px",
+    margin: "0 15px",
+    // flexDirection: "column",
+  },
+  col: {
+    padding: "0 10px",
+    flexBasis: "50%",
+  },
+  para: {
+    margin: 0,
+    fontSize: "1.2rem",
+    fontWeight: "bolder",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.7rem",
+    },
+  },
+  h4: {
+    margin: 0,
+    fontSize: "1.6em",
+    fontWeight: "bolder",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.4rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.9rem",
+    },
+  },
+  h5: {
+    margin: 0,
+    fontSize: "1.3rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.1rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.8rem",
+    },
+  },
+  h6: {
+    margin: 0,
+    fontSize: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.7rem",
+    },
+  },
+  icons: {
+    marginBottom: "5rem",
+    backgroundColor: "transparent",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "2rem",
     },
   },
 }))
 
 function LiveStream({
-  wins,
+  //   wins,
   img,
-  sort,
-  tableHeaders,
-  tableData,
+  //   sort,
+  //   tableHeaders,
+  //   tableData,
   prize,
-  color,
+  //   color,
   backgroundColor,
   prizeHeadColor,
 }) {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      logo: file(relativePath: { eq: "quinielashoylogo.png" }) {
-        childImageSharp {
-          fixed(width: 280) {
-            ...GatsbyImageSharpFixed_tracedSVG
-          }
-        }
-      }
-      quiniela: file(relativePath: { eq: "quiniela.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      telekino: file(relativePath: { eq: "telekino.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
       quini6: file(relativePath: { eq: "quini6.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      brinco: file(relativePath: { eq: "brinco.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      lotoPlus: file(relativePath: { eq: "loto_plus.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      quini: file(relativePath: { eq: "quini.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      totobingo: file(relativePath: { eq: "totobingo.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      quinielaPoceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      loto5: file(relativePath: { eq: "loto5.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      quiniela_poceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
         childImageSharp {
           fluid(maxWidth: 100) {
             ...GatsbyImageSharpFluid_tracedSVG
@@ -370,12 +391,25 @@ function LiveStream({
       }
     }
   `)
-  let image =
-    (img === "brinco" && data.brinco.childImageSharp.fluid) ||
-    (img === "telekino" && data.telekino.childImageSharp.fluid) ||
-    (img === "quinielaplus" && data.quini.childImageSharp.fluid) ||
-    (img === "loto5" && data.loto5.childImageSharp.fluid) ||
-    (img === "quiniela_poceada" && data.quiniela_poceada.childImageSharp.fluid)
+  let image = data.quini6.childImageSharp.fluid
+  let wins = [10, 20, 30, 40, 50, 60]
+  let color = "#1CD7DA"
+  let tableHeaders = ["Aciertos", "Ganadores", "Premio"]
+  let tableData = [
+    {
+      rowData: ["5+2", "12.734", "32"],
+    },
+    {
+      rowData: ["5+1", "1.066", "149"],
+    },
+    {
+      rowData: ["5", "23", "88"],
+    },
+    {
+      rowData: ["4+2", "VACANTE", "61.231.151"],
+    },
+  ]
+  let sort = { sorteo: "1448", Fetcha: "19/1/2020" }
   return (
     <div className={classes.root} id={"bronco-section"}>
       <div className={classes.Border}>
@@ -428,7 +462,7 @@ function LiveStream({
             component="h3"
             className={classes.PremiadosHeading}
           >
-            Numeros Premiados
+            Tradicional Primer Sorteo
           </Typography>
         </div>
         {/* <div className={classes.numbers}> */}
@@ -437,7 +471,7 @@ function LiveStream({
             return (
               <div
                 style={{
-                  flexBasis: "20%",
+                  flexBasis: "15%",
                   display: "flex",
                   justifyContent: "center",
                   marginBottom: "30px",
@@ -446,6 +480,7 @@ function LiveStream({
                 <div
                   className={classes.num}
                   style={{
+                    color: "white",
                     backgroundColor: color ? `${color}` : null,
                   }}
                 >
@@ -455,51 +490,141 @@ function LiveStream({
             )
           })}
         </div>
+        <div className={classes.plusDesc}>
+          <div className={classes.row}>
+            <div className={classes.col}>
+              <p className={classes.para}> GANADORES DEL JACKPOT </p>
+              <p className={classes.para}>(6+2 JACK)</p>
+            </div>
+            <div className={classes.col}>
+              <h4 className={classes.h4}>
+                VACANTE <br /> $196.499.729,01
+              </h4>
+            </div>
+          </div>
+          <div className={classes.row}>
+            <div className={classes.col}>
+              <p className={classes.para}> GANADORES DE 6+1</p>
+            </div>
+            <div className={classes.col}>
+              <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
+            </div>
+          </div>
+          <div className={classes.row} style={{ border: "none" }}>
+            <div className={classes.col}>
+              <p className={classes.para}>GANADORES DEL LOTO (6)</p>
+            </div>
+            <div className={classes.col}>
+              <h6 className={classes.h6}>VACANTE $10.861.703,49</h6>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
+          <Table headers={tableHeaders} data={tableData} color={color} />
+        </div>
 
         <div className={classes.Premiados}>
           <Typography
-            variant="h3"
-            component="h2"
+            variant="h4"
+            component="h3"
             className={classes.PremiadosHeading}
           >
-            Distribucion de Premios
+            Desquite
           </Typography>
         </div>
-        <div style={{ padding: "0 0.8rem" }}>
-          <Table headers={tableHeaders} data={tableData} color={color} />
+        {/* <div className={classes.numbers}> */}
+        <div className={classes.numRow}>
+          {wins.map((a, i) => {
+            return (
+              <div
+                style={{
+                  flexBasis: "25%",
+                  display: "flex",
+                  justifyContent: "center",
+                  marginBottom: "30px",
+                }}
+              >
+                <div
+                  className={classes.num}
+                  style={{
+                    boxShadow: "0px 7px 0px 0px #a4d0ef",
+
+                    color: i === 3 || i === 7 ? "red" : null,
+                  }}
+                >
+                  {a}
+                </div>
+              </div>
+            )
+          })}
         </div>
-        {prize && (
-          <div
-            className={classes.Pozo}
-            style={{
-              backgroundColor: backgroundColor
-                ? `rgba(${backgroundColor}, .8)`
-                : "transparent",
-            }}
-          >
-            <Typography
-              variant="h3"
-              component="h2"
-              className={classes.PremiadosHeading}
-              style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
-            >
-              {prize[0]}
-            </Typography>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: color ? `${color}` : null,
-              }}
-              className={classes.Btn}
-            >
-              ${prize[1]}
-            </Button>
+
+        <div className={classes.plusDesc}>
+          <div className={classes.row}>
+            <div className={classes.col}>
+              <p className={classes.para}> GANADORES DEL JACKPOT </p>
+              <p className={classes.para}>(6+2 JACK)</p>
+            </div>
+            <div className={classes.col}>
+              <h4 className={classes.h4}>
+                VACANTE <br /> $196.499.729,01
+              </h4>
+            </div>
           </div>
-        )}
+          <div className={classes.row}>
+            <div className={classes.col}>
+              <p className={classes.para}> GANADORES DE 6+1</p>
+            </div>
+            <div className={classes.col}>
+              <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
+            </div>
+          </div>
+          <div className={classes.row} style={{ border: "none" }}>
+            <div className={classes.col}>
+              <p className={classes.para}>GANADORES DEL LOTO (6)</p>
+            </div>
+            <div className={classes.col}>
+              <h6 className={classes.h6}>VACANTE $10.861.703,49</h6>
+            </div>
+          </div>
+        </div>
+
+        <div className={classes.Premiados}>
+          <Typography
+            variant="h4"
+            component="h3"
+            className={classes.PremiadosHeading}
+          >
+            Sale o sale
+          </Typography>
+        </div>
+
+        <div className={classes.plusDesc}>
+          <div className={classes.row}>
+            <div className={classes.col}>
+              <p className={classes.para}> GANADORES DEL JACKPOT </p>
+              <p className={classes.para}>(6+2 JACK)</p>
+            </div>
+            <div className={classes.col}>
+              <h4 className={classes.h4}>
+                VACANTE <br /> $196.499.729,01
+              </h4>
+            </div>
+          </div>
+          <div className={classes.row} style={{ border: "none" }}>
+            <div className={classes.col}>
+              <p className={classes.para}> GANADORES DE 6+1</p>
+            </div>
+            <div className={classes.col}>
+              <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
+            </div>
+          </div>
+        </div>
       </div>
-      {/* <div className={classes.icons}>
+      <div className={classes.icons}>
         <Icons />
-      </div> */}
+      </div>
     </div>
   )
 }
