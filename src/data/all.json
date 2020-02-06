@@ -37,6 +37,7 @@
       }
     ],
     "prize": ["Pozo Estimado para la Proxima Jugada", "73,000,000"],
+    "prizeHeadColor": "black",
     "description": [
       "La Quiniela es un juego de azar muy común en Argentina, de hecho el más famoso y de mayor arrastre. Dicho juego está bajo el control de la Loterías de cada una de las Provincias del país. En la mayoría de los casos la jurisdicción de cada Provincia establece el llamado tope de banca.",
       "La quiniela se compone de un grupo de 20 números de 4 cifras, que van desde unidades a unidades de millar, los números corresponden a 20 recompensas, una por cada uno. Los números se definen usando cinco máquinas bolilleras de tipo manual o automatizado La primer bola da lugar a la unidad de millar de la cifra, la bola siguiente a la centena, y así sucesivamente hasta el extracto.",
@@ -82,6 +83,8 @@
         "rowData": ["6 aciertos", "11", "10"]
       }
     ],
+    "backgroundColor": "44,48,120",
+
     "prize": ["Pozo Estimado 15 Aciertos Para El Proximo Sorteo", "73,000,000"],
     "description": [
       "La Quiniela es un juego de azar muy común en Argentina, de hecho el más famoso y de mayor arrastre. Dicho juego está bajo el control de la Loterías de cada una de las Provincias del país. En la mayoría de los casos la jurisdicción de cada Provincia establece el llamado tope de banca.",
@@ -92,7 +95,7 @@
   },
   {
     "slug": "telekino",
-    "color": "#F4A200",
+    "color": "#FD7D1B",
     "heading": "El Tele de Hoy - al instante -",
     "name": "Tele Kino",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
@@ -129,6 +132,7 @@
       }
     ],
     "prize": ["Pozo Estimado 15 Aciertos Para El Proximo Sorteo", "73,000,000"],
+    "backgroundColor": "253,125,27",
     "description": [
       "La Quiniela es un juego de azar muy común en Argentina, de hecho el más famoso y de mayor arrastre. Dicho juego está bajo el control de la Loterías de cada una de las Provincias del país. En la mayoría de los casos la jurisdicción de cada Provincia establece el llamado tope de banca.",
       "La quiniela se compone de un grupo de 20 números de 4 cifras, que van desde unidades a unidades de millar, los números corresponden a 20 recompensas, una por cada uno. Los números se definen usando cinco máquinas bolilleras de tipo manual o automatizado La primer bola da lugar a la unidad de millar de la cifra, la bola siguiente a la centena, y así sucesivamente hasta el extracto.",

@@ -102,6 +102,8 @@ export const dataQuery = graphql`
           prize
           color
           description
+          backgroundColor
+          prizeHeadColor
         }
       }
     }
@@ -109,8 +111,6 @@ export const dataQuery = graphql`
 `
 const App = props => {
   const classes = useStyles()
-  console.log("query data on page", dataQuery)
-  console.log("prop data on page", props.data)
   const {
     description,
     heading,
@@ -121,6 +121,8 @@ const App = props => {
     tableData,
     prize,
     color,
+    backgroundColor,
+    prizeHeadColor,
   } = props.data.allAllJson.edges[0].node
 
   console.log("template", heading)
@@ -131,8 +133,6 @@ const App = props => {
         <LoadableHeader />
         <Container className={classes.container}>
           <Paper className={classes.root}>
-            {/* <LoadableNextDraw /> */}
-            {/* <LoadableBrincoDesc /> */}
             <TableDraw
               wins={winningNums}
               img={slug}
@@ -141,6 +141,8 @@ const App = props => {
               tableData={tableData}
               prize={prize}
               color={color}
+              backgroundColor={backgroundColor}
+              prizeHeadColor={prizeHeadColor}
             />
             <LoadableRemind />
           </Paper>
