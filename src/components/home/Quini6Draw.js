@@ -387,15 +387,15 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     borderRight: "1px solid #000",
-    padding: "5px 15px",
-    fontSize: "1.5em",
+    padding: "5px 12px",
+    fontSize: "1.6em",
     fontWeight: "500",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "1.1em",
-    },
+    // [theme.breakpoints.down("sm")]: {
+    //   fontSize: "1.1em",
+    // },
     [theme.breakpoints.down("xs")]: {
       fontSize: ".8em",
-      padding: "5px 5px",
+      padding: "5px 2px",
     },
   },
 }))
@@ -617,7 +617,7 @@ function LiveStream({
           >
             $ 56.714.048,73
           </Button>
-          <h1>Vacante</h1>
+          <h2>Vacante</h2>
         </div>
         <hr className={classes.separator} style={{ backgroundColor: color }} />
         <div className={classes.Premiados}>
