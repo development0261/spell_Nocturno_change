@@ -12,6 +12,9 @@ import rowsData from "../data/brinco.json"
 const StyledTableCell = withStyles(theme => ({
   root: {
     padding: 14,
+    [theme.breakpoints.down("xs")]: {
+      padding: "11px",
+    },
   },
   head: {
     // backgroundColor: "#6681f1",
@@ -21,7 +24,7 @@ const StyledTableCell = withStyles(theme => ({
     borderRight: "2px solid #c2cdf9",
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1rem",
+      fontSize: "1em",
     },
   },
   body: {
@@ -47,7 +50,6 @@ const StyledTableRow = withStyles(theme => ({
 const useStyles = makeStyles({
   table: {
     padding: "10px",
-    // border: "2px solid #6681f1 !important",
     textAlign: "center",
   },
   Body: {

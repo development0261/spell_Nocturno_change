@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const classes = useStyles()
   return (
-    <LoadableLayout title={"Quini6 | Resultados de Quini6 - al instante"}>
+    <LoadableLayout title={"Loto Plus | Resultados de LotoPlus - al instante"}>
       <div className={classes.maincontainer}>
         <LoadableHeader />
         <Container className={classes.container}>

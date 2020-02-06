@@ -28,15 +28,21 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     padding: 16,
     [theme.breakpoints.down("xs")]: {
-      padding: "0px",
+      padding: "5px",
     },
   },
   Logo: {
-    marginLeft: -16,
+    paddingLeft: "20px",
     marginTop: 4.5,
+    width: "300px !important",
+    height: "auto",
     [theme.breakpoints.down("sm")]: {
       width: "70%",
       marginLeft: 10,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "250px !important",
+      height: "30px !important",
     },
   },
   menuButton: {
