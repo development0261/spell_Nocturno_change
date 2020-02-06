@@ -185,10 +185,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-    height: "20vh",
+    height: "25vh",
     margin: "30px 0 0 0",
-    padding: "10px 10px",
+    padding: "25px 10px",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      height: "20vh",
+      padding: "px 10px",
+    },
   },
   Loader: {
     width: "25px",
