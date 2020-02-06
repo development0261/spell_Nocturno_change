@@ -7,6 +7,7 @@ import Container from "@material-ui/core/Container"
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 import Quini6Draw from "../components/home/Quini6Draw"
+import Icons from "../components/home/Icons"
 
 const LoaderPlaceholder = () => (
   <div style={{ height: "100vh", width: "100vh" }}></div>
@@ -52,7 +53,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       boxShadow: "none",
     },
-    // backgroundColor: "#F3F4FE",
+  },
+  icons: {
+    marginBottom: "5rem",
+    backgroundColor: "transparent",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "2rem",
+    },
   },
 }))
 
@@ -65,6 +72,12 @@ function App() {
         <Container className={classes.container}>
           <Paper className={classes.root}>
             <Quini6Draw />
+            <div
+              className={classes.icons}
+              style={{ backgroundColor: "#F3F4FE" }}
+            >
+              <Icons />
+            </div>
             <LoadableQuini6Desc />
             <LoadableRemind />
           </Paper>

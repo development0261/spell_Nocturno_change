@@ -8,6 +8,8 @@ import Button from "@material-ui/core/Button"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import Table from "../Table"
+import Icons from "./Icons"
+import bgImg from "../../images/bg3.png"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   Border: {
+    backgroundImage: `url(${bgImg})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
+    backgroundSize: "cover",
     border: "1px solid #dbecf8",
     borderRadius: "4px",
     boxShadow:
@@ -70,15 +76,16 @@ const useStyles = makeStyles(theme => ({
   Premiados: {
     display: "flex",
     flexDirection: "column",
-    margin: "2rem 0",
-    [theme.breakpoints.down("xs")]: {
-      margin: "1.5rem 0",
-    },
+    // margin: "2rem 0",
+    // [theme.breakpoints.down("xs")]: {
+    //   margin: "1.5rem 0",
+    // },
   },
 
   PremiadosHeading: {
     display: "flex",
     textAlign: "center",
+    color: "#fff",
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "'Montserrat', sans-serif;",
@@ -148,7 +155,13 @@ const useStyles = makeStyles(theme => ({
       padding: "0",
     },
   },
-
+  icons: {
+    marginBottom: "5rem",
+    backgroundColor: "transparent",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "2rem",
+    },
+  },
   Btn: {
     width: "fit-content",
     padding: "1rem 3rem",
@@ -206,16 +219,18 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "space-around",
     margin: "30px 0px 50px 0px",
+    padding: "5px 1.2rem",
     alignItems: "center",
   },
   sortSpan: {
-    fontSize: "30px",
-    fontWeight: "700",
+    fontSize: "1.9em",
+    fontWeight: "900",
+    padding: "0 1rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "20px",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "16px",
+      fontSize: "12px",
     },
   },
 
@@ -224,22 +239,21 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "700",
     color: "#fff",
     backgroundColor: "orange",
-    padding: "20px 30px",
+    padding: "20px 1.8em",
     borderRadius: "40px",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "20px",
-      padding: "15px 30px",
+      padding: "20px 1.5em",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "16px",
-      padding: "10px 10px",
+      fontSize: "1em",
+      padding: "10px 1em",
     },
   },
   numRow: {
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
-    margin: "0 auto",
+    margin: "15px auto",
     padding: "0 1rem",
     flexWrap: "wrap",
     [theme.breakpoints.down("xs")]: {
@@ -253,11 +267,13 @@ const useStyles = makeStyles(theme => ({
     width: "84px",
     height: "84px",
     backgroundColor: "#fff",
+    color: "#000",
     borderRadius: "50% ",
     fontSize: "30px",
     fontWeight: "700",
     lineHeight: "84px",
     textAlign: "center",
+
     color: "black",
 
     [theme.breakpoints.down("sm")]: {
@@ -351,6 +367,13 @@ const useStyles = makeStyles(theme => ({
       fontSize: "0.7rem",
     },
   },
+  icons: {
+    marginBottom: "5rem",
+    backgroundColor: "transparent",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "2rem",
+    },
+  },
   separator: {
     height: "10px",
     outline: "none",
@@ -361,6 +384,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    color: "#fff",
+    fontWeight: "bold",
+    margin: 0,
   },
   horizontalContainer: {
     display: "flex",
@@ -384,6 +410,13 @@ const useStyles = makeStyles(theme => ({
       padding: "5px 2px",
     },
   },
+  greenContainer: {
+    //   width: 100%,
+    padding: "20px 10px",
+    margin: "15px 1.2rem",
+    borderRadius: "5px",
+    backgroundColor: "rgba(73,199,101,0.7)",
+  },
 }))
 
 function LiveStream({
@@ -400,7 +433,7 @@ function LiveStream({
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      quini6: file(relativePath: { eq: "quini6.png" }) {
+      totobingo: file(relativePath: { eq: "totobingo.png" }) {
         childImageSharp {
           fluid(maxWidth: 100) {
             ...GatsbyImageSharpFluid_tracedSVG
@@ -409,25 +442,17 @@ function LiveStream({
       }
     }
   `)
-  let image = data.quini6.childImageSharp.fluid
+  let image = data.totobingo.childImageSharp.fluid
   let wins = [10, 20, 30, 40, 50, 60]
-  let color = "#1CD7DA"
-  let tableHeaders = ["Aciertos", "Ganadores", "Premio"]
-  let tableData = [
+  let win15 = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
+  let color = "#78B137"
+  let tableHeaders1 = ["Vendida En Procincia", "Localidad", "Agencia"]
+  let tableData1 = [
     {
-      rowData: ["5+2", "12.734", "32"],
-    },
-    {
-      rowData: ["5+1", "1.066", "149"],
-    },
-    {
-      rowData: ["5", "23", "88"],
-    },
-    {
-      rowData: ["4+2", "VACANTE", "61.231.151"],
+      rowData: ["Cordoba", "San Francisco", "001124"],
     },
   ]
-  let sort = { sorteo: "1448", Fetcha: "19/1/2020" }
+  let sort = { sorteo: "1", Fetcha: "1,000,000" }
   return (
     <div className={classes.root} id={"bronco-section"}>
       <div className={classes.Border}>
@@ -441,7 +466,7 @@ function LiveStream({
         </div>
         <div
           className={classes.brincoContainer}
-          style={{ backgroundColor: color ? `${color}` : null }}
+          style={{ backgroundColor: "transparent" }}
         >
           <Img
             fluid={image}
@@ -450,9 +475,37 @@ function LiveStream({
             alt="Brinco de hoy"
           />
         </div>
+        <div className={classes.greenContainer}>
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Gana o Gana
+            </Typography>
+          </div>
+          <div className={classes.numRow}>
+            {wins.map((a, i) => {
+              return (
+                <div
+                  style={{
+                    flexBasis: "15%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
+                  }}
+                >
+                  <div className={classes.num}>{a}</div>
+                </div>
+              )
+            })}
+          </div>
+          <h2 className={classes.centerContainer}>Juego 1</h2>
+        </div>
         {sort && (
           <div className={classes.sort}>
-            <span className={classes.sortSpan}>Sorteo#:</span>
+            <span className={classes.sortSpan}>Cant. de ganadores:</span>
             <strong
               className={classes.sortStrong}
               style={{
@@ -461,7 +514,7 @@ function LiveStream({
             >
               {sort.sorteo}
             </strong>{" "}
-            <span className={classes.sortSpan}>Fetcha:</span>
+            <span className={classes.sortSpan}>Premio C/U:</span>
             <strong
               className={classes.sortStrong}
               style={{
@@ -472,233 +525,13 @@ function LiveStream({
             </strong>
           </div>
         )}
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Tradicional Primer Sorteo
-          </Typography>
-        </div>
-        {/* <div className={classes.numbers}> */}
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "15%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
-                <div
-                  className={classes.num}
-                  style={{
-                    color: "white",
-                    backgroundColor: color ? `${color}` : null,
-                  }}
-                >
-                  {a}
-                </div>
-              </div>
-            )
-          })}
-        </div>
-
         <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
-          <Table headers={tableHeaders} data={tableData} color={color} />
-        </div>
-
-        <hr className={classes.separator} style={{ backgroundColor: color }} />
-
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Tradicional Segunda del Quini
-          </Typography>
-        </div>
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "15%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
-                <div
-                  className={classes.num}
-                  style={{
-                    color: "white",
-                    backgroundColor: color ? `${color}` : null,
-                  }}
-                >
-                  {a}
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
-          <Table headers={tableHeaders} data={tableData} color={color} />
-        </div>
-        <hr className={classes.separator} style={{ backgroundColor: color }} />
-
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Revancha
-          </Typography>
-        </div>
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "15%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
-                <div
-                  className={classes.num}
-                  style={{
-                    color: "white",
-                    backgroundColor: color ? `${color}` : null,
-                  }}
-                >
-                  {a}
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Pozo Estimado para la Proxima Jugada
-          </Typography>
-        </div>
-        <div className={classes.centerContainer}>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: color ? `${color}` : null,
-            }}
-            className={classes.Btn}
-          >
-            $ 56.714.048,73
-          </Button>
-          <h2>Vacante</h2>
-        </div>
-        <hr className={classes.separator} style={{ backgroundColor: color }} />
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Siempre Sale
-          </Typography>
-        </div>
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "15%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
-                <div
-                  className={classes.num}
-                  style={{
-                    color: "white",
-                    backgroundColor: color ? `${color}` : null,
-                  }}
-                >
-                  {a}
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <div className={classes.horizontalContainer}>
-          <p className={classes.cont}>con 5 aciertos </p>
-          <p className={classes.cont}>54 ganadores </p>
-          <p className={classes.cont} style={{ border: "none" }}>
-            $88.751,38
-          </p>
-        </div>
-        <hr className={classes.separator} style={{ backgroundColor: color }} />
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Super canasta de Premios Extra
-          </Typography>
-        </div>
-        <div className={classes.centerContainer}>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: color ? `${color}` : null,
-              boxShadow: "none",
-            }}
-            className={classes.Btn}
-          >
-            $ 3,000,000
-          </Button>
-          <h3 style={{ margin: "10px 0" }}>Con 6 Aciertos 301 Ganadores</h3>
-          <h3 style={{ margin: 0 }}>que cobran $ 16.611,30 cada uno</h3>
-        </div>
-        <div
-          className={classes.Pozo}
-          style={{
-            backgroundColor: color,
-          }}
-        >
-          <Typography
-            variant="h3"
-            component="h2"
-            className={classes.PremiadosHeading}
-            style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
-          >
-            Pozo Estimado para la Proxima Jugada
-          </Typography>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: color ? `${color}` : null,
-              border: "1px solid #fff",
-            }}
-            className={classes.Btn}
-          >
-            $1,000,000
-          </Button>
+          <Table headers={tableHeaders1} data={tableData1} color={color} />
         </div>
       </div>
-      {/* <div className={classes.icons} style={{ backgroundColor: "#F3F4FE" }}>
+      <div className={classes.icons}>
         <Icons />
-      </div> */}
+      </div>
     </div>
   )
 }
