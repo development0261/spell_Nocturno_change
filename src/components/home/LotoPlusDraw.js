@@ -664,9 +664,6 @@ function LiveStream({
           </div>
         </div>
       </div>
-      <div className={classes.icons}>
-        <Icons />
-      </div>
     </div>
   )
 }

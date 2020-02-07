@@ -72,15 +72,12 @@ function App() {
         <Container className={classes.container}>
           <Paper className={classes.root}>
             <Quini6Draw />
-            <div
-              className={classes.icons}
-              style={{ backgroundColor: "#F3F4FE" }}
-            >
-              <Icons />
-            </div>
-            <LoadableQuini6Desc />
             <LoadableRemind />
           </Paper>
+          <div className={classes.icons} style={{ backgroundColor: "#F3F4FE" }}>
+            <Icons />
+          </div>
+          <LoadableQuini6Desc />
         </Container>
         <LoadableFooter />
       </div>

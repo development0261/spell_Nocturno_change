@@ -7,6 +7,7 @@ import Container from "@material-ui/core/Container"
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 import LotoPlusDraw from "../components/home/LotoPlusDraw"
+import Icons from "../components/home/Icons"
 
 const LoaderPlaceholder = () => (
   <div style={{ height: "100vh", width: "100vh" }}></div>
@@ -65,9 +66,12 @@ function App() {
         <Container className={classes.container}>
           <Paper className={classes.root}>
             <LotoPlusDraw />
-            <LoadableLotoPlusDesc />
             <LoadableRemind />
           </Paper>
+          <div className={classes.icons}>
+            <Icons />
+          </div>
+          <LoadableLotoPlusDesc />
         </Container>
         <LoadableFooter />
       </div>
