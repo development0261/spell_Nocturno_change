@@ -48,7 +48,7 @@
   {
     "slug": "loto5",
     "bgImg": { "headColor": "38,45,49" },
-    "color": "#3B51B5",
+    "color": "#0F067D",
     "heading": "El Loto de Hoy - al instante -",
     "name": "Loto Plus",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
@@ -69,7 +69,7 @@
       "67",
       "69"
     ],
-    "tableHeaders": ["Premio", "Apuestas Ganadoras", "Premio por Apuesta ($)"],
+    "tableHeaders": ["Categoria", "# De Ganadores ", "Premio $ C/U"],
     "tableData": [
       {
         "rowData": ["3 aciertos", "12.734", "32"]
