@@ -8,6 +8,8 @@ import Button from "@material-ui/core/Button"
 import Table from "../components/Table"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import teleKinoBg from "../images/telekinoBg.svg"
+import loto5Bg from "../images/loto5Bg.svg"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -289,6 +291,9 @@ function LiveStream({
   backgroundColor,
   prizeHeadColor,
   bg,
+  winHeader,
+  textColor,
+  transparent,
 }) {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
@@ -363,20 +368,6 @@ function LiveStream({
           }
         }
       }
-      loto5Bg: file(relativePath: { eq: "bg2.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      telekino5Bg: file(relativePath: { eq: "bg1.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
       quiniela_poceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
         childImageSharp {
           fluid(maxWidth: 100) {
@@ -393,19 +384,19 @@ function LiveStream({
     (img === "loto5" && data.loto5.childImageSharp.fluid) ||
     (img === "quiniela_poceada" && data.quiniela_poceada.childImageSharp.fluid)
 
-  let bgImg =
-    (img === "loto5" && data.loto5Bg.childImageSharp.fluid) ||
-    (img === "telekino" && data.telekino5Bg.childImageSharp.fluid)
-  // console.log("bgggg", bg, !!bg, bg.headColor)
+  let bgImg = (img === "loto5" && loto5Bg) || (img === "telekino" && teleKinoBg)
   return (
     <div className={classes.root} id={"bronco-section"}>
       <div
         className={classes.Border}
         style={{
-          backgroundImage: `url(${bgImg.src})`,
-          backgroundPosition: "center center",
+          backgroundImage: `url(${bgImg})`,
+          backgroundPosition: "50% 20%",
+          width: "100%",
+          height: "100%",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          // imageRendering: "crisp-edges",
         }}
       >
         <div className={classes.Container}>
@@ -436,7 +427,12 @@ function LiveStream({
         </div>
         {sort && (
           <div className={classes.sort}>
-            <span className={classes.sortSpan}>Sorteo#:</span>
+            <span
+              className={classes.sortSpan}
+              style={{ color: textColor ? textColor : null }}
+            >
+              Sorteo#:
+            </span>
             <strong
               className={classes.sortStrong}
               style={{
@@ -445,7 +441,12 @@ function LiveStream({
             >
               {sort.sorteo}
             </strong>{" "}
-            <span className={classes.sortSpan}>Fetcha:</span>
+            <span
+              className={classes.sortSpan}
+              style={{ color: textColor ? textColor : null }}
+            >
+              Fetcha:
+            </span>
             <strong
               className={classes.sortStrong}
               style={{
@@ -457,15 +458,19 @@ function LiveStream({
           </div>
         )}
 
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Numeros Premiados
-          </Typography>
-        </div>
+        {winHeader && (
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+              style={{ color: textColor ? textColor : null }}
+            >
+              {winHeader}
+            </Typography>
+          </div>
+        )}
+
         {/* <div className={classes.numbers}> */}
         <div className={classes.numRow}>
           {wins.map((a, i) => {
@@ -496,6 +501,7 @@ function LiveStream({
             variant="h3"
             component="h2"
             className={classes.PremiadosHeading}
+            style={{ color: textColor ? textColor : null }}
           >
             Distribucion de Premios
           </Typography>
@@ -508,8 +514,10 @@ function LiveStream({
             className={classes.Pozo}
             style={{
               backgroundColor: backgroundColor
-                ? `rgba(${backgroundColor}, .8)`
-                : "transparent",
+                ? transparent
+                  ? `rgba(${backgroundColor}, .8)`
+                  : `rgb(${backgroundColor})`
+                : null,
             }}
           >
             <Typography

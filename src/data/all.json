@@ -4,23 +4,8 @@
     "color": "#3B51B5",
     "name": "Brinco",
     "heading": "El Binco de Hoy - al instante -",
-    "winningNums": [
-      "10",
-      "06",
-      "30",
-      "02",
-      "13",
-      "10",
-      "22",
-      "12",
-      "55",
-      "65",
-      "14",
-      "31",
-      "44",
-      "67",
-      "69"
-    ],
+    "winHeader": "Numeros Premiados",
+    "winningNums": ["10", "06", "30", "02", "13"],
     "tableHeaders": ["Premio", "Apuestas Ganadoras", "Premio por Apuesta ($)"],
     "tableData": [
       {
@@ -51,6 +36,7 @@
     "color": "#0F067D",
     "heading": "El Loto de Hoy - al instante -",
     "name": "Loto Plus",
+    "textColor": "white",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020" },
     "winningNums": [
       "10",
@@ -85,7 +71,6 @@
       }
     ],
     "backgroundColor": "44,48,120",
-
     "prize": ["Pozo Estimado 15 Aciertos Para El Proximo Sorteo", "73,000,000"],
     "description": [
       "La Quiniela es un juego de azar muy común en Argentina, de hecho el más famoso y de mayor arrastre. Dicho juego está bajo el control de la Loterías de cada una de las Provincias del país. En la mayoría de los casos la jurisdicción de cada Provincia establece el llamado tope de banca.",
@@ -135,6 +120,7 @@
     ],
     "prize": ["Pozo Estimado 15 Aciertos Para El Proximo Sorteo", "73,000,000"],
     "backgroundColor": "253,125,27",
+    "transparent": true,
     "rekino": {
       "tableHeaders1": ["Categoria", "# De Ganadores", "Premio $ C/U"],
       "tableData1": [
@@ -249,6 +235,7 @@
     "heading": "Quini Plus de Hoy - al instante -",
     "name": "Quini Plus",
     "sort": { "sorteo": "1448", "Fetcha": "19/1/2020", "color": "#E3003B" },
+    "winHeader": "Numeros Ganadores",
     "winningNums": [
       "10",
       "06",
