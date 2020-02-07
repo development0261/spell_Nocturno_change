@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   maincontainer: {
     width: "100%",
     fontFamily: "'Montserrat', sans-serif",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("xs")]: {
       backgroundColor: "#F3F4FE",
     },
   },
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
   },
   root: {
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("xs")]: {
       boxShadow: "none",
     },
     backgroundColor: "#F3F4FE",

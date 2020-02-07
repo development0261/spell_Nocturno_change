@@ -7,7 +7,6 @@ import TableContainer from "@material-ui/core/TableContainer"
 import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
-import rowsData from "../data/brinco.json"
 
 const StyledTableCell = withStyles(theme => ({
   root: {
@@ -17,12 +16,13 @@ const StyledTableCell = withStyles(theme => ({
     },
   },
   head: {
-    // backgroundColor: "#6681f1",
     color: "#ffffff",
-    fontSize: "1.2rem",
+    fontSize: "1.8rem",
     fontWeight: "bold",
-
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.4em",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "1em",
     },
@@ -63,7 +63,7 @@ const useStyles = makeStyles({
 const StreamTable = ({ headers, data, color }) => {
   const classes = useStyles()
   return (
-    <TableContainer component={Paper} style={{ marginBottom: "40px" }}>
+    <TableContainer component={Paper} style={{ marginBottom: "30px" }}>
       <Table
         className={classes.table}
         style={{ backgroundColor: `${color}` }}

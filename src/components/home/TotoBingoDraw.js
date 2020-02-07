@@ -1,15 +1,13 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
-// import Avatar from "@material-ui/core/Avatar"
 import Typography from "@material-ui/core/Typography"
-
 import Button from "@material-ui/core/Button"
-// import Table from "../components/Table"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import Table from "../Table"
 import Icons from "./Icons"
 import bgImg from "../../images/bg3.png"
+import StarIcon from "../../images/icon-star.png"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -59,27 +57,48 @@ const useStyles = makeStyles(theme => ({
   },
   brincoContainer: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-between",
     backgroundColor: "#4163ee",
+    padding: "0 1.2rem",
     [theme.breakpoints.down("xs")]: {
-      //   height: 80,
+      padding: "0 0.7rem",
+    },
+  },
+  hoveredSort: {
+    display: "flex",
+    flexBasis: "50%",
+    justifyContent: "space-around",
+    [theme.breakpoints.down("sm")]: {
+      flexBasis: "30%",
+    },
+  },
+  sortCont: {
+    fontSize: "1.9em",
+    padding: "10px 20px 20px 20px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    fontWeight: "bolder",
+    textAlign: "center",
+    backgroundColor: "rgba(255,243,209, 0.8)",
+    marginRight: "10px",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.1em",
+      padding: "15px 5px",
     },
   },
   brinco: {
-    width: "25%",
+    width: "35%",
     margin: "1rem",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       width: "25%",
-      //   height: "15%",
+
+      height: "18%",
     },
   },
   Premiados: {
     display: "flex",
     flexDirection: "column",
-    // margin: "2rem 0",
-    // [theme.breakpoints.down("xs")]: {
-    //   margin: "1.5rem 0",
-    // },
   },
 
   PremiadosHeading: {
@@ -92,10 +111,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bolder",
     fontSize: "2rem",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "1.5rem",
+      fontSize: "1.8rem",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1.2rem",
+      fontSize: "1.3rem",
     },
   },
   span: {
@@ -112,7 +131,6 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
   },
   avatar: {
-    // flexBasis: "15%",
     fontWeight: "bold",
     fontFamily: "'Montserrat', sans-serif;",
     backgroundColor: "#4163ee",
@@ -122,16 +140,11 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "5px",
     width: "84px",
     height: "84px",
-    // [theme.breakpoints.down("md")]: {
-    //   width: theme.spacing(9),
-    //   height: theme.spacing(9),
-    // },
     [theme.breakpoints.down("sm")]: {
       width: "50px",
       height: "50px",
     },
     [theme.breakpoints.down("xs")]: {
-      // flexBasis: "18%",
       width: "40px",
       height: "40px",
     },
@@ -165,12 +178,10 @@ const useStyles = makeStyles(theme => ({
   Btn: {
     width: "fit-content",
     padding: "1rem 3rem",
-    // border: "1px solid #fff",
     color: "white",
     borderRadius: "50px",
     fontSize: "2rem",
     outline: "none",
-    // marginTop: "3rem",
     backgroundColor: "#4163ee",
     fontWeight: 700,
     [theme.breakpoints.down("sm")]: {
@@ -181,8 +192,8 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       padding: "0.5rem 2rem",
-      fontSize: "1.5rem",
-      marginTop: "1rem",
+      fontSize: "1.2rem",
+      marginTop: "0.5rem",
       borderRadius: "50px",
     },
   },
@@ -191,14 +202,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-    height: "25vh",
+    height: "100%",
     margin: "30px 0 0 0",
-    padding: "25px 10px",
+    padding: "40px 1em",
     textAlign: "center",
-    // [theme.breakpoints.down("sm")]: {
-    //   height: "25vh",
-    //   padding: "px 10px",
-    // },
+    [theme.breakpoints.down("sm")]: {
+      height: "25vh",
+      padding: "10px",
+    },
   },
   Loader: {
     width: "25px",
@@ -227,26 +238,27 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "900",
     padding: "0 1rem",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "20px",
+      fontSize: "1.4em",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "12px",
+      fontSize: "0.8em",
     },
   },
 
   sortStrong: {
-    fontSize: "30px",
+    fontSize: "1.8em",
     fontWeight: "700",
     color: "#fff",
     backgroundColor: "orange",
     padding: "20px 1.8em",
     borderRadius: "40px",
     [theme.breakpoints.down("sm")]: {
-      padding: "20px 1.5em",
+      padding: "15px 1.6em",
+      fontSize: "1.6em",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1em",
-      padding: "10px 1em",
+      fontSize: "0.8em",
+      padding: "10px 1.4em",
     },
   },
   numRow: {
@@ -258,6 +270,7 @@ const useStyles = makeStyles(theme => ({
     flexWrap: "wrap",
     [theme.breakpoints.down("xs")]: {
       width: "100%",
+      padding: "0",
     },
   },
   num: {
@@ -273,18 +286,16 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "700",
     lineHeight: "84px",
     textAlign: "center",
-
     color: "black",
-
     [theme.breakpoints.down("sm")]: {
-      width: "70px",
-      height: "70px",
+      width: "65px",
+      height: "65px",
       fontSize: "24px",
       lineHeight: "50px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "40px",
-      height: "40px",
+      width: "38px",
+      height: "38px",
       lineHeight: "40px",
       fontSize: "18px",
     },
@@ -319,7 +330,6 @@ const useStyles = makeStyles(theme => ({
     borderBottom: "2px solid #000",
     padding: "10px",
     margin: "0 15px",
-    // flexDirection: "column",
   },
   col: {
     padding: "0 10px",
@@ -402,21 +412,80 @@ const useStyles = makeStyles(theme => ({
     padding: "5px 12px",
     fontSize: "1.6em",
     fontWeight: "500",
-    // [theme.breakpoints.down("sm")]: {
-    //   fontSize: "1.1em",
-    // },
     [theme.breakpoints.down("xs")]: {
       fontSize: ".8em",
       padding: "5px 2px",
     },
   },
   greenContainer: {
-    //   width: 100%,
     padding: "20px 10px",
-    margin: "15px 1.2rem",
+    margin: "15px 1rem",
     borderRadius: "5px",
     backgroundColor: "rgba(73,199,101,0.7)",
   },
+  star: {
+    display: "flex",
+    justifyContent: "center",
+    alignItem: "center",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
+  rotateText: {
+    fontWeight: "bolder",
+    fontSize: "1.8rem",
+    transform: "rotate(-10deg)",
+    margin: 0,
+  },
+  starContainer: {
+    margin: "0 auto",
+    width: "100%",
+    backgroundImage: `url(${StarIcon})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    width: "170px",
+    height: "163px",
+  },
+  singleNum: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "84px",
+    height: "84px",
+    backgroundColor: "#fff",
+    color: "#000",
+    borderRadius: "50% ",
+    fontSize: "30px",
+    fontWeight: "700",
+    lineHeight: "84px",
+    textAlign: "center",
+    color: "black",
+  },
+  detailsCont: {
+    display: "flex",
+    margin: "15px auto",
+    width: "95%",
+    flexDirection: "column",
+    backgroundColor: "#fff",
+  },
+  row: {
+    fontSize: "1.4.em",
+    fontWeight: "400",
+    display: "flex",
+  },
+  col: {
+    flexBasis: "33%",
+    fontSize: "1.7em",
+    padding: "15px",
+    fontWeight: "bold",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.1em",
+    },
+  },
+  value: { color: "grey", textAlign: "center" },
 }))
 
 function LiveStream({
@@ -433,7 +502,7 @@ function LiveStream({
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      totobingo: file(relativePath: { eq: "totobingo.png" }) {
+      totobingo: file(relativePath: { eq: "b9.png" }) {
         childImageSharp {
           fluid(maxWidth: 100) {
             ...GatsbyImageSharpFluid_tracedSVG
@@ -445,11 +514,32 @@ function LiveStream({
   let image = data.totobingo.childImageSharp.fluid
   let wins = [10, 20, 30, 40, 50, 60]
   let win15 = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
-  let color = "#78B137"
+  let color = "#49C765"
   let tableHeaders1 = ["Vendida En Procincia", "Localidad", "Agencia"]
   let tableData1 = [
     {
       rowData: ["Cordoba", "San Francisco", "001124"],
+    },
+  ]
+  let tableHeaders2 = ["Categoria", "# De Ganadores", "Premio A C/U"]
+  let tableData2 = [
+    {
+      rowData: ["12 aciertos", "Vacante", "$110000"],
+    },
+    {
+      rowData: ["12 aciertos", "9", "115000"],
+    },
+    {
+      rowData: ["12 aciertos", "1036", "11000"],
+    },
+    {
+      rowData: ["12 aciertos", "0", "14000"],
+    },
+    {
+      rowData: ["12 aciertos", "1036", "110000"],
+    },
+    {
+      rowData: ["Bolilla Estrada", "0", "110000"],
     },
   ]
   let sort = { sorteo: "1", Fetcha: "1,000,000" }
@@ -474,6 +564,15 @@ function LiveStream({
             fadeIn={false}
             alt="Brinco de hoy"
           />
+          <div className={classes.hoveredSort}>
+            <div className={classes.sortCont}>
+              Sorteo:
+              <br /> {sort.sorteo}
+            </div>
+            <div className={classes.sortCont}>
+              Fetcha: <br /> 19/01/2020
+            </div>
+          </div>
         </div>
         <div className={classes.greenContainer}>
           <div className={classes.Premiados}>
@@ -490,10 +589,10 @@ function LiveStream({
               return (
                 <div
                   style={{
-                    flexBasis: "15%",
+                    flexBasis: "13%",
                     display: "flex",
                     justifyContent: "center",
-                    marginBottom: "30px",
+                    marginBottom: "10px",
                   }}
                 >
                   <div className={classes.num}>{a}</div>
@@ -525,8 +624,213 @@ function LiveStream({
             </strong>
           </div>
         )}
-        <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
+        <div style={{ padding: "0 1rem", marginTop: "20px" }}>
           <Table headers={tableHeaders1} data={tableData1} color={color} />
+        </div>
+        <div className={classes.Premiados}>
+          <Typography
+            variant="h4"
+            component="h3"
+            className={classes.PremiadosHeading}
+            style={{ color: "#000" }}
+          >
+            Sorteo por Numero de Billete Premios Semanales
+          </Typography>
+        </div>
+
+        <div className={classes.detailsCont}>
+          <div className={classes.row}>
+            <div
+              className={classes.col}
+              style={{
+                flexBasis: "50%",
+                borderRight: `2px solid ${color}`,
+                color: color,
+              }}
+            >
+              Premio
+              <div className={classes.value}>Motociceta 1 km</div>
+            </div>
+            <div
+              className={classes.col}
+              style={{
+                flexBasis: "50%",
+                color: color,
+              }}
+            >
+              # Billete
+              <div className={classes.value}>546576</div>
+            </div>
+          </div>
+          <div
+            className={classes.row}
+            style={{ borderTop: `2px solid ${color}` }}
+          >
+            <div
+              className={classes.col}
+              style={{
+                flexBasis: "50%",
+                borderRight: `2px solid ${color}`,
+                color: color,
+              }}
+            >
+              Localidad
+              <div className={classes.value}>Rafael Castillo</div>
+            </div>
+            <div
+              className={classes.col}
+              style={{
+                flexBasis: "50%",
+                color: color,
+              }}
+            >
+              Agencia
+              <div className={classes.value}>546576</div>
+            </div>
+          </div>
+        </div>
+
+        <div className={classes.greenContainer}>
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Pozo Millonarioa
+            </Typography>
+          </div>
+          <div className={classes.star}>
+            <div className={classes.numRow}>
+              {win15.map((a, i) => {
+                return (
+                  <div
+                    style={{
+                      flexBasis: "20%",
+                      display: "flex",
+                      justifyContent: "center",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <div className={classes.num}>{a}</div>
+                  </div>
+                )
+              })}
+            </div>
+            <div style={{ flexBasis: "30%", textAlign: "center" }}>
+              <p className={classes.rotateText}>
+                Bolilla <br />
+                Estrella
+              </p>
+              <div className={classes.starContainer}>
+                <span
+                  style={{ position: "relative", top: "30%", left: "25%" }}
+                  className={classes.singleNum}
+                >
+                  06
+                </span>
+              </div>
+            </div>
+          </div>
+          <h2 className={classes.centerContainer}>Juego 1</h2>
+        </div>
+        <div style={{ padding: "0 1rem", marginTop: "20px" }}>
+          <Table headers={tableHeaders2} data={tableData2} color={color} />
+        </div>
+
+        <div className={classes.detailsCont}>
+          <div className={classes.row} style={{ color: color }}>
+            <div className={classes.col} style={{ flexBasis: "100%" }}>
+              El billete ganador del pozo millonario pertenese al reparto
+              <div className={classes.value}>Vacante</div>
+            </div>
+          </div>
+          <div
+            className={classes.row}
+            style={{ borderTop: `2px solid ${color}`, color: color }}
+          >
+            <div
+              className={classes.col}
+              style={{ borderRight: `2px solid ${color}`, color: color }}
+            >
+              Number
+              <div className={classes.value}>#1152</div>
+            </div>
+            <div
+              className={classes.col}
+              style={{ borderRight: `2px solid ${color}`, color: color }}
+            >
+              Fecha
+              <div className={classes.value}>#1152</div>
+            </div>
+            <div className={classes.col}>
+              Color
+              <div className={classes.value}>#1152</div>
+            </div>
+          </div>
+        </div>
+
+        <div className={classes.detailsCont}>
+          <div className={classes.row} style={{ color: color }}>
+            <div className={classes.col} style={{ flexBasis: "100%" }}>
+              Los Premios Se Cobran Hasta El Dia:
+              <div className={classes.value}>29/12/2020</div>
+            </div>
+          </div>
+          <div
+            className={classes.row}
+            style={{
+              borderTop: `2px solid ${color}`,
+              color: color,
+            }}
+          >
+            <div
+              className={classes.col}
+              style={{
+                flexBasis: "50%",
+                borderRight: `2px solid ${color}`,
+                color: color,
+              }}
+            >
+              Escribano
+              <div className={classes.value}>Llanes, Gabriella</div>
+            </div>
+            <div
+              className={classes.col}
+              style={{ flexBasis: "50%", color: color }}
+            >
+              Jefe de Sorteo
+              <div className={classes.value}>Cagnetta Maria Victoria</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className={classes.Pozo}
+          style={{
+            backgroundColor: "#FD7D1B",
+          }}
+        >
+          <Typography
+            variant="h3"
+            component="h2"
+            className={classes.PremiadosHeading}
+            style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
+          >
+            Monte El Premios Estimados Para El Proximo Sorteo
+          </Typography>
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "#FD7D1B",
+              border: "1px solid #fff",
+              paddingBottom: "15px",
+              boxShadow: "none",
+            }}
+            className={classes.Btn}
+          >
+            $ 215.000.000
+          </Button>
         </div>
       </div>
       <div className={classes.icons}>
