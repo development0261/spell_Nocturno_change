@@ -133,6 +133,62 @@
     ],
     "prize": ["Pozo Estimado 15 Aciertos Para El Proximo Sorteo", "73,000,000"],
     "backgroundColor": "253,125,27",
+    "rekino": {
+      "tableHeaders1": ["Categoria", "# De Ganadores", "Premio $ C/U"],
+      "tableData1": [
+        {
+          "rowData": ["14 aciertos", "54", "$9.058"]
+        }
+      ],
+      "tableHeaders2": ["# De carton", "Premio $ C/U"],
+      "tableData2": [
+        {
+          "rowData": ["0.170.999", "$8.122"]
+        },
+        {
+          "rowData": ["0.170.999", "$8.122"]
+        },
+        {
+          "rowData": ["0.170.999", "$8.122"]
+        },
+        {
+          "rowData": ["0.170.999", "$8.122"]
+        },
+        {
+          "rowData": ["0.170.999", "$8.122"]
+        },
+        {
+          "rowData": ["0.170.999", "$8.122"]
+        }
+      ],
+      "sort": {
+        "Numero": "1448",
+        "Fetcha": "19/1/2020",
+        "Color del Carton": "violeta"
+      },
+      "total": {
+        "Caducidad": "19/1/2020",
+        "totalde": "109.730",
+        "totalen": "$450,000"
+      },
+      "winningNums": [
+        "10",
+        "06",
+        "30",
+        "02",
+        "13",
+        "10",
+        "22",
+        "12",
+        "55",
+        "65",
+        "14",
+        "31",
+        "44",
+        "67",
+        "69"
+      ]
+    },
     "description": [
       "La Quiniela es un juego de azar muy común en Argentina, de hecho el más famoso y de mayor arrastre. Dicho juego está bajo el control de la Loterías de cada una de las Provincias del país. En la mayoría de los casos la jurisdicción de cada Provincia establece el llamado tope de banca.",
       "La quiniela se compone de un grupo de 20 números de 4 cifras, que van desde unidades a unidades de millar, los números corresponden a 20 recompensas, una por cada uno. Los números se definen usando cinco máquinas bolilleras de tipo manual o automatizado La primer bola da lugar a la unidad de millar de la cifra, la bola siguiente a la centena, y así sucesivamente hasta el extracto.",

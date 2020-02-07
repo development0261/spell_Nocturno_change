@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import TableDescription from "../components/TableDesc"
 import TableDraw from "../components/TableDraw"
 import Icons from "../components/home/Icons"
+import ReKinoDraw from "../components/home/ReKinoDraw"
 
 const LoaderPlaceholder = () => (
   <div style={{ height: "100vh", width: "100vh" }}></div>
@@ -104,6 +105,27 @@ export const dataQuery = graphql`
           description
           backgroundColor
           prizeHeadColor
+          rekino {
+            tableData1 {
+              rowData
+            }
+            tableHeaders1
+            total {
+              totalen
+              totalde
+              Caducidad
+            }
+            sort {
+              Color_del_Carton
+              Fetcha
+              Numero
+            }
+            tableHeaders2
+            tableData2 {
+              rowData
+            }
+            winningNums
+          }
         }
       }
     }
@@ -123,9 +145,10 @@ const App = props => {
     color,
     backgroundColor,
     prizeHeadColor,
+    rekino,
   } = props.data.allAllJson.edges[0].node
 
-  console.log("template", heading)
+  console.log("template", rekino)
 
   return (
     <LoadableLayout title={heading}>
@@ -144,6 +167,15 @@ const App = props => {
               backgroundColor={backgroundColor}
               prizeHeadColor={prizeHeadColor}
             />
+            {slug === "telekino" && (
+              <ReKinoDraw
+                rekinoData={rekino}
+                prize={prize}
+                color={color}
+                backgroundColor={backgroundColor}
+                prizeHeadColor={prizeHeadColor}
+              />
+            )}
             <LoadableRemind />
           </Paper>
           <div className={classes.icons}>
