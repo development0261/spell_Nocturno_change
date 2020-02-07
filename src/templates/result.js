@@ -105,6 +105,9 @@ export const dataQuery = graphql`
           description
           backgroundColor
           prizeHeadColor
+          bgImg {
+            headColor
+          }
           rekino {
             tableData1 {
               rowData
@@ -146,9 +149,8 @@ const App = props => {
     backgroundColor,
     prizeHeadColor,
     rekino,
+    bgImg,
   } = props.data.allAllJson.edges[0].node
-
-  console.log("template", rekino)
 
   return (
     <LoadableLayout title={heading}>
@@ -157,6 +159,7 @@ const App = props => {
         <Container className={classes.container}>
           <Paper className={classes.root}>
             <TableDraw
+              bg={bgImg}
               wins={winningNums}
               img={slug}
               sort={sort}

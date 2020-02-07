@@ -53,13 +53,14 @@ const useStyles = makeStyles(theme => ({
   brincoContainer: {
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "#4163ee",
+    // backgroundColor: "#4163ee",
+    padding: "15px 0",
     [theme.breakpoints.down("xs")]: {
       // height: 80,
     },
   },
   brinco: {
-    width: "15%",
+    width: "20%",
     margin: "1rem",
     [theme.breakpoints.down("xs")]: {
       // width: 60,
@@ -200,7 +201,7 @@ const useStyles = makeStyles(theme => ({
     transform: "rotate(45deg)",
   },
   timer: {
-    fontSize: "1.5rem",
+    fontSize: "2rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.3rem",
     },
@@ -287,6 +288,7 @@ function LiveStream({
   color,
   backgroundColor,
   prizeHeadColor,
+  bg,
 }) {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
@@ -361,6 +363,20 @@ function LiveStream({
           }
         }
       }
+      loto5Bg: file(relativePath: { eq: "bg2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      telekino5Bg: file(relativePath: { eq: "bg1.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
       quiniela_poceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
         childImageSharp {
           fluid(maxWidth: 100) {
@@ -376,9 +392,22 @@ function LiveStream({
     (img === "quinielaplus" && data.quini.childImageSharp.fluid) ||
     (img === "loto5" && data.loto5.childImageSharp.fluid) ||
     (img === "quiniela_poceada" && data.quiniela_poceada.childImageSharp.fluid)
+
+  let bgImg =
+    (img === "loto5" && data.loto5Bg.childImageSharp.fluid) ||
+    (img === "telekino" && data.telekino5Bg.childImageSharp.fluid)
+  // console.log("bgggg", bg, !!bg, bg.headColor)
   return (
     <div className={classes.root} id={"bronco-section"}>
-      <div className={classes.Border}>
+      <div
+        className={classes.Border}
+        style={{
+          backgroundImage: `url(${bgImg.src})`,
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className={classes.Container}>
           <div className={classes.Loader}></div>
           <Typography variant="h4" component="h2" className={classes.h3}>
@@ -390,7 +419,13 @@ function LiveStream({
 
         <div
           className={classes.brincoContainer}
-          style={{ backgroundColor: color ? `${color}` : null }}
+          style={{
+            backgroundColor: bg
+              ? `rgba(${bg.headColor},0.5)`
+              : color
+              ? color
+              : null,
+          }}
         >
           <Img
             fluid={image}
