@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0.1rem",
+    padding: "0.5rem",
     [theme.breakpoints.down("sm")]: {
       padding: "0.2rem",
     },
@@ -55,13 +55,14 @@ const useStyles = makeStyles(theme => ({
   brincoContainer: {
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "#4163ee",
+    padding: "15px 0",
+    // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
       // height: 80,
     },
   },
   brinco: {
-    width: "15%",
+    width: "20%",
     margin: "1rem",
     [theme.breakpoints.down("xs")]: {
       // width: 60,

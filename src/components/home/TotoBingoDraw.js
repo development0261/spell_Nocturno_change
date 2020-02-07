@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0.1rem",
+    padding: "0.5rem",
     [theme.breakpoints.down("sm")]: {
       padding: "0.2rem",
     },
