@@ -61,9 +61,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   quinielaImg: {
-    width: "24%",
+    width: "20%",
+    margin: "1rem",
     [theme.breakpoints.down("xs")]: {
-      width: "30%",
+      // width: "30%",
       // height: 60,/
     },
   },
@@ -80,7 +81,7 @@ function LiveStream() {
           }
         }
       }
-      quiniela: file(relativePath: { eq: "quinielas.png" }) {
+      quiniela: file(relativePath: { eq: "quiniela.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid_tracedSVG
@@ -94,7 +95,6 @@ function LiveStream() {
     <div className={classes.root}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <div className={classes.Border}>
-          {console.log("works", data)}
           <TableHeader />
           <div className={classes.Image}>
             <Img

@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "10px",
+    padding: "0.1em",
     [theme.breakpoints.down("xs")]: {
       padding: "5px",
     },
@@ -62,8 +62,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   nextDrawh3: {
-    padding: "0.5rem 1rem",
-    fontSize: "1.7rem",
+    // padding: "0.5rem 1rem",
+    fontSize: "1.3rem",
     color: "#ffffff",
     fontFamily: "'Montserrat', sans-serif;",
     fontWeight: 600,
@@ -95,48 +95,44 @@ export const getTime = () => {
   return DateTime.local().setZone("America/Argentina/Buenos_Aires")
 }
 
-
-const getNextDrawTime = () =>{
-
+const getNextDrawTime = () => {
   const dateToday = getTime().day
-  const dateTommorow = getTime().plus({days: 1}).day
+  const dateTommorow = getTime().plus({ days: 1 }).day
   return [
     [
-      ["00", "00",dateToday],
-      ["11", "30",dateToday],
+      ["00", "00", dateToday],
+      ["11", "30", dateToday],
     ],
     [
-      ["12", "30",dateToday],
-      ["14", "00",dateToday],
+      ["12", "30", dateToday],
+      ["14", "00", dateToday],
     ],
     [
-      ["15", "00",dateToday],
-      ["17", "30",dateToday],
+      ["15", "00", dateToday],
+      ["17", "30", dateToday],
     ],
     [
-      ["18", "30",dateToday],
-      ["21", "00",dateToday],
+      ["18", "30", dateToday],
+      ["21", "00", dateToday],
     ],
     [
-      ["22", "00",dateToday],
-      ["22", "30",dateToday],
+      ["22", "00", dateToday],
+      ["22", "30", dateToday],
     ],
     [
-      ["23", "00",dateToday],
-      ["11", "30",dateTommorow],
+      ["23", "00", dateToday],
+      ["11", "30", dateTommorow],
     ],
   ]
 }
 
-
 export const Countdown = ({ end, classes }) => {
   const now = useTime()
-  const diff = end.diff(now,['days', 'hours','minutes'])
+  const diff = end.diff(now, ["days", "hours", "minutes"])
   return (
     <Typography variant="h4" component="h2" className={classes.nextDrawh3}>
-      Próximo sorteo:{" "}
-      <span className={classes.nextDrawtimer}>{diff.days}</span> día{" "}
-      <span className={classes.nextDrawtimer}>{diff.hours}</span> horas{" "}
+      Próximo sorteo: <span className={classes.nextDrawtimer}>{diff.days}</span>{" "}
+      día <span className={classes.nextDrawtimer}>{diff.hours}</span> horas{" "}
       <span className={classes.nextDrawtimer}>{parseInt(diff.minutes)}</span>{" "}
       minutos
     </Typography>
@@ -147,23 +143,22 @@ const Livestream = () => {
   let isLiveStream = true
   let conterEndTime = null
 
-  const drawList = getNextDrawTime();
+  const drawList = getNextDrawTime()
   drawList.forEach(times => {
     const [start, end] = times
     const startDate = DateTime.fromObject({
       hour: start[0],
       minute: start[1],
-      day:start[2],
+      day: start[2],
       zone: "America/Argentina/Buenos_Aires",
     })
     const endDate = DateTime.fromObject({
       hour: end[0],
       minute: end[1],
-      day:end[2],
+      day: end[2],
       zone: "America/Argentina/Buenos_Aires",
     })
 
-    
     const interval = Interval.fromDateTimes(startDate, endDate)
     if (interval.contains(getTime())) {
       isLiveStream = false
