@@ -46,9 +46,8 @@ const useStyles = makeStyles(theme => ({
   maincontainer: {
     width: "100%",
     fontFamily: "'Montserrat', sans-serif",
-    [theme.breakpoints.up("md")]: {
-      backgroundColor: "#F3F4FE",
-    },
+    backgroundColor: "#F3F4FE",
+    [theme.breakpoints.up("md")]: {},
   },
   container: {
     maxWidth: 750,

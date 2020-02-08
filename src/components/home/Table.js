@@ -36,7 +36,7 @@ const StyledTableCell = withStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "1rem",
-      minWidth: 67,
+      minWidth: 47,
       borderLeft: "2px solid #fef2d5",
     },
   },
@@ -67,23 +67,24 @@ const StyledTableRow = withStyles(theme => ({
 const useStyles = makeStyles(theme => ({
   headerArrow: {
     display: "flex",
-    [theme.breakpoints.up("lg")]: {
-      justifyContent: "center",
-    },
+    justifyContent: "center",
     [theme.breakpoints.down("xs")]: {
       margin: "0px 2px",
     },
   },
   headerImage: {
-    [theme.breakpoints.up("sm")]: {
+    // display: "none",
+
+    [theme.breakpoints.up("lg")]: {
       display: "none",
     },
 
     [theme.breakpoints.down("xs")]: {
-      width: 16,
-      marginTop: 6,
-      height: 12,
-      marginLeft: 3,
+      display: "none",
+      // width: 16,
+      // marginTop: 6,
+      // height: 12,
+      // marginLeft: 3,
     },
   },
   active: {
@@ -216,7 +217,9 @@ function StreamTable({ width }) {
                   </StyledTableCell>
                   {mappingKeys.map(key => (
                     <StyledTableCell
-                      style={{ border: "2px solid #feebbf" }}
+                      style={{
+                        border: "2px solid #feebbf",
+                      }}
                       align="center"
                     >
                       {row.values[key] ? (

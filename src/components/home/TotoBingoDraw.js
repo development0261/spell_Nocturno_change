@@ -286,7 +286,6 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "700",
     lineHeight: "84px",
     textAlign: "center",
-    color: "black",
     [theme.breakpoints.down("sm")]: {
       width: "65px",
       height: "65px",
@@ -321,19 +320,6 @@ const useStyles = makeStyles(theme => ({
       width: "90%",
       padding: "5px 0",
     },
-  },
-  row: {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    width: "100%",
-    borderBottom: "2px solid #000",
-    padding: "10px",
-    margin: "0 15px",
-  },
-  col: {
-    padding: "0 10px",
-    flexBasis: "50%",
   },
   para: {
     margin: 0,
@@ -375,13 +361,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "0.7rem",
-    },
-  },
-  icons: {
-    marginBottom: "5rem",
-    backgroundColor: "transparent",
-    [theme.breakpoints.down("xs")]: {
-      marginBottom: "2rem",
     },
   },
   separator: {
@@ -439,7 +418,6 @@ const useStyles = makeStyles(theme => ({
   },
   starContainer: {
     margin: "0 auto",
-    width: "100%",
     backgroundImage: `url(${StarIcon})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -459,7 +437,6 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "700",
     lineHeight: "84px",
     textAlign: "center",
-    color: "black",
   },
   detailsCont: {
     display: "flex",
