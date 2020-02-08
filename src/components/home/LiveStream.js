@@ -52,20 +52,27 @@ const useStyles = makeStyles(theme => ({
     },
   },
   Image: {
+    backgroundColor: "#fcc43e",
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "#fcc43e",
-    alignItems: "center",
+    padding: "25px 0",
+    // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
-      height: 80,
+      padding: "15px 0",
+      // height: 80,
     },
   },
   quinielaImg: {
-    width: "20%",
-    margin: "1rem",
+    width: "35%",
+    // margin: "1rem",
+    // height: 96,
+    maxWidth: "150px",
+    minheight: "50px",
+    // maxheight: "50px",
     [theme.breakpoints.down("xs")]: {
-      // width: "30%",
-      // height: 60,/
+      maxWidth: "120px",
+      // maxheight: "44px",
+      // width: 60,
     },
   },
 }))
