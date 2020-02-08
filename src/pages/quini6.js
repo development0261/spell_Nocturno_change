@@ -53,6 +53,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       boxShadow: "none",
     },
+    backgroundColor: "#F3F4FE",
   },
   icons: {
     marginBottom: "5rem",

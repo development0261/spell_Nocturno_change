@@ -329,195 +329,194 @@ function LiveStream({
   console.log("rekino", rekinoData)
   return (
     <div className={classes.root} id={"bronco-section"}>
-      <div className={classes.Border}>
-        <div className={classes.Container}>
-          <div className={classes.Loader}></div>
-          <Typography variant="h4" component="h2" className={classes.h3}>
-            Próximo sorteo: <span className={classes.timer}>1</span> día{" "}
-            <span className={classes.timer}>17</span> horas{" "}
-            <span className={classes.timer}>32</span> minutos
-          </Typography>
-        </div>
+      <div style={{ backgroundColor: "#fff" }}>
+        <div className={classes.Border}>
+          <div className={classes.Container}>
+            <div className={classes.Loader}></div>
+            <Typography variant="h4" component="h2" className={classes.h3}>
+              Próximo sorteo: <span className={classes.timer}>1</span> día{" "}
+              <span className={classes.timer}>17</span> horas{" "}
+              <span className={classes.timer}>32</span> minutos
+            </Typography>
+          </div>
 
-        <div
-          className={classes.brincoContainer}
-          style={{ backgroundColor: color ? `${color}` : null }}
-        >
-          <Img
-            fluid={image}
-            className={classes.brinco}
-            fadeIn={false}
-            alt="Brinco de hoy"
-          />
-        </div>
+          <div
+            className={classes.brincoContainer}
+            style={{ backgroundColor: color ? `${color}` : null }}
+          >
+            <Img
+              fluid={image}
+              className={classes.brinco}
+              fadeIn={false}
+              alt="Brinco de hoy"
+            />
+          </div>
 
-        <div className={classes.numRow} style={{ marginTop: "50px" }}>
-          {winningNums.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "20%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
+          <div className={classes.numRow} style={{ marginTop: "50px" }}>
+            {winningNums.map((a, i) => {
+              return (
                 <div
-                  className={classes.num}
                   style={{
-                    backgroundColor: color ? `${color}` : null,
+                    flexBasis: "20%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
                   }}
                 >
-                  {a}
+                  <div
+                    className={classes.num}
+                    style={{
+                      backgroundColor: color ? `${color}` : null,
+                    }}
+                  >
+                    {a}
+                  </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
-
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h3"
-            component="h2"
-            className={classes.PremiadosHeading}
-          >
-            Distribucion de Premios
-          </Typography>
-        </div>
-
-        <div style={{ padding: "0 0.8rem" }}>
-          <Table headers={tableHeaders1} data={tableData1} color={color} />
-        </div>
-
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h3"
-            component="h2"
-            className={classes.PremiadosHeading}
-          >
-            Premois Con El Numero De Carton
-          </Typography>
-          <h2 className={classes.subHeading}>Un led+Rack Para C/U</h2>
-        </div>
-
-        <div style={{ padding: "0 0.8rem" }}>
-          <Table headers={tableHeaders2} data={tableData2} color={color} />
-        </div>
-
-        <div className={classes.sort}>
-          <div className={classes.col}>
-            <span className={classes.sortSpan}>Sorteo#:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {total.Caducidad}
-            </strong>
+              )
+            })}
           </div>
-          <div className={classes.col}>
-            <span className={classes.sortSpan}>Total de Ganadores:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {total.totalen}
-            </strong>
-          </div>
-          <div className={classes.col}>
-            <span className={classes.sortSpan}>Total en Premios:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {total.totalde}
-            </strong>
-          </div>
-        </div>
 
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h3"
-            component="h2"
-            className={classes.PremiadosHeading}
-          >
-            Proximo Sorteo
-          </Typography>
-        </div>
-
-        <div className={classes.sort}>
-          <div className={classes.col}>
-            <span className={classes.sortSpan}>Numero#:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.Numero}
-            </strong>
-          </div>
-          <div className={classes.col}>
-            <span className={classes.sortSpan}>Fetcha:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.Fetcha}
-            </strong>
-          </div>
-          <div className={classes.col}>
-            <span className={classes.sortSpan}>Color del Carton:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.Color_del_Carton}
-            </strong>
-          </div>
-        </div>
-
-        {prize && (
-          <div
-            className={classes.Pozo}
-            style={{
-              backgroundColor: backgroundColor
-                ? `rgba(${backgroundColor}, .8)`
-                : "transparent",
-            }}
-          >
+          <div className={classes.Premiados}>
             <Typography
               variant="h3"
               component="h2"
               className={classes.PremiadosHeading}
-              style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
             >
-              {prize[0]}
+              Distribucion de Premios
             </Typography>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: color ? `${color}` : null,
-              }}
-              className={classes.Btn}
-            >
-              ${prize[1]}
-            </Button>
           </div>
-        )}
+
+          <div style={{ padding: "0 0.8rem" }}>
+            <Table headers={tableHeaders1} data={tableData1} color={color} />
+          </div>
+
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h3"
+              component="h2"
+              className={classes.PremiadosHeading}
+            >
+              Premois Con El Numero De Carton
+            </Typography>
+            <h2 className={classes.subHeading}>Un led+Rack Para C/U</h2>
+          </div>
+
+          <div style={{ padding: "0 0.8rem" }}>
+            <Table headers={tableHeaders2} data={tableData2} color={color} />
+          </div>
+
+          <div className={classes.sort}>
+            <div className={classes.col}>
+              <span className={classes.sortSpan}>Sorteo#:</span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {total.Caducidad}
+              </strong>
+            </div>
+            <div className={classes.col}>
+              <span className={classes.sortSpan}>Total de Ganadores:</span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {total.totalen}
+              </strong>
+            </div>
+            <div className={classes.col}>
+              <span className={classes.sortSpan}>Total en Premios:</span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {total.totalde}
+              </strong>
+            </div>
+          </div>
+
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h3"
+              component="h2"
+              className={classes.PremiadosHeading}
+            >
+              Proximo Sorteo
+            </Typography>
+          </div>
+
+          <div className={classes.sort}>
+            <div className={classes.col}>
+              <span className={classes.sortSpan}>Numero#:</span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {sort.Numero}
+              </strong>
+            </div>
+            <div className={classes.col}>
+              <span className={classes.sortSpan}>Fetcha:</span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {sort.Fetcha}
+              </strong>
+            </div>
+            <div className={classes.col}>
+              <span className={classes.sortSpan}>Color del Carton:</span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {sort.Color_del_Carton}
+              </strong>
+            </div>
+          </div>
+
+          {prize && (
+            <div
+              className={classes.Pozo}
+              style={{
+                backgroundColor: backgroundColor
+                  ? `rgba(${backgroundColor}, .8)`
+                  : "transparent",
+              }}
+            >
+              <Typography
+                variant="h3"
+                component="h2"
+                className={classes.PremiadosHeading}
+                style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
+              >
+                {prize[0]}
+              </Typography>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: color ? `${color}` : null,
+                }}
+                className={classes.Btn}
+              >
+                ${prize[1]}
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
-      {/* <div className={classes.icons}>
-        <Icons />
-      </div> */}
     </div>
   )
 }

@@ -55,19 +55,24 @@ const useStyles = makeStyles(theme => ({
   brincoContainer: {
     display: "flex",
     justifyContent: "center",
-    padding: "15px 0",
+    padding: "25px 0",
     // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
-      padding: 0,
+      padding: "15px 0",
       // height: 80,
     },
   },
   brinco: {
-    width: "20%",
+    width: "35%",
     // margin: "1rem",
+    // height: 96,
+    maxWidth: "120px",
+    minheight: "50px",
+    maxheight: "50px",
     [theme.breakpoints.down("xs")]: {
+      maxWidth: "100px",
+      // maxheight: "44px",
       // width: 60,
-      // height: 45,
     },
   },
   Premiados: {
@@ -413,80 +418,81 @@ function LiveStream({
   ]
   return (
     <div className={classes.root} id={"bronco-section"}>
-      <div className={classes.Border}>
-        <div className={classes.Container}>
-          <div className={classes.Loader}></div>
-          <Typography variant="h4" component="h2" className={classes.h3}>
-            Próximo sorteo: <span className={classes.timer}>1</span> día{" "}
-            <span className={classes.timer}>17</span> horas{" "}
-            <span className={classes.timer}>32</span> minutos
-          </Typography>
-        </div>
-
-        <div
-          className={classes.brincoContainer}
-          style={{ backgroundColor: color ? `${color}` : null }}
-        >
-          <Img
-            fluid={image}
-            className={classes.brinco}
-            fadeIn={false}
-            alt="Brinco de hoy"
-          />
-        </div>
-        {sort && (
-          <div className={classes.sort}>
-            <span className={classes.sortSpan}>Sorteo#:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.sorteo}
-            </strong>{" "}
-            <span className={classes.sortSpan}>Fetcha:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.Fetcha}
-            </strong>
+      <div style={{ backgroundColor: "#DBECF8" }}>
+        <div className={classes.Border}>
+          <div className={classes.Container}>
+            <div className={classes.Loader}></div>
+            <Typography variant="h4" component="h2" className={classes.h3}>
+              Próximo sorteo: <span className={classes.timer}>1</span> día{" "}
+              <span className={classes.timer}>17</span> horas{" "}
+              <span className={classes.timer}>32</span> minutos
+            </Typography>
           </div>
-        )}
 
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
+          <div
+            className={classes.brincoContainer}
+            style={{ backgroundColor: color ? `${color}` : null }}
           >
-            Tradicional
-          </Typography>
-        </div>
-        {/* <div className={classes.numbers}> */}
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
+            <Img
+              fluid={image}
+              className={classes.brinco}
+              fadeIn={false}
+              alt="Brinco de hoy"
+            />
+          </div>
+          {sort && (
+            <div className={classes.sort}>
+              <span className={classes.sortSpan}>Sorteo#:</span>
+              <strong
+                className={classes.sortStrong}
                 style={{
-                  flexBasis: "25%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
                 }}
               >
-                <div
-                  className={classes.num}
-                  style={{
-                    boxShadow: "0px 7px 0px 0px #a4d0ef",
+                {sort.sorteo}
+              </strong>{" "}
+              <span className={classes.sortSpan}>Fetcha:</span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {sort.Fetcha}
+              </strong>
+            </div>
+          )}
 
-                    color: i === 3 || i === 7 ? "red" : null,
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Tradicional
+            </Typography>
+          </div>
+          {/* <div className={classes.numbers}> */}
+          <div className={classes.numRow}>
+            {wins.map((a, i) => {
+              return (
+                <div
+                  style={{
+                    flexBasis: "25%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
                   }}
                 >
-                  {/* {i === 3 && (
+                  <div
+                    className={classes.num}
+                    style={{
+                      boxShadow: "0px 7px 0px 0px #a4d0ef",
+
+                      color: i === 3 || i === 7 ? "red" : null,
+                    }}
+                  >
+                    {/* {i === 3 && (
                     <span
                       style={{
                         fontSize: "18px",
@@ -501,167 +507,168 @@ function LiveStream({
                       Jackpot
                     </span>
                   )} */}
-                  {a}
+                    {a}
+                  </div>
                 </div>
+              )
+            })}
+          </div>
+          <div className={classes.plusDesc}>
+            <div className={classes.row}>
+              <div className={classes.col}>
+                <p className={classes.para}> GANADORES DEL JACKPOT </p>
+                <p className={classes.para}>(6+2 JACK)</p>
               </div>
-            )
-          })}
-        </div>
-        <div className={classes.plusDesc}>
-          <div className={classes.row}>
-            <div className={classes.col}>
-              <p className={classes.para}> GANADORES DEL JACKPOT </p>
-              <p className={classes.para}>(6+2 JACK)</p>
+              <div className={classes.col}>
+                <h4 className={classes.h4}>
+                  VACANTE <br /> $196.499.729,01
+                </h4>
+              </div>
             </div>
-            <div className={classes.col}>
-              <h4 className={classes.h4}>
-                VACANTE <br /> $196.499.729,01
-              </h4>
+            <div className={classes.row}>
+              <div className={classes.col}>
+                <p className={classes.para}> GANADORES DE 6+1</p>
+              </div>
+              <div className={classes.col}>
+                <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
+              </div>
             </div>
-          </div>
-          <div className={classes.row}>
-            <div className={classes.col}>
-              <p className={classes.para}> GANADORES DE 6+1</p>
-            </div>
-            <div className={classes.col}>
-              <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
-            </div>
-          </div>
-          <div className={classes.row} style={{ border: "none" }}>
-            <div className={classes.col}>
-              <p className={classes.para}>GANADORES DEL LOTO (6)</p>
-            </div>
-            <div className={classes.col}>
-              <h6 className={classes.h6}>VACANTE $10.861.703,49</h6>
+            <div className={classes.row} style={{ border: "none" }}>
+              <div className={classes.col}>
+                <p className={classes.para}>GANADORES DEL LOTO (6)</p>
+              </div>
+              <div className={classes.col}>
+                <h6 className={classes.h6}>VACANTE $10.861.703,49</h6>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
-          <Table headers={tableHeaders} data={tableData} color={color} />
-        </div>
+          <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
+            <Table headers={tableHeaders} data={tableData} color={color} />
+          </div>
 
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Desquite
-          </Typography>
-        </div>
-        {/* <div className={classes.numbers}> */}
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "25%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Desquite
+            </Typography>
+          </div>
+          {/* <div className={classes.numbers}> */}
+          <div className={classes.numRow}>
+            {wins.map((a, i) => {
+              return (
                 <div
-                  className={classes.num}
                   style={{
-                    boxShadow: "0px 7px 0px 0px #a4d0ef",
-
-                    color: i === 3 || i === 7 ? "red" : null,
+                    flexBasis: "25%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
                   }}
                 >
-                  {a}
+                  <div
+                    className={classes.num}
+                    style={{
+                      boxShadow: "0px 7px 0px 0px #a4d0ef",
+
+                      color: i === 3 || i === 7 ? "red" : null,
+                    }}
+                  >
+                    {a}
+                  </div>
                 </div>
+              )
+            })}
+          </div>
+
+          <div className={classes.plusDesc}>
+            <div className={classes.row}>
+              <div className={classes.col}>
+                <p className={classes.para}> GANADORES DEL JACKPOT </p>
+                <p className={classes.para}>(6+2 JACK)</p>
               </div>
-            )
-          })}
-        </div>
+              <div className={classes.col}>
+                <h4 className={classes.h4}>
+                  VACANTE <br /> $196.499.729,01
+                </h4>
+              </div>
+            </div>
+            <div className={classes.row}>
+              <div className={classes.col}>
+                <p className={classes.para}> GANADORES DE 6+1</p>
+              </div>
+              <div className={classes.col}>
+                <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
+              </div>
+            </div>
+            <div className={classes.row} style={{ border: "none" }}>
+              <div className={classes.col}>
+                <p className={classes.para}>GANADORES DEL LOTO (6)</p>
+              </div>
+              <div className={classes.col}>
+                <h6 className={classes.h6}>VACANTE $10.861.703,49</h6>
+              </div>
+            </div>
+          </div>
 
-        <div className={classes.plusDesc}>
-          <div className={classes.row}>
-            <div className={classes.col}>
-              <p className={classes.para}> GANADORES DEL JACKPOT </p>
-              <p className={classes.para}>(6+2 JACK)</p>
-            </div>
-            <div className={classes.col}>
-              <h4 className={classes.h4}>
-                VACANTE <br /> $196.499.729,01
-              </h4>
-            </div>
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Sale o sale
+            </Typography>
           </div>
-          <div className={classes.row}>
-            <div className={classes.col}>
-              <p className={classes.para}> GANADORES DE 6+1</p>
-            </div>
-            <div className={classes.col}>
-              <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
-            </div>
-          </div>
-          <div className={classes.row} style={{ border: "none" }}>
-            <div className={classes.col}>
-              <p className={classes.para}>GANADORES DEL LOTO (6)</p>
-            </div>
-            <div className={classes.col}>
-              <h6 className={classes.h6}>VACANTE $10.861.703,49</h6>
-            </div>
-          </div>
-        </div>
-
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Sale o sale
-          </Typography>
-        </div>
-        {/* <div className={classes.numbers}> */}
-        <div className={classes.numRow}>
-          {wins10.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "20%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
+          {/* <div className={classes.numbers}> */}
+          <div className={classes.numRow}>
+            {wins10.map((a, i) => {
+              return (
                 <div
-                  className={classes.num}
                   style={{
-                    boxShadow: "0px 7px 0px 0px #a4d0ef",
-
-                    color:
-                      i === 3 || i === 4 || i === 8 || i === 9 ? "red" : null,
+                    flexBasis: "20%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
                   }}
                 >
-                  {a}
-                </div>
-              </div>
-            )
-          })}
-        </div>
+                  <div
+                    className={classes.num}
+                    style={{
+                      boxShadow: "0px 7px 0px 0px #a4d0ef",
 
-        <div className={classes.plusDesc}>
-          <div className={classes.row}>
-            <div className={classes.col}>
-              <p className={classes.para}> GANADORES DEL JACKPOT </p>
-              <p className={classes.para}>(6+2 JACK)</p>
-            </div>
-            <div className={classes.col}>
-              <h4 className={classes.h4}>
-                VACANTE <br /> $196.499.729,01
-              </h4>
-            </div>
+                      color:
+                        i === 3 || i === 4 || i === 8 || i === 9 ? "red" : null,
+                    }}
+                  >
+                    {a}
+                  </div>
+                </div>
+              )
+            })}
           </div>
-          <div className={classes.row} style={{ border: "none" }}>
-            <div className={classes.col}>
-              <p className={classes.para}> GANADORES DE 6+1</p>
+
+          <div className={classes.plusDesc}>
+            <div className={classes.row}>
+              <div className={classes.col}>
+                <p className={classes.para}> GANADORES DEL JACKPOT </p>
+                <p className={classes.para}>(6+2 JACK)</p>
+              </div>
+              <div className={classes.col}>
+                <h4 className={classes.h4}>
+                  VACANTE <br /> $196.499.729,01
+                </h4>
+              </div>
             </div>
-            <div className={classes.col}>
-              <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
+            <div className={classes.row} style={{ border: "none" }}>
+              <div className={classes.col}>
+                <p className={classes.para}> GANADORES DE 6+1</p>
+              </div>
+              <div className={classes.col}>
+                <h5 className={classes.h5}>VACANTE $48.376.023,24</h5>
+              </div>
             </div>
           </div>
         </div>

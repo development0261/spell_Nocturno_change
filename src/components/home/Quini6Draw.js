@@ -54,19 +54,24 @@ const useStyles = makeStyles(theme => ({
   brincoContainer: {
     display: "flex",
     justifyContent: "center",
-    padding: "15px 0",
+    padding: "25px 0",
     // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
-      padding: 0,
-      //   height: 80,
+      padding: "15px 0",
+      // height: 80,
     },
   },
   brinco: {
-    width: "20%",
-    margin: "1rem",
+    width: "35%",
+    // margin: "1rem",
+    // height: 96,
+    maxWidth: "200px",
+    minheight: "50px",
+    maxheight: "50px",
     [theme.breakpoints.down("xs")]: {
-      // width: "25%",
-      //   height: "15%",
+      maxWidth: "100px",
+      // maxheight: "44px",
+      // width: 60,
     },
   },
   Premiados: {
@@ -432,275 +437,286 @@ function LiveStream({
   let sort = { sorteo: "1448", Fetcha: "19/1/2020" }
   return (
     <div className={classes.root} id={"bronco-section"}>
-      <div className={classes.Border}>
-        <div className={classes.Container}>
-          <div className={classes.Loader}></div>
-          <Typography variant="h4" component="h2" className={classes.h3}>
-            Próximo sorteo: <span className={classes.timer}>1</span> día{" "}
-            <span className={classes.timer}>17</span> horas{" "}
-            <span className={classes.timer}>32</span> minutos
-          </Typography>
-        </div>
-        <div
-          className={classes.brincoContainer}
-          style={{ backgroundColor: color ? `${color}` : null }}
-        >
-          <Img
-            fluid={image}
-            className={classes.brinco}
-            fadeIn={false}
-            alt="Brinco de hoy"
-          />
-        </div>
-        {sort && (
-          <div className={classes.sort}>
-            <span className={classes.sortSpan}>Sorteo#:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.sorteo}
-            </strong>{" "}
-            <span className={classes.sortSpan}>Fetcha:</span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.Fetcha}
-            </strong>
+      <div style={{ backgroundColor: "#fff" }}>
+        <div className={classes.Border}>
+          <div className={classes.Container}>
+            <div className={classes.Loader}></div>
+            <Typography variant="h4" component="h2" className={classes.h3}>
+              Próximo sorteo: <span className={classes.timer}>1</span> día{" "}
+              <span className={classes.timer}>17</span> horas{" "}
+              <span className={classes.timer}>32</span> minutos
+            </Typography>
           </div>
-        )}
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
+          <div
+            className={classes.brincoContainer}
+            style={{ backgroundColor: color ? `${color}` : null }}
           >
-            Tradicional Primer Sorteo
-          </Typography>
-        </div>
-        {/* <div className={classes.numbers}> */}
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
+            <Img
+              fluid={image}
+              className={classes.brinco}
+              fadeIn={false}
+              alt="Brinco de hoy"
+            />
+          </div>
+          {sort && (
+            <div className={classes.sort}>
+              <span className={classes.sortSpan}>Sorteo#:</span>
+              <strong
+                className={classes.sortStrong}
                 style={{
-                  flexBasis: "15%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
                 }}
               >
-                <div
-                  className={classes.num}
-                  style={{
-                    color: "white",
-                    backgroundColor: color ? `${color}` : null,
-                  }}
-                >
-                  {a}
-                </div>
-              </div>
-            )
-          })}
-        </div>
-
-        <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
-          <Table headers={tableHeaders} data={tableData} color={color} />
-        </div>
-
-        <hr className={classes.separator} style={{ backgroundColor: color }} />
-
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Tradicional Segunda del Quini
-          </Typography>
-        </div>
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
+                {sort.sorteo}
+              </strong>{" "}
+              <span className={classes.sortSpan}>Fetcha:</span>
+              <strong
+                className={classes.sortStrong}
                 style={{
-                  flexBasis: "15%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
                 }}
               >
+                {sort.Fetcha}
+              </strong>
+            </div>
+          )}
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Tradicional Primer Sorteo
+            </Typography>
+          </div>
+          {/* <div className={classes.numbers}> */}
+          <div className={classes.numRow}>
+            {wins.map((a, i) => {
+              return (
                 <div
-                  className={classes.num}
                   style={{
-                    color: "white",
-                    backgroundColor: color ? `${color}` : null,
+                    flexBasis: "15%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
                   }}
                 >
-                  {a}
+                  <div
+                    className={classes.num}
+                    style={{
+                      color: "white",
+                      backgroundColor: color ? `${color}` : null,
+                    }}
+                  >
+                    {a}
+                  </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
-        <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
-          <Table headers={tableHeaders} data={tableData} color={color} />
-        </div>
-        <hr className={classes.separator} style={{ backgroundColor: color }} />
+              )
+            })}
+          </div>
 
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Revancha
-          </Typography>
-        </div>
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "15%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
+          <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
+            <Table headers={tableHeaders} data={tableData} color={color} />
+          </div>
+
+          <hr
+            className={classes.separator}
+            style={{ backgroundColor: color }}
+          />
+
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Tradicional Segunda del Quini
+            </Typography>
+          </div>
+          <div className={classes.numRow}>
+            {wins.map((a, i) => {
+              return (
                 <div
-                  className={classes.num}
                   style={{
-                    color: "white",
-                    backgroundColor: color ? `${color}` : null,
+                    flexBasis: "15%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
                   }}
                 >
-                  {a}
+                  <div
+                    className={classes.num}
+                    style={{
+                      color: "white",
+                      backgroundColor: color ? `${color}` : null,
+                    }}
+                  >
+                    {a}
+                  </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Pozo Estimado para la Proxima Jugada
-          </Typography>
-        </div>
-        <div className={classes.centerContainer}>
-          <Button
-            variant="contained"
+              )
+            })}
+          </div>
+          <div style={{ padding: "0 1.1rem", marginTop: "20px" }}>
+            <Table headers={tableHeaders} data={tableData} color={color} />
+          </div>
+          <hr
+            className={classes.separator}
+            style={{ backgroundColor: color }}
+          />
+
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Revancha
+            </Typography>
+          </div>
+          <div className={classes.numRow}>
+            {wins.map((a, i) => {
+              return (
+                <div
+                  style={{
+                    flexBasis: "15%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
+                  }}
+                >
+                  <div
+                    className={classes.num}
+                    style={{
+                      color: "white",
+                      backgroundColor: color ? `${color}` : null,
+                    }}
+                  >
+                    {a}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Pozo Estimado para la Proxima Jugada
+            </Typography>
+          </div>
+          <div className={classes.centerContainer}>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: color ? `${color}` : null,
+              }}
+              className={classes.Btn}
+            >
+              $ 56.714.048,73
+            </Button>
+            <h2>Vacante</h2>
+          </div>
+          <hr
+            className={classes.separator}
+            style={{ backgroundColor: color }}
+          />
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Siempre Sale
+            </Typography>
+          </div>
+          <div className={classes.numRow}>
+            {wins.map((a, i) => {
+              return (
+                <div
+                  style={{
+                    flexBasis: "15%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
+                  }}
+                >
+                  <div
+                    className={classes.num}
+                    style={{
+                      color: "white",
+                      backgroundColor: color ? `${color}` : null,
+                    }}
+                  >
+                    {a}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <div className={classes.horizontalContainer}>
+            <p className={classes.cont}>con 5 aciertos </p>
+            <p className={classes.cont}>54 ganadores </p>
+            <p className={classes.cont} style={{ border: "none" }}>
+              $88.751,38
+            </p>
+          </div>
+          <hr
+            className={classes.separator}
+            style={{ backgroundColor: color }}
+          />
+          <div className={classes.Premiados}>
+            <Typography
+              variant="h4"
+              component="h3"
+              className={classes.PremiadosHeading}
+            >
+              Super canasta de Premios Extra
+            </Typography>
+          </div>
+          <div className={classes.centerContainer}>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: color ? `${color}` : null,
+                boxShadow: "none",
+              }}
+              className={classes.Btn}
+            >
+              $ 3,000,000
+            </Button>
+            <h3 style={{ margin: "10px 0" }}>Con 6 Aciertos 301 Ganadores</h3>
+            <h3 style={{ margin: 0 }}>que cobran $ 16.611,30 cada uno</h3>
+          </div>
+          <div
+            className={classes.Pozo}
             style={{
-              backgroundColor: color ? `${color}` : null,
+              backgroundColor: color,
             }}
-            className={classes.Btn}
           >
-            $ 56.714.048,73
-          </Button>
-          <h2>Vacante</h2>
-        </div>
-        <hr className={classes.separator} style={{ backgroundColor: color }} />
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Siempre Sale
-          </Typography>
-        </div>
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "15%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
-                <div
-                  className={classes.num}
-                  style={{
-                    color: "white",
-                    backgroundColor: color ? `${color}` : null,
-                  }}
-                >
-                  {a}
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <div className={classes.horizontalContainer}>
-          <p className={classes.cont}>con 5 aciertos </p>
-          <p className={classes.cont}>54 ganadores </p>
-          <p className={classes.cont} style={{ border: "none" }}>
-            $88.751,38
-          </p>
-        </div>
-        <hr className={classes.separator} style={{ backgroundColor: color }} />
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h4"
-            component="h3"
-            className={classes.PremiadosHeading}
-          >
-            Super canasta de Premios Extra
-          </Typography>
-        </div>
-        <div className={classes.centerContainer}>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: color ? `${color}` : null,
-              boxShadow: "none",
-            }}
-            className={classes.Btn}
-          >
-            $ 3,000,000
-          </Button>
-          <h3 style={{ margin: "10px 0" }}>Con 6 Aciertos 301 Ganadores</h3>
-          <h3 style={{ margin: 0 }}>que cobran $ 16.611,30 cada uno</h3>
-        </div>
-        <div
-          className={classes.Pozo}
-          style={{
-            backgroundColor: color,
-          }}
-        >
-          <Typography
-            variant="h3"
-            component="h2"
-            className={classes.PremiadosHeading}
-            style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
-          >
-            Pozo Estimado para la Proxima Jugada
-          </Typography>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: color ? `${color}` : null,
-              border: "1px solid #fff",
-            }}
-            className={classes.Btn}
-          >
-            $1,000,000
-          </Button>
+            <Typography
+              variant="h3"
+              component="h2"
+              className={classes.PremiadosHeading}
+              style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
+            >
+              Pozo Estimado para la Proxima Jugada
+            </Typography>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: color ? `${color}` : null,
+                border: "1px solid #fff",
+              }}
+              className={classes.Btn}
+            >
+              $1,000,000
+            </Button>
+          </div>
         </div>
       </div>
-      {/* <div className={classes.icons} style={{ backgroundColor: "#F3F4FE" }}>
-        <Icons />
-      </div> */}
     </div>
   )
 }

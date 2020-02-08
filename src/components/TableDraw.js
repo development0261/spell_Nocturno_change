@@ -14,6 +14,7 @@ import loto5Bg from "../images/loto5Bg.svg"
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    // backgroundColor: "#fff",
     padding: "1rem 0.2rem 0 0.2rem",
     [theme.breakpoints.down("sm")]: {
       padding: "6px",
@@ -55,18 +56,24 @@ const useStyles = makeStyles(theme => ({
   brincoContainer: {
     display: "flex",
     justifyContent: "center",
-    padding: "10px 0",
+    padding: "25px 0",
     // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
+      padding: "15px 0",
       // height: 80,
     },
   },
   brinco: {
-    width: "20%",
+    width: "35%",
     // margin: "1rem",
+    // height: 96,
+    maxWidth: "120px",
+    minheight: "50px",
+    maxheight: "50px",
     [theme.breakpoints.down("xs")]: {
+      maxWidth: "100px",
+      // maxheight: "44px",
       // width: 60,
-      // height: 45,
     },
   },
   Premiados: {
@@ -387,164 +394,166 @@ function LiveStream({
   let bgImg = (img === "loto5" && loto5Bg) || (img === "telekino" && teleKinoBg)
   return (
     <div className={classes.root} id={"bronco-section"}>
-      <div
-        className={classes.Border}
-        style={{
-          backgroundImage: `url(${bgImg})`,
-          backgroundPosition: "50% 20%",
-          width: "100%",
-          height: "100%",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          // imageRendering: "crisp-edges",
-        }}
-      >
-        <div className={classes.Container}>
-          <div className={classes.Loader}></div>
-          <Typography variant="h4" component="h2" className={classes.h3}>
-            Próximo sorteo: <span className={classes.timer}>1</span> día{" "}
-            <span className={classes.timer}>17</span> horas{" "}
-            <span className={classes.timer}>32</span> minutos
-          </Typography>
-        </div>
-
+      <div style={{ backgroundColor: "#fff" }}>
         <div
-          className={classes.brincoContainer}
+          className={classes.Border}
           style={{
-            backgroundColor: bg
-              ? `rgba(${bg.headColor},0.5)`
-              : color
-              ? color
-              : null,
-            padding: img === "loto5" && "15px 0",
+            backgroundImage: `url(${bgImg})`,
+            backgroundPosition: "50% 20%",
+            width: "100%",
+            height: "100%",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            // imageRendering: "crisp-edges",
           }}
         >
-          <Img
-            fluid={image}
-            className={classes.brinco}
-            style={{ margin: img === "loto5" && "1rem" }}
-            fadeIn={false}
-            alt="Brinco de hoy"
-          />
-        </div>
-        {sort && (
-          <div className={classes.sort}>
-            <span
-              className={classes.sortSpan}
-              style={{ color: textColor ? textColor : null }}
-            >
-              Sorteo#:
-            </span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.sorteo}
-            </strong>{" "}
-            <span
-              className={classes.sortSpan}
-              style={{ color: textColor ? textColor : null }}
-            >
-              Fetcha:
-            </span>
-            <strong
-              className={classes.sortStrong}
-              style={{
-                backgroundColor: sort.color ? `${sort.color}` : `${color}`,
-              }}
-            >
-              {sort.Fetcha}
-            </strong>
-          </div>
-        )}
-
-        {winHeader && (
-          <div className={classes.Premiados}>
-            <Typography
-              variant="h4"
-              component="h3"
-              className={classes.PremiadosHeading}
-              style={{ color: textColor ? textColor : null }}
-            >
-              {winHeader}
+          <div className={classes.Container}>
+            <div className={classes.Loader}></div>
+            <Typography variant="h4" component="h2" className={classes.h3}>
+              Próximo sorteo: <span className={classes.timer}>1</span> día{" "}
+              <span className={classes.timer}>17</span> horas{" "}
+              <span className={classes.timer}>32</span> minutos
             </Typography>
           </div>
-        )}
 
-        {/* <div className={classes.numbers}> */}
-        <div className={classes.numRow}>
-          {wins.map((a, i) => {
-            return (
-              <div
-                style={{
-                  flexBasis: "20%",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "30px",
-                }}
-              >
-                <div
-                  className={classes.num}
-                  style={{
-                    backgroundColor: color ? `${color}` : null,
-                  }}
-                >
-                  {a}
-                </div>
-              </div>
-            )
-          })}
-        </div>
-
-        <div className={classes.Premiados}>
-          <Typography
-            variant="h3"
-            component="h2"
-            className={classes.PremiadosHeading}
-            style={{ color: textColor ? textColor : null }}
-          >
-            Distribucion de Premios
-          </Typography>
-        </div>
-        <div style={{ padding: "0 0.8rem" }}>
-          <Table headers={tableHeaders} data={tableData} color={color} />
-        </div>
-        {prize && (
           <div
-            className={classes.Pozo}
+            className={classes.brincoContainer}
             style={{
-              backgroundColor: backgroundColor
-                ? transparent
-                  ? `rgba(${backgroundColor}, .8)`
-                  : `rgb(${backgroundColor})`
+              backgroundColor: bg
+                ? `rgba(${bg.headColor},0.5)`
+                : color
+                ? color
                 : null,
+              // padding: img === "loto5" && "15px 0",
             }}
           >
+            <Img
+              fluid={image}
+              className={classes.brinco}
+              style={{ margin: img === "loto5" && "1rem" }}
+              fadeIn={false}
+              alt="Brinco de hoy"
+            />
+          </div>
+          {sort && (
+            <div className={classes.sort}>
+              <span
+                className={classes.sortSpan}
+                style={{ color: textColor ? textColor : null }}
+              >
+                Sorteo#:
+              </span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {sort.sorteo}
+              </strong>{" "}
+              <span
+                className={classes.sortSpan}
+                style={{ color: textColor ? textColor : null }}
+              >
+                Fetcha:
+              </span>
+              <strong
+                className={classes.sortStrong}
+                style={{
+                  backgroundColor: sort.color ? `${sort.color}` : `${color}`,
+                }}
+              >
+                {sort.Fetcha}
+              </strong>
+            </div>
+          )}
+
+          {winHeader && (
+            <div className={classes.Premiados}>
+              <Typography
+                variant="h4"
+                component="h3"
+                className={classes.PremiadosHeading}
+                style={{ color: textColor ? textColor : null }}
+              >
+                {winHeader}
+              </Typography>
+            </div>
+          )}
+
+          {/* <div className={classes.numbers}> */}
+          <div className={classes.numRow}>
+            {wins.map((a, i) => {
+              return (
+                <div
+                  style={{
+                    flexBasis: "20%",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
+                  }}
+                >
+                  <div
+                    className={classes.num}
+                    style={{
+                      backgroundColor: color ? `${color}` : null,
+                    }}
+                  >
+                    {a}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          <div className={classes.Premiados}>
             <Typography
               variant="h3"
               component="h2"
               className={classes.PremiadosHeading}
-              style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
+              style={{ color: textColor ? textColor : null }}
             >
-              {prize[0]}
+              Distribucion de Premios
             </Typography>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: color ? `${color}` : null,
-              }}
-              className={classes.Btn}
-            >
-              ${prize[1]}
-            </Button>
           </div>
-        )}
-      </div>
-      {/* <div className={classes.icons}>
+          <div style={{ padding: "0 0.8rem" }}>
+            <Table headers={tableHeaders} data={tableData} color={color} />
+          </div>
+          {prize && (
+            <div
+              className={classes.Pozo}
+              style={{
+                backgroundColor: backgroundColor
+                  ? transparent
+                    ? `rgba(${backgroundColor}, .8)`
+                    : `rgb(${backgroundColor})`
+                  : null,
+              }}
+            >
+              <Typography
+                variant="h3"
+                component="h2"
+                className={classes.PremiadosHeading}
+                style={{ color: prizeHeadColor ? prizeHeadColor : "white" }}
+              >
+                {prize[0]}
+              </Typography>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: color ? `${color}` : null,
+                }}
+                className={classes.Btn}
+              >
+                ${prize[1]}
+              </Button>
+            </div>
+          )}
+        </div>
+        {/* <div className={classes.icons}>
         <Icons />
       </div> */}
+      </div>
     </div>
   )
 }

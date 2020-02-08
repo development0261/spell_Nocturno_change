@@ -48,12 +48,13 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 750,
     margin: "auto",
     padding: 0,
+    // backgroundColor: "#F3F4FE",
   },
   root: {
     [theme.breakpoints.up("md")]: {
       boxShadow: "none",
     },
-    backgroundColor: "#dbecf8",
+    backgroundColor: "#F3F4FE",
   },
 }))
 
