@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container"
 
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import TableDescription from "../components/TableDesc"
 import TableDraw from "../components/TableDraw"
 import Icons from "../components/home/Icons"
@@ -51,9 +51,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     fontFamily: "'Montserrat', sans-serif",
     backgroundColor: "#F3F4FE",
-    [theme.breakpoints.up("md")]: {
-      // backgroundColor: "#F3F4FE",
-    },
+    [theme.breakpoints.up("md")]: {},
   },
   container: {
     maxWidth: 750,
@@ -64,7 +62,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       boxShadow: "none",
     },
-    // backgroundColor: "#F3F4FE",
   },
   icons: {
     marginBottom: "5rem",

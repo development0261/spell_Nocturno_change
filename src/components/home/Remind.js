@@ -1,9 +1,7 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-
-
+import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
+import Typography from "@material-ui/core/Typography"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -32,22 +30,25 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#262d31",
     [theme.breakpoints.down("sm")]: {
       padding: "1rem",
-    }
+    },
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   h4: {
     marginLeft: "3rem",
-    fontFamily:"Open Sans",
+    fontFamily: "Open Sans",
     fontWeight: 700,
     [theme.breakpoints.down("sm")]: {
       marginLeft: "1rem",
-      fontSize: "1rem"
-    }
+      fontSize: "1rem",
+    },
   },
   reminder: {
     width: "2rem",
     [theme.breakpoints.down("sm")]: {
       width: "1rem",
-    }
+    },
   },
   updateIcon: {
     width: "2rem",
@@ -56,7 +57,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       width: "1.2rem",
-    }
+    },
   },
   updateIconContainer: {
     display: "flex",
@@ -67,65 +68,84 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "4rem",
       height: "4rem",
-    }
-  }
-}));
+    },
+  },
+}))
 
-function Remind() {
-  const classes = useStyles();
+const Remind = ({ modal = () => {}, text = "Notify Me" }) => {
+  const classes = useStyles()
   const refreshPage = () => {
     console.log("refreshing page")
-    if (typeof window !== 'undefined') {
-      window.location.reload(false);
+    if (typeof window !== "undefined") {
+      window.location.reload(false)
     }
   }
   const data = useStaticQuery(graphql`
     query {
-      remindMeIcon:file(relativePath: { eq: "remindmeicon.png" }) {
+      remindMeIcon: file(relativePath: { eq: "remindmeicon.png" }) {
         childImageSharp {
-          fluid{
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      },
-      updateIcon:file(relativePath: { eq: "updateicon.png" }) {
-        childImageSharp {
-          fluid{
+          fluid {
             ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
-    }`
-  )
-
+      updateIcon: file(relativePath: { eq: "updateicon.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+    }
+  `)
   return (
-    
-    <div className={classes.root} style={{zIndex: 100}}>
+    <div className={classes.root} style={{ zIndex: 100 }}>
       <div className={classes.Container}>
-        <Grid item xs={10} sm={10} md={10} lg={10} className={classes.reminderContainer}>
+        <Grid
+          item
+          xs={10}
+          sm={10}
+          md={10}
+          lg={10}
+          className={classes.reminderContainer}
+          onClick={() => modal()}
+        >
           <Img
-              fluid={data.remindMeIcon.childImageSharp.fluid}
-              className={classes.reminder}
-              fadeIn={false}
-              backgroundColor={"#262D31"}
-              alt="Notificarme"
-              />
-          <Typography variant="h4" component="h4" className={classes.h4}>
-            NOTIFICARME
+            fluid={data.remindMeIcon.childImageSharp.fluid}
+            className={classes.reminder}
+            fadeIn={false}
+            backgroundColor={"#262D31"}
+            alt="Notificarme"
+          />
+          <Typography
+            variant="h4"
+            component="h4"
+            className={classes.h4}
+            // onCLick={() => console.log("chal jae be")}
+          >
+            {text.toUpperCase()}
           </Typography>
         </Grid>
-        <Grid item xs={2} sm={2} md={2} lg={2} className={classes.updateIconContainer}  onClick={ () => refreshPage()}>
+        <Grid
+          item
+          xs={2}
+          sm={2}
+          md={2}
+          lg={2}
+          className={classes.updateIconContainer}
+          onClick={() => refreshPage()}
+        >
           <Img
-              fluid={data.updateIcon.childImageSharp.fluid}
-              className={classes.updateIcon}
-              fadeIn={false}
-              backgroundColor={"#FCC43D"}
-              alt="Actualizar de quinielas"
-              />
+            fluid={data.updateIcon.childImageSharp.fluid}
+            className={classes.updateIcon}
+            fadeIn={false}
+            backgroundColor={"#FCC43D"}
+            alt="Actualizar de quinielas"
+          />
         </Grid>
       </div>
     </div>
-  );
+  )
 }
 
-export default Remind;
+export default Remind
