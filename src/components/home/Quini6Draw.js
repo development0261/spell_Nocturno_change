@@ -57,6 +57,7 @@ const useStyles = makeStyles(theme => ({
     padding: "15px 0",
     // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
+      padding: 0,
       //   height: 80,
     },
   },

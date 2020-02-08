@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   brincoContainer: {
     display: "flex",
     justifyContent: "center",
-    padding: "15px 0",
+    padding: "10px 0",
     // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
       // height: 80,
@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   },
   brinco: {
     width: "20%",
-    margin: "1rem",
+    // margin: "1rem",
     [theme.breakpoints.down("xs")]: {
       // width: 60,
       // height: 45,
@@ -416,11 +416,13 @@ function LiveStream({
               : color
               ? color
               : null,
+            padding: img === "loto5" && "15px 0",
           }}
         >
           <Img
             fluid={image}
             className={classes.brinco}
+            style={{ margin: img === "loto5" && "1rem" }}
             fadeIn={false}
             alt="Brinco de hoy"
           />

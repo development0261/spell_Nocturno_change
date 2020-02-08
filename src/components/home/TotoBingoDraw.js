@@ -89,7 +89,7 @@ const useStyles = makeStyles(theme => ({
   },
   brinco: {
     width: "35%",
-    margin: "1rem",
+    margin: "0.3rem 0",
     [theme.breakpoints.down("sm")]: {
       width: "25%",
 

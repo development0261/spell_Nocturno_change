@@ -58,12 +58,13 @@ const useStyles = makeStyles(theme => ({
     padding: "15px 0",
     // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
+      padding: 0,
       // height: 80,
     },
   },
   brinco: {
     width: "20%",
-    margin: "1rem",
+    // margin: "1rem",
     [theme.breakpoints.down("xs")]: {
       // width: 60,
       // height: 45,
