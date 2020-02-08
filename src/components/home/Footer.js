@@ -1,8 +1,8 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Link from "@material-ui/core/Link"
+import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid"
 
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
@@ -11,18 +11,18 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     textAlign: "center",
-    backgroundColor:"#262d31",
-    paddingBottom:55
+    backgroundColor: "#262d31",
+    paddingBottom: 55,
   },
   Content: {
     background: "#262d31",
     padding: "2rem",
     [theme.breakpoints.down("sm")]: {
-      padding: "1rem"
+      padding: "1rem",
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "1rem 0rem"
-    }
+      padding: "1rem 0rem",
+    },
   },
   Footer: {
     display: "flex",
@@ -35,44 +35,43 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.9rem",
-    }
+    },
   },
   Footertext: {
     color: "white",
     fontSize: "18px",
     [theme.breakpoints.down("xs")]: {
       fontSize: "0.6rem",
-    }
+    },
   },
   Links: {
-    display: "contents"
+    display: "contents",
   },
-  logoContainer:{
-    width:300,
-    justifyContent:'center'
+  logoContainer: {
+    width: 300,
+    justifyContent: "center",
   },
   Logo: {
-    width: "90%"
-    
+    width: "90%",
   },
-  hr:{
-    border:'0.5px solid grey',
-  }
-}));
+  hr: {
+    border: "0.5px solid grey",
+  },
+}))
 
 const Footer = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      logo:file(relativePath: { eq: "quinielashoylogo.png" }) {
+      logo: file(relativePath: { eq: "quinielashoylogo.png" }) {
         childImageSharp {
-          fluid{
+          fluid {
             ...GatsbyImageSharpFluid_tracedSVG
           }
         }
-      },
-    }`
-  )
+      }
+    }
+  `)
   return (
     <div className={classes.root}>
       <div className={classes.Content}>
@@ -89,8 +88,15 @@ const Footer = () => {
             </Link>
           </Typography>
         </Grid>
-        <hr className={classes.hr}/>
-        <Grid container item xs={12} className={classes.Footer} style={{flexDirection: "column"}} alignItems="center">
+        <hr className={classes.hr} />
+        <Grid
+          container
+          item
+          xs={12}
+          className={classes.Footer}
+          style={{ flexDirection: "column" }}
+          alignItems="center"
+        >
           <div className={classes.logoContainer}>
             <Img
               fluid={data.logo.childImageSharp.fluid}
@@ -98,13 +104,13 @@ const Footer = () => {
               alt="Quinielashoy.com"
             />
             <Typography className={classes.Footertext}>
-              <spane>Jugar Compulsivamente es Prejudical para la Salud</spane>
+              <span>Jugar Compulsivamente es Prejudical para la Salud</span>
             </Typography>
           </div>
         </Grid>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

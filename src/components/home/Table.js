@@ -19,9 +19,9 @@ import Img from "gatsby-image"
 
 const StyledTableCell = withStyles(theme => ({
   root: {
-    padding: props => (props.active ? "0" : "16px 5px"),
+    padding: props => (props.active ? "0" : "16px 0"),
     [theme.breakpoints.down("xs")]: {
-      padding: props => (props.active ? "0" : "16px 5px"),
+      padding: props => (props.active ? "0" : "16px 0"),
     },
   },
   head: {
