@@ -58,9 +58,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     overflowX: "scroll",
 
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
     [theme.breakpoints.down("sm")]: {
       padding: "2rem 0.5rem 2rem 0.5rem",
     },
@@ -79,7 +76,6 @@ const useStyles = makeStyles(theme => ({
   imgContainer: {
     display: "flex",
     justifyContent: "center",
-
     alignItems: "center",
     flexShrink: 1,
     marginRight: 15,
