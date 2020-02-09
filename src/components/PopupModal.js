@@ -42,12 +42,18 @@ const useStyles = makeStyles(theme => ({
   closeBtn: {
     float: "right",
     marginRight: "30px",
+    maxWidth: "25px",
     marginBottom: "15px",
     fontWeight: "bolder",
     fontSize: "1.2em",
     cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
-      marginRight: "15px",
+      marginRight: "18px",
+      maxWidth: "20px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.9em",
+      maxWidth: "17px",
     },
   },
   separator: {
@@ -164,8 +170,12 @@ const PopupModal = ({ close }) => {
       <div className={classes.display}>
         <div className={classes.modalHeader}>
           Notify me about the lotteries
-          <span className={classes.closeBtn} onClick={() => close()}>
-            X
+          <span onClick={() => close()}>
+            <img
+              src={require("../images/Close_Icon.svg")}
+              alt="close icon"
+              className={classes.closeBtn}
+            />
           </span>
         </div>
         <hr className={classes.blueSeparator} />
