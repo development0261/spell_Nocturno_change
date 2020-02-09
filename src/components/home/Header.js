@@ -26,14 +26,14 @@ const useStyles = makeStyles(theme => ({
   toolBar: {
     display: "flex",
     justifyContent: "space-between",
-    width: "95%",
-    padding: 16,
+    width: "100%",
+    padding: "16px 25px",
     [theme.breakpoints.down("xs")]: {
       padding: "5px",
     },
   },
   Logo: {
-    paddingLeft: "20px",
+    // paddingLeft: "20px",
     marginTop: 4.5,
     width: "300px !important",
     height: "auto",
@@ -42,14 +42,14 @@ const useStyles = makeStyles(theme => ({
       marginLeft: 10,
     },
     [theme.breakpoints.down("xs")]: {
-      width: "250px !important",
-      height: "30px !important",
+      width: "230px !important",
+      height: "28px !important",
     },
   },
   menuButton: {
-    float: "right",
+    // float: "right",
     color: "#384fb5",
-    marginRight: -31,
+    marginRight: -10,
     [theme.breakpoints.down("xs")]: {
       marginRight: 0,
     },
