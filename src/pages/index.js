@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 
 import Loadable from "react-loadable"
 
@@ -6,7 +6,6 @@ import Container from "@material-ui/core/Container"
 
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
-import PopupModal from "../components/PopupModal"
 
 const LoaderPlaceholder = () => (
   <div style={{ height: "100vh", width: "100vh" }}></div>
@@ -63,14 +62,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function App() {
-  const [modal, setModal] = useState(false)
-  const [modalValue, setModalValue] = useState("Notify Me")
-
-  const openModal = () => {
-    setModal(!modal)
-    modal ? setModalValue("Notify Me") : setModalValue("Save")
-  }
-
   const classes = useStyles()
   return (
     <LoadableLayout
@@ -80,9 +71,8 @@ function App() {
         <LoadableHeader />
         <Container className={classes.container}>
           <Paper className={classes.root}>
-            {modal && <PopupModal />}
             <LoadableLiveStream />
-            <LoadableRemind modal={() => openModal()} text={modalValue} />
+            <LoadableRemind popup={true} />
             <LoadablePozoEstimado />
           </Paper>
         </Container>

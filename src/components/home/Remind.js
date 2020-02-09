@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Remind = () => {
+const Remind = ({ popup }) => {
   const classes = useStyles()
 
   const [modal, setModal] = useState(false)
@@ -82,7 +82,11 @@ const Remind = () => {
 
   const openModal = () => {
     setModal(!modal)
-    modal ? setModalValue("Notify Me") : setModalValue("Save")
+    popup
+      ? modal
+        ? setModalValue("Notify Me")
+        : setModalValue("Save")
+      : setModalValue("Notify Me")
   }
 
   const refreshPage = () => {
@@ -111,7 +115,7 @@ const Remind = () => {
   `)
   return (
     <div className={classes.root} style={{ zIndex: 100 }}>
-      {modal && (
+      {popup && modal && (
         <div className={classes.Container}>
           <Grid item xs={10} sm={10} md={10} lg={10}>
             <PopupModal />
@@ -123,7 +127,7 @@ const Remind = () => {
         <Grid item xs={10} sm={10} md={10} lg={10} onClick={() => openModal()}>
           <div
             className={classes.reminderContainer}
-            style={{ borderTop: modal ? "2px solid #F5C65A" : null }}
+            style={{ borderTop: modal && popup ? "2px solid #F5C65A" : null }}
           >
             <Img
               fluid={data.remindMeIcon.childImageSharp.fluid}
