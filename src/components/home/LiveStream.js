@@ -97,7 +97,6 @@ function LiveStream() {
       }
     }
   `)
-  console.log("liveee", data.quiniela)
   return (
     <div className={classes.root}>
       <Grid item xs={12} sm={12} md={12} lg={12}>

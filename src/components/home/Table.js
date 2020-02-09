@@ -35,8 +35,8 @@ const StyledTableCell = withStyles(theme => ({
       borderLeft: "unset !important",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1rem",
-      minWidth: 47,
+      fontSize: "0.9rem",
+      minWidth: 40,
       borderLeft: "2px solid #fef2d5",
     },
   },
@@ -46,8 +46,15 @@ const StyledTableCell = withStyles(theme => ({
     fontWeight: "400",
     backgroundColor: "#fff",
     textAlign: "center",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: "0.8rem",
+      fontWeight: "500",
+      "&:first-child": {
+        fontWeight: "700",
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.6rem",
       fontWeight: "500",
       "&:first-child": {
         fontWeight: "700",
@@ -129,10 +136,14 @@ function StreamTable({ width }) {
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
       <TableContainer component={Paper} className={classes.tableContainer}>
-        <Table className={classes.table} aria-label="customized table">
+        <Table
+          className={classes.table}
+          style={{ tableLayout: "fixed" }}
+          aria-label="customized table"
+        >
           <TableHead>
             <TableRow className={classes.Head}>
-              <StyledTableCell width>Quiniela</StyledTableCell>
+              <StyledTableCell>Quiniela</StyledTableCell>
               <StyledTableCell
                 align="center"
                 color="#150898"
