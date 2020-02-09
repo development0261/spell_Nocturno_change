@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0.5rem",
+    padding: "0.1rem",
     [theme.breakpoints.down("sm")]: {
       padding: "0.2rem",
     },
@@ -55,23 +55,15 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     padding: "25px 0",
-    // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
       padding: "15px 0",
-      // height: 80,
     },
   },
   brinco: {
-    width: "35%",
-    // margin: "1rem",
-    // height: 96,
-    maxWidth: "200px",
-    minheight: "50px",
-    // maxheight: "50px",
+    width: "100%",
+    height: "97px",
     [theme.breakpoints.down("xs")]: {
-      maxWidth: "180px",
-      // maxheight: "44px",
-      // width: 60,
+      height: "47px",
     },
   },
   Premiados: {
@@ -204,7 +196,7 @@ const useStyles = makeStyles(theme => ({
     transform: "rotate(45deg)",
   },
   timer: {
-    fontSize: "1.5rem",
+    fontSize: "2rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.3rem",
     },
@@ -393,30 +385,16 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function LiveStream({
-  //   wins,
-  img,
-  //   sort,
-  //   tableHeaders,
-  //   tableData,
-  prize,
-  //   color,
-  backgroundColor,
-  prizeHeadColor,
-}) {
+function LiveStream({ img, prize, backgroundColor, prizeHeadColor }) {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      quini6: file(relativePath: { eq: "quini6.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      quini6: file(relativePath: { eq: "quini6.svg" }) {
+        relativePath
       }
     }
   `)
-  let image = data.quini6.childImageSharp.fluid
+  let image = data.quini6.relativePath
   let wins = [10, 20, 30, 40, 50, 60]
   let color = "#1CD7DA"
   let tableHeaders = ["Aciertos", "Ganadores", "Premio"]
@@ -451,11 +429,9 @@ function LiveStream({
             className={classes.brincoContainer}
             style={{ backgroundColor: color ? `${color}` : null }}
           >
-            <Img
-              fluid={image}
+            <img
               className={classes.brinco}
-              fadeIn={false}
-              alt="Brinco de hoy"
+              src={require(`../../images/${image}`)}
             />
           </div>
           {sort && (

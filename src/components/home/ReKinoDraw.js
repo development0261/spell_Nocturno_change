@@ -53,17 +53,16 @@ const useStyles = makeStyles(theme => ({
   brincoContainer: {
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "#4163ee",
+    padding: "25px 0",
     [theme.breakpoints.down("xs")]: {
-      // height: 80,
+      padding: "15px 0",
     },
   },
   brinco: {
-    width: "15%",
-    margin: "1rem",
+    width: "100%",
+    height: "97px",
     [theme.breakpoints.down("xs")]: {
-      // width: 60,
-      // height: 45,
+      height: "47px",
     },
   },
   Premiados: {
@@ -307,16 +306,12 @@ function LiveStream({
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      rekino: file(relativePath: { eq: "rekino.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      rekino: file(relativePath: { eq: "rekino.svg" }) {
+        relativePath
       }
     }
   `)
-  let image = data.rekino.childImageSharp.fluid
+  let image = data.rekino.relativePath
   let {
     tableData1,
     tableHeaders1,
@@ -326,7 +321,6 @@ function LiveStream({
     total,
     winningNums,
   } = rekinoData
-  console.log("rekino", rekinoData)
   return (
     <div className={classes.root} id={"bronco-section"}>
       <div style={{ backgroundColor: "#fff" }}>
@@ -344,11 +338,9 @@ function LiveStream({
             className={classes.brincoContainer}
             style={{ backgroundColor: color ? `${color}` : null }}
           >
-            <Img
-              fluid={image}
+            <img
               className={classes.brinco}
-              fadeIn={false}
-              alt="Brinco de hoy"
+              src={require(`../../images/${image}`)}
             />
           </div>
 

@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0.3rem",
+    padding: "0.1rem",
     [theme.breakpoints.down("sm")]: {
       padding: "0.2rem",
     },
@@ -57,25 +57,18 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     padding: "25px 0",
-    // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
       padding: "15px 0",
-      // height: 80,
     },
   },
   brinco: {
-    width: "35%",
-    // margin: "1rem",
-    // height: 96,
-    maxWidth: "120px",
-    minheight: "50px",
-    maxheight: "50px",
+    width: "100%",
+    height: "97px",
     [theme.breakpoints.down("xs")]: {
-      maxWidth: "100px",
-      // maxheight: "44px",
-      // width: 60,
+      height: "47px",
     },
   },
+
   Premiados: {
     display: "flex",
     flexDirection: "column",
@@ -305,91 +298,32 @@ function LiveStream({
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      logo: file(relativePath: { eq: "quinielashoylogo.png" }) {
-        childImageSharp {
-          fixed(width: 280) {
-            ...GatsbyImageSharpFixed_tracedSVG
-          }
-        }
+      logo: file(relativePath: { eq: "quinielashoylogo.svg" }) {
+        relativePath
       }
-      quiniela: file(relativePath: { eq: "quiniela.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      telekino: file(relativePath: { eq: "telekino.svg" }) {
+        relativePath
       }
-      telekino: file(relativePath: { eq: "telekino.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      brinco: file(relativePath: { eq: "brinco.svg" }) {
+        relativePath
       }
-      quini6: file(relativePath: { eq: "quini6.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      quini: file(relativePath: { eq: "quini.svg" }) {
+        relativePath
       }
-      brinco: file(relativePath: { eq: "brinco.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      loto5: file(relativePath: { eq: "loto5.svg" }) {
+        relativePath
       }
-      lotoPlus: file(relativePath: { eq: "loto_plus.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      quini: file(relativePath: { eq: "quini.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      totobingo: file(relativePath: { eq: "totobingo.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      quinielaPoceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      loto5: file(relativePath: { eq: "loto5.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      quiniela_poceada: file(relativePath: { eq: "quiniela_poceada.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      quiniela_poceada: file(relativePath: { eq: "quiniela_poceada.svg" }) {
+        relativePath
       }
     }
   `)
   let image =
-    (img === "brinco" && data.brinco.childImageSharp.fluid) ||
-    (img === "telekino" && data.telekino.childImageSharp.fluid) ||
-    (img === "quinielaplus" && data.quini.childImageSharp.fluid) ||
-    (img === "loto5" && data.loto5.childImageSharp.fluid) ||
-    (img === "quiniela_poceada" && data.quiniela_poceada.childImageSharp.fluid)
+    (img === "brinco" && data.brinco.relativePath) ||
+    (img === "telekino" && data.telekino.relativePath) ||
+    (img === "quinielaplus" && data.quini.relativePath) ||
+    (img === "loto5" && data.loto5.relativePath) ||
+    (img === "quiniela_poceada" && data.quiniela_poceada.relativePath)
 
   let bgImg = (img === "loto5" && loto5Bg) || (img === "telekino" && teleKinoBg)
   return (
@@ -427,13 +361,17 @@ function LiveStream({
               // padding: img === "loto5" && "15px 0",
             }}
           >
-            <Img
+            <img
+              src={require(`../images/${image}`)}
+              className={classes.brinco}
+            />
+            {/* <Img
               fluid={image}
               className={classes.brinco}
               style={{ margin: img === "loto5" && "1rem" }}
               fadeIn={false}
               alt="Brinco de hoy"
-            />
+            /> */}
           </div>
           {sort && (
             <div className={classes.sort}>

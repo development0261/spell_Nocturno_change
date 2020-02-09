@@ -55,6 +55,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#fcc43e",
     display: "flex",
     justifyContent: "center",
+    // height: "10%",
     padding: "25px 0",
     // backgroundColor: "#4163ee",
     [theme.breakpoints.down("xs")]: {
@@ -63,14 +64,17 @@ const useStyles = makeStyles(theme => ({
     },
   },
   quinielaImg: {
-    width: "35%",
+    width: "100%",
     // margin: "1rem",
     // height: 96,
-    maxWidth: "150px",
-    minheight: "50px",
+    // maxWidth: "150px",
+    height: "97px",
+    // minheight: "50px",
     // maxheight: "50px",
     [theme.breakpoints.down("xs")]: {
-      maxWidth: "120px",
+      // maxWidth: "120px",
+      height: "47px",
+      // maxWidth: "120px",
       // maxheight: "44px",
       // width: 60,
     },
@@ -88,28 +92,28 @@ function LiveStream() {
           }
         }
       }
-      quiniela: file(relativePath: { eq: "quiniela.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      quiniela: file(relativePath: { eq: "quiniela.svg" }) {
+        relativePath
       }
     }
   `)
-
+  console.log("liveee", data.quiniela)
   return (
     <div className={classes.root}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <div className={classes.Border}>
           <TableHeader />
           <div className={classes.Image}>
-            <Img
-              fluid={data.quiniela.childImageSharp.fluid}
+            <img
+              src={require(`../../images/${data.quiniela.relativePath}`)}
+              className={classes.quinielaImg}
+            />
+            {/* <Img
+              fluid={data.quiniela.absolutePath}
               className={classes.quinielaImg}
               fadeIn={false}
               alt="Sorteando - en vivo ..."
-            />
+            /> */}
           </div>
           <Table />
         </div>

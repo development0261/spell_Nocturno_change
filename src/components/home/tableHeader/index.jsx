@@ -41,9 +41,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0.1em",
+    padding: "0.1rem",
     [theme.breakpoints.down("xs")]: {
-      padding: "5px",
+      padding: ".2rem",
     },
   },
   nextDrawLoader: {
