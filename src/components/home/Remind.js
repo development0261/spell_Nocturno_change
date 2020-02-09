@@ -77,7 +77,7 @@ const useStyles = makeStyles(theme => ({
 const Remind = ({ popup }) => {
   const classes = useStyles()
 
-  const [modal, setModal] = useState(true)
+  const [modal, setModal] = useState(false)
   const [modalValue, setModalValue] = useState("Notify Me")
 
   useEffect(() => {
