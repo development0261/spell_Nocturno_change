@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
@@ -77,8 +77,12 @@ const useStyles = makeStyles(theme => ({
 const Remind = ({ popup }) => {
   const classes = useStyles()
 
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(true)
   const [modalValue, setModalValue] = useState("Notify Me")
+
+  useEffect(() => {
+    popup && modal ? setModalValue("Save") : setModalValue("Notify Me")
+  }, [])
 
   const openModal = () => {
     setModal(!modal)
@@ -118,7 +122,7 @@ const Remind = ({ popup }) => {
       {popup && modal && (
         <div className={classes.Container}>
           <Grid item xs={10} sm={10} md={10} lg={10}>
-            <PopupModal />
+            <PopupModal close={openModal} />
           </Grid>
         </div>
       )}

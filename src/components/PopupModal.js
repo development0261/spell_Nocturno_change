@@ -25,19 +25,29 @@ const useStyles = makeStyles(theme => ({
   modalHeader: {
     width: "100%",
     marginTop: "3%",
-    padding: "20px 1em",
+    padding: "3px 0",
     textAlign: "center",
     color: "#E3E5ED",
     fontWeight: "600",
-    fontSize: "1.9em",
+    fontSize: "1.7em",
     height: "6%",
     [theme.breakpoints.down("sm")]: {
-      padding: "10px",
-      fontSize: "1.7em",
+      padding: 0,
+      fontSize: "1.6em",
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "10px",
-      fontSize: "1.1em",
+      fontSize: "0.9em",
+    },
+  },
+  closeBtn: {
+    float: "right",
+    marginRight: "30px",
+    marginBottom: "15px",
+    fontWeight: "bolder",
+    fontSize: "1.2em",
+    cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "15px",
     },
   },
   separator: {
@@ -76,7 +86,7 @@ const useStyles = makeStyles(theme => ({
       padding: "5px",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "1em",
+      fontSize: "0.9em",
       fontWeight: "500",
       marginLeft: "7px",
       padding: "5px",
@@ -139,7 +149,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const PopupModal = () => {
+const PopupModal = ({ close }) => {
   const classes = useStyles()
 
   const data = [
@@ -152,7 +162,12 @@ const PopupModal = () => {
   return (
     <div className={classes.overlay}>
       <div className={classes.display}>
-        <div className={classes.modalHeader}>Notify me about the lotteries</div>
+        <div className={classes.modalHeader}>
+          Notify me about the lotteries
+          <span className={classes.closeBtn} onClick={() => close()}>
+            X
+          </span>
+        </div>
         <hr className={classes.blueSeparator} />
         <hr className={classes.separator} />
         <div className={classes.modalData}>
@@ -171,10 +186,9 @@ const PopupModal = () => {
                       icon={<span className={classes.icon} />}
                     />
                   }
-                  //   label={item}
+                  label={item}
                   labelPlacement="end"
                 />{" "}
-                {item}
               </div>
             )
           })}
