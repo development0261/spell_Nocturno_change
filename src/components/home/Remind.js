@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import PopupModal from "../PopupModal"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     padding: "0.5rem",
     color: "#fcc43e",
     backgroundColor: "#262d31",
+    // borderTop: "1px solid #F5C65A",
     [theme.breakpoints.down("sm")]: {
       padding: "1rem",
     },
@@ -67,13 +69,22 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#fcc43e",
     [theme.breakpoints.down("sm")]: {
       width: "4rem",
-      height: "4rem",
+      // height: "4rem",
     },
   },
 }))
 
-const Remind = ({ modal = () => {}, text = "Notify Me" }) => {
+const Remind = () => {
   const classes = useStyles()
+
+  const [modal, setModal] = useState(false)
+  const [modalValue, setModalValue] = useState("Notify Me")
+
+  const openModal = () => {
+    setModal(!modal)
+    modal ? setModalValue("Notify Me") : setModalValue("Save")
+  }
+
   const refreshPage = () => {
     console.log("refreshing page")
     if (typeof window !== "undefined") {
@@ -100,31 +111,31 @@ const Remind = ({ modal = () => {}, text = "Notify Me" }) => {
   `)
   return (
     <div className={classes.root} style={{ zIndex: 100 }}>
+      {modal && (
+        <div className={classes.Container}>
+          <Grid item xs={10} sm={10} md={10} lg={10}>
+            <PopupModal />
+          </Grid>
+        </div>
+      )}
+
       <div className={classes.Container}>
-        <Grid
-          item
-          xs={10}
-          sm={10}
-          md={10}
-          lg={10}
-          className={classes.reminderContainer}
-          onClick={() => modal()}
-        >
-          <Img
-            fluid={data.remindMeIcon.childImageSharp.fluid}
-            className={classes.reminder}
-            fadeIn={false}
-            backgroundColor={"#262D31"}
-            alt="Notificarme"
-          />
-          <Typography
-            variant="h4"
-            component="h4"
-            className={classes.h4}
-            // onCLick={() => console.log("chal jae be")}
+        <Grid item xs={10} sm={10} md={10} lg={10} onClick={() => openModal()}>
+          <div
+            className={classes.reminderContainer}
+            style={{ borderTop: modal ? "2px solid #F5C65A" : null }}
           >
-            {text.toUpperCase()}
-          </Typography>
+            <Img
+              fluid={data.remindMeIcon.childImageSharp.fluid}
+              className={classes.reminder}
+              fadeIn={false}
+              backgroundColor={"#262D31"}
+              alt="Notificarme"
+            />
+            <Typography variant="h4" component="h4" className={classes.h4}>
+              {modalValue.toUpperCase()}
+            </Typography>
+          </div>
         </Grid>
         <Grid
           item

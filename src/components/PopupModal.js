@@ -5,26 +5,21 @@ import FormControlLabel from "@material-ui/core/FormControlLabel"
 
 const useStyles = makeStyles(theme => ({
   overlay: {
-    zIndex: 10,
-    position: "fixed",
+    display: "absolute",
+    width: "100%",
     top: 0,
     left: 0,
     bottom: 0,
     right: 0,
-    background: "rgba(0, 0, 0, 0.3)",
   },
   display: {
     background: "white",
-    borderRadius: "15px",
-    width: "90vw",
-    maxWidth: 500,
-    position: "absolute",
-    top: "50%",
-    left: "50%",
+    borderTopRightRadius: "5px",
+    borderTopLeftRadius: "5px",
+
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "lightblue",
-    transform: "translate(-50%, -50%)",
+    backgroundColor: "#272D31",
     zIndex: "20",
   },
   modalHeader: {
@@ -32,31 +27,36 @@ const useStyles = makeStyles(theme => ({
     marginTop: "3%",
     padding: "20px 1em",
     textAlign: "center",
-    color: "#3A50B6",
+    color: "#E3E5ED",
     fontWeight: "600",
     fontSize: "1.9em",
     height: "6%",
     [theme.breakpoints.down("sm")]: {
       padding: "10px",
-      fontSize: "1.6em",
+      fontSize: "1.7em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "10px",
+      fontSize: "1.1em",
     },
   },
   separator: {
     width: "100%",
-    border: "1px solid #93C9DF",
+    border: "1px solid #252A2E",
     margin: 0,
   },
   blueSeparator: {
-    border: "2px solid #3B51B6",
-    width: "60px",
+    border: "2px solid #F5C65A",
+    width: "15vw",
+    maxWidth: "150px",
     margin: "0 auto",
   },
   modalData: {
+    paddingLeft: "1rem",
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
-    height: "93%",
   },
   modalItem: {
     marginLeft: "15px",
@@ -64,16 +64,19 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     padding: "15px",
     alignItems: "center",
-    borderBottom: "1px solid #93C9DF",
+    borderBottom: "2px solid #252A2E",
     fontSize: "1.8em",
     fontWeight: "400",
-    color: "black",
-    ":nth-child()": {
-      borderTop: "1px solid lightgrey",
-    },
+    color: "#E3E5ED",
 
     [theme.breakpoints.down("sm")]: {
-      fontSize: "1.2rem",
+      fontSize: "1.5em",
+      fontWeight: "500",
+      marginLeft: "7px",
+      padding: "5px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1em",
       fontWeight: "500",
       marginLeft: "7px",
       padding: "5px",
@@ -87,33 +90,42 @@ const useStyles = makeStyles(theme => ({
     },
   },
   icon: {
-    borderRadius: 5,
+    // borderRadius: 5,
     width: 28,
     height: 28,
-    backgroundColor: "#AEAEAE",
+    border: "3px solid #D3D5D5",
     "input:hover ~ &": {
-      backgroundColor: "#AEAEAE",
+      // backgroundColor: "#AEAEAE",
     },
     "input:disabled ~ &": {
       boxShadow: "none",
       background: "rgba(206,217,224,.5)",
     },
+    [theme.breakpoints.down("sm")]: {
+      width: 20,
+      height: 20,
+    },
   },
   checkedIcon: {
-    backgroundColor: "#AEAEAE",
-    backgroundImage:
-      "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
+    // backgroundColor: "#AEAEAE",
+    // backgroundImage:
+    //   "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
     "&:before": {
+      border: "3px solid #D3D5D5",
       display: "block",
       width: 28,
       height: 28,
-      borderRadius: 5,
-      backgroundColor: "#3B51B6",
+      // borderRadius: 5,
+      // backgroundColor: "#3B51B6",
       backgroundImage:
         "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
         " fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
         "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23fff'/%3E%3C/svg%3E\")",
       content: '""',
+      [theme.breakpoints.down("sm")]: {
+        width: 20,
+        height: 20,
+      },
     },
     "&:after": {
       backgroundImage:
@@ -122,7 +134,7 @@ const useStyles = makeStyles(theme => ({
         "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23fff'/%3E%3C/svg%3E\")",
     },
     "input:hover ~ &": {
-      backgroundColor: "#106ba3",
+      // backgroundColor: "#106ba3",
     },
   },
 }))
