@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0.5rem",
+    padding: "0.1rem",
     [theme.breakpoints.down("sm")]: {
       padding: "0.2rem",
     },
@@ -91,9 +91,8 @@ const useStyles = makeStyles(theme => ({
     width: "35%",
     margin: "0.3rem 0",
     [theme.breakpoints.down("sm")]: {
-      width: "25%",
-
-      height: "18%",
+      // width: "25%",
+      // height: "18%",
     },
   },
   Premiados: {
@@ -258,7 +257,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "0.8em",
-      padding: "10px 1.4em",
+      padding: "10px 1.6em",
     },
   },
   numRow: {
@@ -465,30 +464,16 @@ const useStyles = makeStyles(theme => ({
   value: { color: "grey", textAlign: "center" },
 }))
 
-function LiveStream({
-  //   wins,
-  img,
-  //   sort,
-  //   tableHeaders,
-  //   tableData,
-  prize,
-  //   color,
-  backgroundColor,
-  prizeHeadColor,
-}) {
+function LiveStream({ img, prize, backgroundColor, prizeHeadColor }) {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      totobingo: file(relativePath: { eq: "b9.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+      totobingo: file(relativePath: { eq: "b9.svg" }) {
+        relativePath
       }
     }
   `)
-  let image = data.totobingo.childImageSharp.fluid
+  let image = data.totobingo.relativePath
   let wins = [10, 20, 30, 40, 50, 60]
   let win15 = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
   let color = "#49C765"
@@ -535,12 +520,12 @@ function LiveStream({
           className={classes.brincoContainer}
           style={{ backgroundColor: "transparent" }}
         >
-          <Img
-            fluid={image}
+          <img
             className={classes.brinco}
-            fadeIn={false}
-            alt="Brinco de hoy"
+            src={require(`../../images/${image}`)}
+            alt={image}
           />
+
           <div className={classes.hoveredSort}>
             <div className={classes.sortCont}>
               Sorteo:
