@@ -27,9 +27,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "space-between",
     width: "100%",
-    padding: "16px 25px",
-    [theme.breakpoints.down("xs")]: {
-      padding: "5px",
+    padding: "16px 0",
+    [theme.breakpoints.down("sm")]: {
+      padding: "10px",
     },
   },
   Logo: {
@@ -49,10 +49,7 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     // float: "right",
     color: "#384fb5",
-    marginRight: -10,
-    [theme.breakpoints.down("xs")]: {
-      marginRight: 0,
-    },
+    [theme.breakpoints.down("xs")]: {},
   },
   images: {
     display: "flex",
@@ -192,14 +189,8 @@ function Header() {
                 className={classes.Logo}
               />
             </Link>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <MenuIcon fontSize="large" />
-            </IconButton>
+
+            <MenuIcon fontSize="large" className={classes.menuButton} />
           </Toolbar>
         </Container>
       </AppBar>
