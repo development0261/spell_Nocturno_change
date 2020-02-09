@@ -39,9 +39,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   h3: {
-    color: "#ffffff",
-    fontWeight: 600,
     fontSize: "1.3rem",
+    color: "#ffffff",
+    fontFamily: "'Montserrat', sans-serif;",
+    fontWeight: 600,
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.9rem",
       textAlign: "left",
@@ -220,7 +221,7 @@ const useStyles = makeStyles(theme => ({
     transform: "rotate(45deg)",
   },
   timer: {
-    fontSize: "1.5rem",
+    fontSize: "2rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.3rem",
     },
