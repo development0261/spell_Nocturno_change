@@ -190,7 +190,7 @@ const CityTable = displayData => {
   if (displayData.data == null || displayData.data.values == null) {
     for (let i = 0; i < 10; i++) {
       bodyData.push({
-        id: i * 2,
+        id: i,
         value1: "---",
         value2: "---",
       })
@@ -207,7 +207,6 @@ const CityTable = displayData => {
           <TableBody>
             {bodyData.map((row, index) => (
               <StyledTableRow key={index} className={classes.Row}>
-                {console.log("rowid", row.id)}
                 <StyledTableCell
                   scope="row"
                   style={{
