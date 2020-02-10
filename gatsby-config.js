@@ -66,5 +66,9 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-preact`,
     `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/quiniela/*`] },
+    },
   ],
 }

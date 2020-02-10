@@ -12,6 +12,7 @@ import Paper from "@material-ui/core/Paper"
 import useSWR from "swr"
 // import rowsData from '../../data/quiniela.json'
 import useWS from "./useWs"
+import { Link } from "gatsby"
 import TableCellLoader from "./tableHeader/tableLoader"
 
 import { useStaticQuery, graphql } from "gatsby"
@@ -105,6 +106,11 @@ const useStyles = makeStyles(theme => ({
   tableContainer: {
     overflow: "hidden",
   },
+  link: {
+    textDecoration: "none",
+    color: "#150998",
+    textAlign: "center",
+  },
 }))
 
 const fetcher = url => fetch(url).then(res => res.json())
@@ -112,7 +118,44 @@ const fetcher = url => fetch(url).then(res => res.json())
 function StreamTable({ width }) {
   const classes = useStyles()
 
-  const { data } = useWS()
+  const sortOrder = [
+    "Ciudad",
+    "Provincia",
+    "Cordoba",
+    "Santa Fe",
+    "Montevideo",
+    "Entre Rios",
+    "Mendoza",
+    "Santiago",
+    "Corrientes",
+    "Chaco",
+    "Neuquén",
+    "San Luis",
+    "Salta",
+    "Jujuy",
+    "Tucumán",
+    "Chubut",
+    "Formosa",
+    "Misiones",
+    "Catamarca",
+    "San Juan",
+    "La Rioja",
+    "Río Negro",
+  ]
+
+  let { data } = useWS()
+  let result = []
+
+  sortOrder.forEach(function(key) {
+    var found = false
+    data = data.filter(function(item) {
+      if (!found && item.name == key) {
+        result.push(item)
+        found = true
+        return false
+      } else return true
+    })
+  })
 
   const tableHeader = isWidthUp("sm", width)
     ? ["Primera", "Matutina", "Vespertina", "Nocturna"]
@@ -137,78 +180,38 @@ function StreamTable({ width }) {
           <TableHead>
             <TableRow className={classes.Head}>
               <StyledTableCell>Quiniela</StyledTableCell>
-              <StyledTableCell
-                align="center"
-                color="#150898"
-                display="flex"
-                style={{
-                  color: "#150898",
-                }}
-              >
-                <span className={classes.headerArrow}>
-                  <span>{tableHeader[0]}</span>
-                  <Img
-                    fluid={dataQuery.iconarrow.childImageSharp.fluid}
-                    fadeIn={false}
-                    alt="Arrow"
-                    className={classes.headerImage}
-                  />
-                </span>
-              </StyledTableCell>
-
-              <StyledTableCell
-                align="center"
-                style={{
-                  color: "#150898",
-                }}
-              >
-                <span className={classes.headerArrow}>
-                  <span>{tableHeader[1]}</span>
-                  <Img
-                    fluid={dataQuery.iconarrow.childImageSharp.fluid}
-                    fadeIn={false}
-                    alt="Arrow"
-                    className={classes.headerImage}
-                  />
-                </span>
-              </StyledTableCell>
-              <StyledTableCell
-                align="center"
-                style={{
-                  color: "#150898",
-                }}
-              >
-                <span className={classes.headerArrow}>
-                  <span>{tableHeader[2]}</span>
-                  <Img
-                    fluid={dataQuery.iconarrow.childImageSharp.fluid}
-                    fadeIn={false}
-                    alt="Arrow"
-                    className={classes.headerImage}
-                  />
-                </span>
-              </StyledTableCell>
-              <StyledTableCell
-                align="center"
-                style={{
-                  color: "#150898",
-                }}
-              >
-                <span className={classes.headerArrow}>
-                  <span>{tableHeader[3]}</span>
-                  <Img
-                    fluid={dataQuery.iconarrow.childImageSharp.fluid}
-                    fadeIn={false}
-                    alt="Arrow"
-                    className={classes.headerImage}
-                  />
-                </span>
-              </StyledTableCell>
+              {tableHeader.map(val => {
+                return (
+                  <StyledTableCell
+                    align="center"
+                    color="#150898"
+                    display="flex"
+                    style={{
+                      color: "#150898",
+                    }}
+                  >
+                    <span className={classes.headerArrow}>
+                      <Link
+                        to={"/quiniela/" + val.toLowerCase()}
+                        className={classes.link}
+                      >
+                        <span>{val}</span>
+                      </Link>
+                      <Img
+                        fluid={dataQuery.iconarrow.childImageSharp.fluid}
+                        fadeIn={false}
+                        alt="Arrow"
+                        className={classes.headerImage}
+                      />
+                    </span>
+                  </StyledTableCell>
+                )
+              })}
             </TableRow>
           </TableHead>
           <TableBody>
-            {data &&
-              data.map((row, index) => (
+            {result &&
+              result.map((row, index) => (
                 <StyledTableRow className={classes.Row}>
                   <StyledTableCell
                     scope="row"
@@ -217,7 +220,13 @@ function StreamTable({ width }) {
                       backgroundColor: "none",
                     }}
                   >
-                    {row.name}
+                    <Link
+                      to={"/quiniela/" + row.name.toLowerCase()}
+                      className={classes.link}
+                      style={{ color: "black" }}
+                    >
+                      {row.name}
+                    </Link>
                   </StyledTableCell>
                   {mappingKeys.map(key => (
                     <StyledTableCell
@@ -228,7 +237,18 @@ function StreamTable({ width }) {
                     >
                       {row.values[key] ? (
                         row.values[key].value ? (
-                          row.values[key].value
+                          <Link
+                            to={
+                              "/quiniela/" +
+                              row.name.toLowerCase() +
+                              "/" +
+                              key.toLowerCase()
+                            }
+                            className={classes.link}
+                            style={{ color: "black" }}
+                          >
+                            {row.values[key].value.toLowerCase()}
+                          </Link>
                         ) : (
                           <TableCellLoader />
                         )

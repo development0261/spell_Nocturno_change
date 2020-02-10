@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     padding: "16px 0",
     [theme.breakpoints.down("sm")]: {
-      padding: "10px",
+      padding: "16px 5px",
     },
   },
   Logo: {
