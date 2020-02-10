@@ -40,9 +40,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   closeBtn: {
-    float: "right",
+    // position: "absolute",
+    // top: 0,
+    // right: 0,
+    // left: 50,
+
+    // float: "right",
     marginRight: "30px",
-    maxWidth: "25px",
+    maxWidth: "35px",
     marginBottom: "15px",
     fontWeight: "bolder",
     fontSize: "1.2em",
@@ -55,6 +60,13 @@ const useStyles = makeStyles(theme => ({
       fontSize: "0.9em",
       maxWidth: "17px",
     },
+  },
+  closeCont: {
+    marginLeft: "auto",
+    position: "absolute",
+    right: 0,
+    top: 0,
+    left: "100%",
   },
   separator: {
     width: "100%",
@@ -100,7 +112,7 @@ const useStyles = makeStyles(theme => ({
   },
   checkbox: {
     padding: "10px",
-    marginRight: "20px",
+    marginRight: "10px",
     [theme.breakpoints.down("sm")]: {
       marginRight: "10px",
     },
@@ -123,16 +135,11 @@ const useStyles = makeStyles(theme => ({
     },
   },
   checkedIcon: {
-    // backgroundColor: "#AEAEAE",
-    // backgroundImage:
-    //   "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
     "&:before": {
       border: "3px solid #D3D5D5",
       display: "block",
       width: 28,
       height: 28,
-      // borderRadius: 5,
-      // backgroundColor: "#3B51B6",
       backgroundImage:
         "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
         " fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
@@ -153,6 +160,15 @@ const useStyles = makeStyles(theme => ({
       // backgroundColor: "#106ba3",
     },
   },
+  label: {
+    fontSize: "0.9em",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1em",
+    },
+  },
 }))
 
 const PopupModal = ({ close }) => {
@@ -168,16 +184,14 @@ const PopupModal = ({ close }) => {
   return (
     <div className={classes.overlay}>
       <div className={classes.display}>
-        <div className={classes.modalHeader}>
-          Notify me about the lotteries
-          <span onClick={() => close()}>
-            <img
-              src={require("../images/Close_Icon.svg")}
-              alt="close icon"
-              className={classes.closeBtn}
-            />
-          </span>
-        </div>
+        {/* <span onClick={() => close()} className={classes.closeCont}>
+          <img
+            src={require("../images/Close_Icon.svg")}
+            alt="close icon"
+            className={classes.closeBtn}
+          />
+        </span> */}
+        <div className={classes.modalHeader}>Notify me about the lotteries</div>
         <hr className={classes.blueSeparator} />
         <hr className={classes.separator} />
         <div className={classes.modalData}>
@@ -196,6 +210,7 @@ const PopupModal = ({ close }) => {
                       icon={<span className={classes.icon} />}
                     />
                   }
+                  classes={{ label: classes.label }}
                   label={item}
                   labelPlacement="end"
                 />{" "}
