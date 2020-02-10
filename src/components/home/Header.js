@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     // float: "right",
     color: "#384fb5",
-    [theme.breakpoints.down("xs")]: {},
+    cursor: "pointer",
   },
   images: {
     display: "flex",
@@ -190,7 +190,11 @@ function Header() {
               />
             </Link>
 
-            <MenuIcon fontSize="large" className={classes.menuButton} />
+            <MenuIcon
+              fontSize="large"
+              className={classes.menuButton}
+              onClick={() => setMenuOpen(!menuOpen)}
+            />
           </Toolbar>
         </Container>
       </AppBar>
