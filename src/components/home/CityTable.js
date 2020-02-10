@@ -172,17 +172,15 @@ const getBodyData = data => {
       value: data[key],
     })
   }
-  console.log("par", parseData)
 
   for (let i = 0; i < 10; i++) {
     finalData.push({
-      id: i * 2,
-      value1: parseData[i * 2].value,
-      value2: parseData[i * 2 + 1].value,
+      id: i,
+      value1: parseData[i].value,
+      value2: parseData[i + 10].value,
     })
   }
 
-  console.log("fin", parseData)
   return finalData
 }
 
@@ -200,7 +198,6 @@ const CityTable = displayData => {
   } else {
     bodyData = getBodyData(displayData.data.values)
   }
-  console.log("bodyyyy", bodyData)
 
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -210,6 +207,7 @@ const CityTable = displayData => {
           <TableBody>
             {bodyData.map((row, index) => (
               <StyledTableRow key={index} className={classes.Row}>
+                {console.log("rowid", row.id)}
                 <StyledTableCell
                   scope="row"
                   style={{
@@ -238,7 +236,7 @@ const CityTable = displayData => {
                     fontWeight: 700,
                   }}
                 >
-                  {row.id + 2}
+                  {row.id + 11}
                 </StyledTableCell>
                 <StyledTableCell
                   scope="row"
