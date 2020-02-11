@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     zIndex: "20",
   },
   modalHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     width: "100%",
     marginTop: "3%",
     padding: "3px 0",
@@ -40,34 +43,19 @@ const useStyles = makeStyles(theme => ({
     },
   },
   closeBtn: {
-    // position: "absolute",
-    // top: 0,
-    // right: 0,
-    // left: 50,
-
-    // float: "right",
-    marginRight: "30px",
+    float: "right",
     maxWidth: "35px",
-    marginBottom: "15px",
     fontWeight: "bolder",
     fontSize: "1.2em",
     cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
-      marginRight: "18px",
       maxWidth: "20px",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "0.9em",
-      maxWidth: "17px",
+      fontSize: "0.6em",
     },
   },
-  closeCont: {
-    marginLeft: "auto",
-    position: "absolute",
-    right: 0,
-    top: 0,
-    left: "100%",
-  },
+
   separator: {
     width: "100%",
     border: "1px solid #252A2E",
@@ -169,6 +157,16 @@ const useStyles = makeStyles(theme => ({
       fontSize: "1em",
     },
   },
+  closeDiv: {
+    paddingRight: "6px",
+    marginTop: "-33px",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "-36px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-15px",
+    },
+  },
 }))
 
 const PopupModal = ({ close }) => {
@@ -184,14 +182,21 @@ const PopupModal = ({ close }) => {
   return (
     <div className={classes.overlay}>
       <div className={classes.display}>
-        {/* <span onClick={() => close()} className={classes.closeCont}>
-          <img
-            src={require("../images/Close_Icon.svg")}
-            alt="close icon"
-            className={classes.closeBtn}
-          />
-        </span> */}
-        <div className={classes.modalHeader}>Notify me about the lotteries</div>
+        <div className={classes.modalHeader}>
+          <div></div>
+          <div style={{ marginLeft: "22px" }}>
+            Notify me about the lotteries
+          </div>
+          <div className={classes.closeDiv}>
+            <span onClick={() => close()}>
+              <img
+                src={require("../images/Close_Icon.svg")}
+                alt="close icon"
+                className={classes.closeBtn}
+              />
+            </span>
+          </div>
+        </div>
         <hr className={classes.blueSeparator} />
         <hr className={classes.separator} />
         <div className={classes.modalData}>
