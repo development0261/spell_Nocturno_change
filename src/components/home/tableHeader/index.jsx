@@ -7,6 +7,7 @@ import Img from "gatsby-image"
 
 import { useEffect, useState } from "react"
 import { DateTime, Interval } from "luxon"
+import Loader from "../../Loader"
 
 const useStyles = makeStyles(theme => ({
   liveStreamContainer: {
@@ -20,6 +21,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
   liveStreamh3: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     color: "#ffffff",
     fontWeight: 600,
     fontSize: "1.5rem",
@@ -140,8 +144,23 @@ export const Countdown = ({ end, classes }) => {
 }
 
 const Livestream = () => {
+  // let loading = []
+  let [loading, setLoading] = useState(["."])
+  // loading[0] = "."
   let isLiveStream = true
   let conterEndTime = null
+
+  useEffect(() => {
+    setInterval(() => {
+      setLoading(...loading, ".")
+      // this.forceUpdate()
+      if (loading.length === 2) {
+        loading.length = 1
+        loading[0] = "."
+        // this.forceUpdate()
+      }
+    }, 800)
+  }, [loading])
 
   const drawList = getNextDrawTime()
   drawList.forEach(times => {
@@ -179,7 +198,7 @@ const Livestream = () => {
     }
   `)
 
-  return isLiveStream ? (
+  return (
     <div className={classes.liveStreamContainer}>
       <div className={classes.liveStreamImgContainer}>
         <Img
@@ -189,15 +208,22 @@ const Livestream = () => {
         />
       </div>
       <Typography variant="h2" component="h2" className={classes.liveStreamh3}>
-        Sorteando - en vivo ...
+        Sorteando - en vivo <Loader />
+        {/* {loading.map(d => (
+          <span>
+            {console.log("aaa", d)}
+            {d}
+          </span>
+        ))} */}
       </Typography>
     </div>
-  ) : (
-    <div className={classes.nextDrawContainer}>
-      <div className={classes.nextDrawLoader}></div>
-      <Countdown classes={classes} end={conterEndTime} />
-    </div>
   )
+  // ) : (
+  //   <div className={classes.nextDrawContainer}>
+  //     <div className={classes.nextDrawLoader}></div>
+  //     <Countdown classes={classes} end={conterEndTime} />
+  //   </div>
+  // )
 }
 
 export default Livestream
