@@ -160,6 +160,7 @@ const useStyles = makeStyles(theme => ({
   closeDiv: {
     paddingRight: "6px",
     marginTop: "-33px",
+    flexBasis: "15%",
     [theme.breakpoints.down("sm")]: {
       marginTop: "-40px",
     },
@@ -183,8 +184,8 @@ const PopupModal = ({ close }) => {
     <div className={classes.overlay}>
       <div className={classes.display}>
         <div className={classes.modalHeader}>
-          <div></div>
-          <div style={{ marginLeft: "22px" }}>
+          <div style={{ flexBasis: "15%" }}></div>
+          <div style={{ marginLeft: "22px", flexBasis: "80%" }}>
             Notify me about the lotteries
           </div>
           <div className={classes.closeDiv}>
