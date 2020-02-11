@@ -29,17 +29,20 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     padding: "16px 0",
     [theme.breakpoints.down("sm")]: {
-      padding: "16px 5px",
+      padding: "16px 6px",
     },
   },
   Logo: {
     // paddingLeft: "20px",
     marginTop: 4.5,
+    marginLeft: "4px",
     width: "300px !important",
     height: "auto",
     [theme.breakpoints.down("sm")]: {
+      padding: 0,
+      margin: 0,
       width: "70%",
-      marginLeft: 10,
+      // marginLeft: 10,
     },
     [theme.breakpoints.down("xs")]: {
       width: "230px !important",
@@ -49,7 +52,12 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     // float: "right",
     color: "#384fb5",
+    margin: 0,
     cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "-4px",
+      // marginLeft: 10,
+    },
   },
   images: {
     display: "flex",
