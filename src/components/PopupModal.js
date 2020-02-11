@@ -28,14 +28,14 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     width: "100%",
     marginTop: "3%",
-    padding: "3px 0",
+    padding: "8px 0",
     textAlign: "center",
     color: "#E3E5ED",
     fontWeight: "600",
     fontSize: "1.7em",
     height: "6%",
     [theme.breakpoints.down("sm")]: {
-      padding: 0,
+      padding: "4px 0",
       fontSize: "1.6em",
     },
     [theme.breakpoints.down("xs")]: {
@@ -161,10 +161,10 @@ const useStyles = makeStyles(theme => ({
     paddingRight: "6px",
     marginTop: "-33px",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "-36px",
+      marginTop: "-40px",
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "-15px",
+      marginTop: "-12px",
     },
   },
 }))
