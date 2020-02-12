@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "1.2em",
     cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "20px",
+      maxWidth: "25px",
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "0.6em",
@@ -158,14 +158,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   closeDiv: {
-    paddingRight: "6px",
-    marginTop: "-33px",
+    marginRight: "-9px",
+    marginTop: "-85px",
     flexBasis: "15%",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "-40px",
+      marginTop: "-70px",
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "-12px",
+      marginTop: "-45px",
     },
   },
 }))
