@@ -15,8 +15,11 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0.1rem",
+    padding: "0.3rem",
     [theme.breakpoints.down("sm")]: {
+      padding: 0,
+    },
+    [theme.breakpoints.down("xs")]: {
       padding: "0.2rem",
     },
   },
@@ -152,15 +155,15 @@ const Livestream = () => {
 
   useEffect(() => {
     setInterval(() => {
-      setLoading(...loading, ".")
+      setLoading(...loading, " .")
       // this.forceUpdate()
       if (loading.length === 2) {
-        loading.length = 1
-        loading[0] = "."
+        // loading.length = 1
+        setLoading([])
         // this.forceUpdate()
       }
     }, 800)
-  }, [loading])
+  }, [])
 
   const drawList = getNextDrawTime()
   drawList.forEach(times => {
@@ -198,6 +201,7 @@ const Livestream = () => {
     }
   `)
 
+  // isLiveStream ? (
   return (
     <div className={classes.liveStreamContainer}>
       <div className={classes.liveStreamImgContainer}>
@@ -208,10 +212,11 @@ const Livestream = () => {
         />
       </div>
       <Typography variant="h2" component="h2" className={classes.liveStreamh3}>
-        Sorteando - en vivo <Loader />
+        Sorteando - en vivo
+        {/* <Loader /> */}
         {/* {loading.map(d => (
           <span>
-            {console.log("aaa", d)}
+            {console.log("aaa", loading)}
             {d}
           </span>
         ))} */}
