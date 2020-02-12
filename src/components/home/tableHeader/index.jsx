@@ -7,7 +7,7 @@ import Img from "gatsby-image"
 
 import { useEffect, useState } from "react"
 import { DateTime, Interval } from "luxon"
-import Loader from "../../Loader"
+import { Dot } from "react-animated-dots"
 
 const useStyles = makeStyles(theme => ({
   liveStreamContainer: {
@@ -147,23 +147,8 @@ export const Countdown = ({ end, classes }) => {
 }
 
 const Livestream = () => {
-  // let loading = []
-  let [loading, setLoading] = useState(["."])
-  // loading[0] = "."
   let isLiveStream = true
   let conterEndTime = null
-
-  useEffect(() => {
-    setInterval(() => {
-      setLoading(...loading, " .")
-      // this.forceUpdate()
-      if (loading.length === 2) {
-        // loading.length = 1
-        setLoading([])
-        // this.forceUpdate()
-      }
-    }, 800)
-  }, [])
 
   const drawList = getNextDrawTime()
   drawList.forEach(times => {
@@ -201,8 +186,7 @@ const Livestream = () => {
     }
   `)
 
-  // isLiveStream ? (
-  return (
+  return isLiveStream ? (
     <div className={classes.liveStreamContainer}>
       <div className={classes.liveStreamImgContainer}>
         <Img
@@ -213,22 +197,17 @@ const Livestream = () => {
       </div>
       <Typography variant="h2" component="h2" className={classes.liveStreamh3}>
         Sorteando - en vivo
-        {/* <Loader /> */}
-        {/* {loading.map(d => (
-          <span>
-            {console.log("aaa", loading)}
-            {d}
-          </span>
-        ))} */}
+        <Dot>.</Dot>
+        <Dot>.</Dot>
+        <Dot>.</Dot>
       </Typography>
     </div>
+  ) : (
+    <div className={classes.nextDrawContainer}>
+      <div className={classes.nextDrawLoader}></div>
+      <Countdown classes={classes} end={conterEndTime} />
+    </div>
   )
-  // ) : (
-  //   <div className={classes.nextDrawContainer}>
-  //     <div className={classes.nextDrawLoader}></div>
-  //     <Countdown classes={classes} end={conterEndTime} />
-  //   </div>
-  // )
 }
 
 export default Livestream
