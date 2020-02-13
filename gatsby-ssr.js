@@ -1,6 +1,7 @@
-import "@babel/polyfill"
+/**
+ * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/ssr-apis/
+ */
 
-// eslint-disable-next-line import/prefer-default-export
-export const onClientEntry = () => {
-  // Without this function body the import will not be picked up.
-}
+// You can delete this file if you're not using it
