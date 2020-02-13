@@ -1,10 +1,6 @@
-import { globalHistory } from "@reach/router"
+import "@babel/polyfill"
 
-export const onInitialClientRender = () => {
-  /**
-   * This is a workaround for a bug in Gatsby
-   *
-   * See https://github.com/gatsbyjs/gatsby/issues/8357 for more details
-   */
-  globalHistory._onTransitionComplete()
+// eslint-disable-next-line import/prefer-default-export
+export const onClientEntry = () => {
+  // Without this function body the import will not be picked up.
 }
