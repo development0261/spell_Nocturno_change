@@ -65,11 +65,11 @@ const useStyles = makeStyles(theme => ({
 
 const App = props => {
   const { pathname } = props.location
-  // console.log("tat", props)
-  // console.log("tatttt", pathname)
+  console.log("tat", props)
+  console.log("tatttt", pathname)
 
   const { data } = useWS()
-  // console.log("data", data)
+  console.log("data", data)
   var displayData = []
   var pathArray = pathname.split("/")
   var cityName
@@ -81,12 +81,12 @@ const App = props => {
     var timeName = pathArray[2]
     isPathCity = 1
   }
-  // console.log("isPathCIt", isPathCity)
-  // console.log("@@@@@@@", pathArray)
+  console.log("isPathCIt", isPathCity)
+  console.log("@@@@@@@", pathArray)
   var timeZone = pathArray[4]
   var urlType = 0 // 0: city, 1: time
-  // console.log("pArr", pathArray)
-  // console.log("cityname", cityName)
+  console.log("pArr", pathArray)
+  console.log("cityname", cityName)
   if (!isPathCity) {
     for (let i = 0; i < data.length; i++) {
       if (
@@ -100,7 +100,7 @@ const App = props => {
     data.forEach(item => {
       displayData.push(item.expand)
     })
-    // console.log(displayData)
+    console.log(displayData)
   }
 
   timeZone == null || timeZone == undefined ? (urlType = 0) : (urlType = 1)

@@ -33,7 +33,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "Santa Fe"
+    "name": "SantaFe"
   },
   {
     "values": {
@@ -51,7 +51,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "Entre Rios"
+    "name": "EntreRios"
   },
   {
     "values": {
@@ -96,7 +96,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "Neuqu\u00e9n"
+    "name": "Neuquen"
   },
   {
     "values": {
@@ -105,7 +105,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "San Luis"
+    "name": "SanLuis"
   },
   {
     "values": {
@@ -132,7 +132,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "Tucum\u00e1n"
+    "name": "Tucuman"
   },
   {
     "values": {
@@ -177,7 +177,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "San Juan"
+    "name": "SanJuan"
   },
   {
     "values": {
@@ -186,7 +186,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "La Rioja"
+    "name": "LaRioja"
   },
   {
     "values": {
@@ -195,6 +195,6 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "R\u00edo Negro"
+    "name": "Rio Negro"
   }
 ]
