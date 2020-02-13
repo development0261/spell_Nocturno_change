@@ -159,7 +159,7 @@ function StreamTable({ width }) {
 
   const tableHeader = isWidthUp("sm", width)
     ? ["Primera", "Matutina", "Vespertina", "Nocturna"]
-    : ["Pri.", "Mat.", "Ves.", "Noc."]
+    : ["Primera", "Matutina", "Vespertina", "Nocturna"]
   const dataQuery = useStaticQuery(graphql`
     query {
       iconarrow: file(relativePath: { eq: "iconarrow.png" }) {

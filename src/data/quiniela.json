@@ -96,7 +96,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "Neuquen"
+    "name": "Neuqu\u00e9n"
   },
   {
     "values": {
@@ -132,7 +132,7 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "Tucuman"
+    "name": "Tucum\u00e1n"
   },
   {
     "values": {
@@ -195,6 +195,6 @@
       "Primera": { "value": null },
       "Vespertino": { "value": null }
     },
-    "name": "Rio Negro"
+    "name": "R\u00edo Negro"
   }
 ]
