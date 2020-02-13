@@ -159,7 +159,7 @@ function StreamTable({ width }) {
 
   const tableHeader = isWidthUp("sm", width)
     ? ["Primera", "Matutina", "Vespertina", "Nocturna"]
-    : ["Primera", "Matutina", "Vespertina", "Nocturna"]
+    : ["Pri.", "Mat.", "Ves.", "Noc."]
   const dataQuery = useStaticQuery(graphql`
     query {
       iconarrow: file(relativePath: { eq: "iconarrow.png" }) {
@@ -192,7 +192,15 @@ function StreamTable({ width }) {
                   >
                     <span className={classes.headerArrow}>
                       <Link
-                        to={"/quiniela/" + val.toLowerCase()}
+                        to={
+                          "/quiniela/" +
+                          val
+                            .toLowerCase()
+                            .replace("pri.", "primera")
+                            .replace("mat.", "matutino")
+                            .replace("ves.", "vespertino")
+                            .replace("noc.", "nocturno")
+                        }
                         className={classes.link}
                       >
                         <span>{val}</span>
