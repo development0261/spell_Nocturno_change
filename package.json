@@ -7,6 +7,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.2",
     "@material-ui/icons": "^4.5.1",
+    "babel-polyfill": "^6.26.0",
     "gatsby": "^2.19.16",
     "gatsby-image": "^2.2.40",
     "gatsby-plugin-amp": "^0.2.2",
