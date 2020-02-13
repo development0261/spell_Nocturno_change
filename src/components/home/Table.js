@@ -221,7 +221,9 @@ function StreamTable({ width }) {
                     }}
                   >
                     <Link
-                      to={"/quiniela/" + row.name.toLowerCase()}
+                      to={
+                        "/quiniela/" + row.name.toLowerCase().replace(" ", "")
+                      }
                       className={classes.link}
                       style={{ color: "black" }}
                     >
@@ -240,9 +242,9 @@ function StreamTable({ width }) {
                           <Link
                             to={
                               "/quiniela/" +
-                              row.name.toLowerCase() +
+                              row.name.toLowerCase().replace(" ", "") +
                               "/" +
-                              key.toLowerCase()
+                              key.toLowerCase().replace(" ", "")
                             }
                             className={classes.link}
                             style={{ color: "black" }}
