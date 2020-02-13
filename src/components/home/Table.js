@@ -242,9 +242,14 @@ function StreamTable({ width }) {
                           <Link
                             to={
                               "/quiniela/" +
-                              row.name.toLowerCase().replace(" ", "") +
+                              row.name
+                                .toLowerCase()
+                                .replace(" ", "")
+                                .replace("é", "e")
+                                .replace("á", "a")
+                                .replace("í", "i") +
                               "/" +
-                              key.toLowerCase().replace(" ", "")
+                              key.toLowerCase().replace("/ |", "")
                             }
                             className={classes.link}
                             style={{ color: "black" }}
