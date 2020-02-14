@@ -181,10 +181,10 @@
   },
   {
     "values": {
-      "Nocturno": { "value":null },
-      "Matutino": { "value":null },
-      "Primera": { "value":null },
-      "Vespertino": { "value":null }
+      "Nocturno": { "value": null },
+      "Matutino": { "value": null },
+      "Primera": { "value": null },
+      "Vespertino": { "value": null }
     },
     "name": "La Rioja"
   },

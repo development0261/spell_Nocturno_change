@@ -192,7 +192,15 @@ function StreamTable({ width }) {
                   >
                     <span className={classes.headerArrow}>
                       <Link
-                        to={"/quiniela/" + val.toLowerCase()}
+                        to={
+                          "/quiniela/" +
+                          val
+                            .toLowerCase()
+                            .replace("pri.", "primera")
+                            .replace("mat.", "matutino")
+                            .replace("ves.", "vespertino")
+                            .replace("noc.", "nocturno")
+                        }
                         className={classes.link}
                       >
                         <span>{val}</span>
@@ -221,7 +229,15 @@ function StreamTable({ width }) {
                     }}
                   >
                     <Link
-                      to={"/quiniela/" + row.name.toLowerCase()}
+                      to={
+                        "/quiniela/" +
+                        row.name
+                          .toLowerCase()
+                          .replace(" ", "")
+                          .replace("é", "e")
+                          .replace("á", "a")
+                          .replace("í", "i")
+                      }
                       className={classes.link}
                       style={{ color: "black" }}
                     >
@@ -240,9 +256,14 @@ function StreamTable({ width }) {
                           <Link
                             to={
                               "/quiniela/" +
-                              row.name.toLowerCase() +
+                              row.name
+                                .toLowerCase()
+                                .replace(" ", "")
+                                .replace("é", "e")
+                                .replace("á", "a")
+                                .replace("í", "i") +
                               "/" +
-                              key.toLowerCase()
+                              key.toLowerCase().replace("/ |", "")
                             }
                             className={classes.link}
                             style={{ color: "black" }}
