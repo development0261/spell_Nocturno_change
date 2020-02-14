@@ -125,7 +125,7 @@ const App = props => {
               tName={timeName}
               selectData={data}
             />
-            {/* <LoadableRemind /> */}
+            {/* <LoadableRemind />  */}
             {/* <LoadablePozoEstimado /> */}
           </Paper>
         </Container>
