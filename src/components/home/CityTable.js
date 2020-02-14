@@ -80,6 +80,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     fontWeight: 700,
     color: "##383838",
+    textTransform: "capitalize",
     fontSize: "2.1em",
     padding: 35,
     [theme.breakpoints.down("xs")]: {
@@ -251,12 +252,6 @@ const CityTable = displayData => {
           </TableBody>
         </Table>
       </TableContainer>
-      <div className={classes.bottomCards}>
-        <span className={classes.cardItem}>A</span>
-        <span className={classes.cardItem}>W</span>
-        <span className={classes.cardItem}>Z</span>
-        <span className={classes.cardItem}>Z</span>
-      </div>
     </Grid>
   )
 }

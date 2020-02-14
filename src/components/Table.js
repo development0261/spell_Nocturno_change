@@ -19,6 +19,7 @@ const StyledTableCell = withStyles(theme => ({
     color: "#ffffff",
     fontSize: "1.8rem",
     fontWeight: "bold",
+    textTransform: "capitalize",
     textAlign: "center",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.4em",
