@@ -108,7 +108,7 @@ const App = props => {
   timeZone == null || timeZone == undefined ? (urlType = 0) : (urlType = 1)
 
   const classes = useStyles()
-  console.groupEnd("test log from quiniela")
+  console.groupEnd("Test log from quiniela")
   return (
     <LoadableLayout
       title={"Quiniela de hoy | Resultados de Quiniela - al instante"}
