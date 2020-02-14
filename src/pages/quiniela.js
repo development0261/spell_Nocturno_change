@@ -83,7 +83,9 @@ const App = props => {
   }
   console.log("isPathCIt", isPathCity)
   console.log("@@@@@@@", pathArray)
-  var timeZone = pathArray[4]
+  var timeZone = pathArray[3]
+
+  console.log("@@@@@@@", timeZone)
   var urlType = 0 // 0: city, 1: time
   console.log("pArr", pathArray)
   console.log("cityname", cityName)
