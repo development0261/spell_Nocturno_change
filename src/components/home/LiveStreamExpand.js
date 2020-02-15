@@ -244,7 +244,11 @@ function LiveStream(props) {
           <div></div>
         ) : (
           cityData.map((row, index) => {
-            return <CityTable data={row} />
+            return (
+              <div>
+                <CityTable data={row} />
+              </div>
+            )
           })
         )}
       </Grid>

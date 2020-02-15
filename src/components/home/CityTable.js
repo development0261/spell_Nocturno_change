@@ -252,6 +252,12 @@ const CityTable = displayData => {
           </TableBody>
         </Table>
       </TableContainer>
+      <div className={classes.bottomCards}>
+        <span className={classes.cardItem}>A</span>
+        <span className={classes.cardItem}>W</span>
+        <span className={classes.cardItem}>Z</span>
+        <span className={classes.cardItem}>Z</span>
+      </div>
     </Grid>
   )
 }
