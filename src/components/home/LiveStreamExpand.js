@@ -199,58 +199,20 @@ function LiveStream(props) {
       cityData.push(keyData)
     }
   } else {
-    // for (let i = 0; i < timeData.length; i++) {
-    //   if (timeData[i] != undefined) {
-    //     var itemData = []
-    //     itemData = timeData[i]
-    //     itemData.forEach(element => {
-    //       if (element.name.indexOf(timeName) > 1) {
-    //         var timeKeyData = { name: null, values: null }
-    //         timeKeyData.name = element.name
-    //         timeKeyData.values = element.values
-    //         cityData.push(timeKeyData)
-    //       }
-    //     })
-    //   }
-    // }
-    if (allData != null) {
-      //get key1 data
-      for (let i = 0; i < allData.length; i++) {
-        var tmpData = allData[i]
-        if (tmpData.name.indexOf(key1) > -1) {
-          key1Data.values = tmpData.values
-        }
-      }
-
-      //get key2 data
-      for (let i = 0; i < allData.length; i++) {
-        var tmpData = allData[i]
-        if (tmpData.name.indexOf(key2) > -1) {
-          key2Data.values = tmpData.values
-        }
-      }
-
-      //get key3 data
-      for (let i = 0; i < allData.length; i++) {
-        var tmpData = allData[i]
-        if (tmpData.name.indexOf(key3) > -1) {
-          key3Data.values = tmpData.values
-        }
-      }
-
-      //get key4 data
-      for (let i = 0; i < allData.length; i++) {
-        var tmpData = allData[i]
-        if (tmpData.name.indexOf(key4) > -1) {
-          key4Data.values = tmpData.values
-        }
+    for (let i = 0; i < timeData.length; i++) {
+      if (timeData[i] != undefined) {
+        var itemData = []
+        itemData = timeData[i]
+        itemData.forEach(element => {
+          if (element.name.indexOf(timeName) > 1) {
+            var timeKeyData = { name: null, values: null }
+            timeKeyData.name = element.name
+            timeKeyData.values = element.values
+            cityData.push(timeKeyData)
+          }
+        })
       }
     }
-
-    cityData.push(key1Data)
-    cityData.push(key2Data)
-    cityData.push(key3Data)
-    cityData.push(key4Data)
   }
 
   return (
