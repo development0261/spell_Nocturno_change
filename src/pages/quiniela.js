@@ -76,7 +76,7 @@ const App = props => {
 
   let colHeader
   let rowHeader
-  let sepecificData = sepecificData ? sepecificData : null
+  let sepecificData
   let options
 
   // Get selected column header value
