@@ -96,7 +96,6 @@ const useStyles = makeStyles(theme => ({
 
 function LiveStream(props) {
   const classes = useStyles()
-  console.log("incoming data", props)
   const data = useStaticQuery(graphql`
     query {
       liveIcon: file(relativePath: { eq: "live_icon.png" }) {
@@ -117,102 +116,24 @@ function LiveStream(props) {
   `)
 
   var cityData = []
-  var allData = []
-  const isCity = props.flag
-  var timeData = []
-  var timeName = props.tName
-
-  if (isCity) {
-    timeData = props.data
-  } else {
-    allData = props.data.expand
-  }
-
   const type = props.type
-  const cityName = props.data.name
-  const timeZone = props.timeZone
-  const selectData = props.selectData
 
-  const key1 = cityName + " - La Primera"
-  const key2 = cityName + " - Matutino"
-  const key3 = cityName + " - Vespertino"
-  const key4 = cityName + " - Nocturno"
-  const key1Data = { name: key1, values: null }
-  const key2Data = { name: key2, values: null }
-  const key3Data = { name: key3, values: null }
-  const key4Data = { name: key4, values: null }
-
-  if (!isCity) {
-    if (type == 0) {
-      if (allData != null) {
-        //get key1 data
-        for (let i = 0; i < allData.length; i++) {
-          var tmpData = allData[i]
-          if (tmpData.name.indexOf(key1) > -1) {
-            key1Data.values = tmpData.values
-          }
-        }
-
-        //get key2 data
-        for (let i = 0; i < allData.length; i++) {
-          var tmpData = allData[i]
-          if (tmpData.name.indexOf(key2) > -1) {
-            key2Data.values = tmpData.values
-          }
-        }
-
-        //get key3 data
-        for (let i = 0; i < allData.length; i++) {
-          var tmpData = allData[i]
-          if (tmpData.name.indexOf(key3) > -1) {
-            key3Data.values = tmpData.values
-          }
-        }
-
-        //get key4 data
-        for (let i = 0; i < allData.length; i++) {
-          var tmpData = allData[i]
-          if (tmpData.name.indexOf(key4) > -1) {
-            key4Data.values = tmpData.values
-          }
+  if (type == 0) {
+    const data = props.data
+    data.forEach(d => {
+      if (d) {
+        for (const val of d) {
+          if (val.name.toLowerCase().search(props.colHeader) >= 0)
+            cityData.push({ ...val })
         }
       }
-
-      cityData.push(key1Data)
-      cityData.push(key2Data)
-      cityData.push(key3Data)
-      cityData.push(key4Data)
-    } else if (type == 1) {
-      var key =
-        cityName +
-        " - " +
-        (timeZone.indexOf("Primera") > -1 ? "La Primera" : timeZone)
-      const keyData = { name: key, values: null }
-      if (allData != null) {
-        for (let i = 0; i < allData.length; i++) {
-          var tmpData = allData[i]
-          if (tmpData.name.indexOf(key) > -1) {
-            keyData.values = tmpData.values
-          }
-        }
-      }
-      cityData.push(keyData)
-    }
+    })
+  } else if (type == 1) {
+    const data = props.data
+    cityData = data[0]?.expand
   } else {
-    for (let i = 0; i < timeData.length; i++) {
-      if (timeData[i] != undefined) {
-        var itemData = []
-        itemData = timeData[i]
-        itemData.forEach(element => {
-          if (element.name.indexOf(timeName) > 1) {
-            var timeKeyData = { name: null, values: null }
-            timeKeyData.name = element.name
-            timeKeyData.values = element.values
-            cityData.push(timeKeyData)
-          }
-        })
-      }
-    }
+    const data = props?.data
+    cityData = props?.data
   }
 
   return (
@@ -225,12 +146,9 @@ function LiveStream(props) {
               id="demo-customized-select-native"
               input={<BootstrapInput />}
             >
-              {selectData.map(val => (
+              {/* {selectData.map(val => (
                 <option value={val.name}>{val.name}</option>
-              ))}
-              {/* <option value={10}>Ciudad</option>
-              <option value={20}>Option1</option>
-              <option value={30}>Thirty</option> */}
+              ))} */}
             </NativeSelect>
           </FormControl>
         </div>
@@ -241,7 +159,7 @@ function LiveStream(props) {
           </FormControl>
         </div>
         {cityData == null ? (
-          <div></div>
+          <div style={{ textAlign: "center" }}>Loading</div>
         ) : (
           cityData.map((row, index) => {
             return (

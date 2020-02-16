@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 import useWS from "../components/home/useWs"
 import time from "../data/quiniela-time.json"
+import city from "../data/quiniela-city.json"
 
 const LoaderPlaceholder = () => (
   <div style={{ height: "100vh", width: "100vh" }}></div>
@@ -65,50 +66,75 @@ const useStyles = makeStyles(theme => ({
 
 const App = props => {
   const { pathname } = props.location
-  console.log("tat", props)
-  console.log("tatttt", pathname)
-
   const { data } = useWS()
-  console.log("data", data)
-  var displayData = []
-  var pathArray = pathname.split("/")
-  var cityName
-  if (!time.includes(pathArray[2])) {
-    cityName = pathArray[2]
-    var isPathCity = 0
-  }
+
+  let displayData = []
+  let pathArray = pathname.split("/")
+  let cityName
+
+  console.log("@pathway", pathArray)
+
+  let colHeader
+  let rowHeader
+  let sepecificData = sepecificData ? sepecificData : null
+  let options
+
+  // Get selected column header value
   if (time.includes(pathArray[2])) {
-    var timeName = pathArray[2]
-    isPathCity = 1
-  }
-  console.log("isPathCIt", isPathCity)
-  console.log("@@@@@@@", pathArray)
-  var timeZone = pathArray[3]
-
-  console.log("@@@@@@@", timeZone)
-  var urlType = 0 // 0: city, 1: time
-  console.log("pArr", pathArray)
-  console.log("cityname", cityName)
-  if (!isPathCity) {
-    for (let i = 0; i < data.length; i++) {
-      if (
-        cityName.replace("%20", "") ===
-        data[i].name.replace(" ", "").toLowerCase()
-      ) {
-        displayData = data[i]
-      }
+    colHeader = pathArray[2]
+    console.log("column header selected ->>", colHeader)
+    if (pathArray[3]) {
+      sepecificData = pathArray[3]
+      console.log(
+        `specific data selected row => ${pathArray[2]} col => ${sepecificData}`
+      )
     }
-  } else {
-    data.forEach(item => {
-      displayData.push(item.expand)
-    })
-    console.log(displayData)
   }
 
-  timeZone == null || timeZone == undefined ? (urlType = 0) : (urlType = 1)
+  // Get selected row header value
+  if (city.includes(pathArray[2])) {
+    rowHeader = pathArray[2]
+    console.log("row header selected ->>", rowHeader)
+    if (pathArray[3]) {
+      sepecificData = pathArray[3]
+      console.log(
+        `specific data selected row => ${pathArray[2]} col => ${sepecificData}`
+      )
+    }
+  }
+
+  /*
+    Data extraction according to row / column / specific cell
+  */
+
+  if (sepecificData) {
+    // Specific cell data
+    let temp = data.filter(d => {
+      return rowHeader === d.name.toLowerCase()
+    })
+    displayData = temp[0]?.expand?.filter(
+      d => d.name.toLowerCase().search(sepecificData) >= 0
+    )
+  } else if (rowHeader) {
+    // Data specific to row header
+    displayData = data.filter(d => {
+      return rowHeader === d.name.toLowerCase()
+    })
+  } else {
+    // Data specific to column header
+    let temp = data?.map(item => {
+      return item.expand
+    })
+    displayData = temp !== undefined && temp?.map(i => i)
+  }
+
+  // 0: Selected Column
+  // 1: Selected Row 10
+  // Selected specific cell
+  let urlType = sepecificData ? 10 : colHeader ? 0 : 1
 
   const classes = useStyles()
-  console.groupEnd("Test log from quiniela")
+
   return (
     <LoadableLayout
       title={"Quiniela de hoy | Resultados de Quiniela - al instante"}
@@ -120,10 +146,12 @@ const App = props => {
             <LoadableLiveStream
               data={displayData}
               type={urlType}
-              timeZone={timeZone}
-              flag={isPathCity}
-              tName={timeName}
-              selectData={data}
+              rowHeader={rowHeader}
+              colHeader={colHeader}
+              // timeZone={timeZone}
+              // flag={isPathCity}
+              // tName={timeName}
+              // selectData={data}
             />
             {/* <LoadableRemind />  */}
             {/* <LoadablePozoEstimado /> */}
