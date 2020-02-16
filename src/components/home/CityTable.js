@@ -123,6 +123,7 @@ const useStyles = makeStyles(theme => ({
   },
   tableContainer: {
     overflow: "hidden",
+    marginTop: 20,
   },
   bottomCards: {
     width: "100%",
@@ -200,6 +201,7 @@ const CityTable = displayData => {
     bodyData = getBodyData(displayData.data.values)
   }
 
+  console.log("HIGH from table", displayData.data.name, bodyData)
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
       <TableContainer component={Paper} className={classes.tableContainer}>
@@ -252,12 +254,14 @@ const CityTable = displayData => {
           </TableBody>
         </Table>
       </TableContainer>
-      <div className={classes.bottomCards}>
-        <span className={classes.cardItem}>A</span>
-        <span className={classes.cardItem}>W</span>
-        <span className={classes.cardItem}>Z</span>
-        <span className={classes.cardItem}>Z</span>
-      </div>
+      {displayData.data.name.search("Ciudad") >= 0 && (
+        <div className={classes.bottomCards}>
+          <span className={classes.cardItem}>A</span>
+          <span className={classes.cardItem}>W</span>
+          <span className={classes.cardItem}>Z</span>
+          <span className={classes.cardItem}>Z</span>
+        </div>
+      )}
     </Grid>
   )
 }
