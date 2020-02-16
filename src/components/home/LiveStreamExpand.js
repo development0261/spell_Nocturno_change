@@ -116,6 +116,7 @@ function LiveStream(props) {
   `)
 
   var cityData = []
+  let options = props.options
   const type = props.type
 
   if (type == 0) {
@@ -146,9 +147,9 @@ function LiveStream(props) {
               id="demo-customized-select-native"
               input={<BootstrapInput />}
             >
-              {/* {selectData.map(val => (
-                <option value={val.name}>{val.name}</option>
-              ))} */}
+              {options.map(val => (
+                <option value={val}>{val}</option>
+              ))}
             </NativeSelect>
           </FormControl>
         </div>
@@ -188,7 +189,6 @@ const BootstrapInput = withStyles(theme => ({
     fontSize: 20,
     padding: "10px 26px 10px 12px",
     transition: theme.transitions.create(["border-color", "box-shadow"]),
-    // Use the system font instead of the default Roboto font.
     fontFamily: ["Montserrat"].join(","),
     "&:focus": {
       borderRadius: 4,

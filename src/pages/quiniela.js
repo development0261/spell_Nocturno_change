@@ -67,13 +67,9 @@ const useStyles = makeStyles(theme => ({
 const App = props => {
   const { pathname } = props.location
   const { data } = useWS()
-  console.log("data", data)
 
   let displayData = []
   let pathArray = pathname.split("/")
-  let cityName
-
-  console.log("@pathway", pathArray)
 
   let colHeader
   let rowHeader
@@ -83,24 +79,16 @@ const App = props => {
   // Get selected column header value
   if (time.includes(pathArray[2])) {
     colHeader = pathArray[2]
-    console.log("column header selected ->>", colHeader)
     if (pathArray[3]) {
       sepecificData = pathArray[3]
-      console.log(
-        `specific data selected row => ${pathArray[2]} col => ${sepecificData}`
-      )
     }
   }
 
   // Get selected row header value
   if (city.includes(pathArray[2])) {
     rowHeader = pathArray[2]
-    console.log("row header selected ->>", rowHeader)
     if (pathArray[3]) {
       sepecificData = pathArray[3]
-      console.log(
-        `specific data selected row => ${pathArray[2]} col => ${sepecificData}`
-      )
     }
   }
 
@@ -116,17 +104,29 @@ const App = props => {
     displayData = temp[0]?.expand?.filter(d => {
       return d.name.toLowerCase().search(sepecificData) >= 0
     })
+    // Table options
+    options = data.map(val => {
+      return val.name
+    })
   } else if (rowHeader) {
     // Data specific to row header
     displayData = data.filter(d => {
       return rowHeader === d.name.toLowerCase().replace(" ", "")
     })
+    // Table options
+    options = data.map(val => {
+      return val.name
+    })
+    // options
   } else {
     // Data specific to column header
     let temp = data?.map(item => {
+      // console.log("tt", item)
       return item.expand
     })
     displayData = temp !== undefined && temp?.map(i => i)
+    // Table options
+    options = ["Primera", "Matutino", "Vespertino", "Nocturna"]
   }
 
   // 0: Selected Column
@@ -149,6 +149,7 @@ const App = props => {
               type={urlType}
               rowHeader={rowHeader}
               colHeader={colHeader}
+              options={options}
               // timeZone={timeZone}
               // flag={isPathCity}
               // tName={timeName}
