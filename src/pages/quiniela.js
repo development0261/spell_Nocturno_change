@@ -67,6 +67,7 @@ const useStyles = makeStyles(theme => ({
 const App = props => {
   const { pathname } = props.location
   const { data } = useWS()
+  console.log("data", data)
 
   let displayData = []
   let pathArray = pathname.split("/")
@@ -110,15 +111,15 @@ const App = props => {
   if (sepecificData) {
     // Specific cell data
     let temp = data.filter(d => {
-      return rowHeader === d.name.toLowerCase()
+      return rowHeader === d.name.toLowerCase().replace(" ", "")
     })
-    displayData = temp[0]?.expand?.filter(
-      d => d.name.toLowerCase().search(sepecificData) >= 0
-    )
+    displayData = temp[0]?.expand?.filter(d => {
+      return d.name.toLowerCase().search(sepecificData) >= 0
+    })
   } else if (rowHeader) {
     // Data specific to row header
     displayData = data.filter(d => {
-      return rowHeader === d.name.toLowerCase()
+      return rowHeader === d.name.toLowerCase().replace(" ", "")
     })
   } else {
     // Data specific to column header
