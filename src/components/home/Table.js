@@ -158,7 +158,7 @@ function StreamTable({ width }) {
   })
 
   const tableHeader = isWidthUp("sm", width)
-    ? ["Primera", "Matutina", "Vespertina", "Nocturna"]
+    ? ["Primera", "Matutino", "Vespertino", "Nocturna"]
     : ["Pri.", "Mat.", "Ves.", "Noc."]
   const dataQuery = useStaticQuery(graphql`
     query {
