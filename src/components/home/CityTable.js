@@ -200,8 +200,6 @@ const CityTable = displayData => {
   } else {
     bodyData = getBodyData(displayData.data.values)
   }
-
-  console.log("HIGH from table", displayData.data.name, bodyData)
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
       <TableContainer component={Paper} className={classes.tableContainer}>
