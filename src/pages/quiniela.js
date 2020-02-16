@@ -134,6 +134,7 @@ const App = props => {
   let urlType = sepecificData ? 10 : colHeader ? 0 : 1
 
   const classes = useStyles()
+
   return (
     <LoadableLayout
       title={"Quiniela de hoy | Resultados de Quiniela - al instante"}
