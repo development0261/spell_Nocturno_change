@@ -159,7 +159,8 @@ function LiveStream(props) {
 
   const { pathname } = window.location
 
-  let pathArray = pathname?.split("/")[2]
+  // let pathArray = pathname?.split("/")[2]
+
   return (
     <div className={classes.root}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -167,16 +168,13 @@ function LiveStream(props) {
           <span className={classes.Txt}>Loterial: </span>
           <FormControl className={classes.margin}>
             <NativeSelect
-              defaultValue=""
+              value={props.defaultOption}
               id="demo-customized-select-native"
               onChange={handleChange("label")}
               input={<BootstrapInput />}
             >
-              <option value="" disabled>
-                Select lottery
-              </option>
               {options.map(val => (
-                <option value={val}>{val}</option>
+                <option value={val.toLowerCase()}>{val}</option>
               ))}
             </NativeSelect>
           </FormControl>
@@ -193,6 +191,7 @@ function LiveStream(props) {
           cityData.map((row, index) => {
             return (
               <div>
+                {/* {console.log("table data", props.data)} */}
                 <CityTable data={row} />
               </div>
             )
