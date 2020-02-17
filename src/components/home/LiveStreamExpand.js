@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid"
 
 import InputLabel from "@material-ui/core/InputLabel"
 import MenuItem from "@material-ui/core/MenuItem"
+
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import NativeSelect from "@material-ui/core/NativeSelect"
@@ -137,6 +138,28 @@ function LiveStream(props) {
     cityData = props?.data
   }
 
+  const [state, setState] = React.useState(props.defaultOption)
+  React.useEffect(() => {
+    !state && setState(props.defaultOption)
+  }, [])
+
+  const handleChange = name => event => {
+    setState(event.target.value)
+    let oldPath = window.location.pathname.split("/")
+    oldPath[2] = event.target.value
+      .replace(" ", "")
+      .replace("é", "e")
+      .replace("á", "a")
+      .replace("í", "i")
+      .toLowerCase()
+    let newPath = oldPath.join("/")
+
+    window.location.pathname = newPath
+  }
+
+  const { pathname } = window.location
+
+  let pathArray = pathname?.split("/")[2]
   return (
     <div className={classes.root}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -144,9 +167,14 @@ function LiveStream(props) {
           <span className={classes.Txt}>Loterial: </span>
           <FormControl className={classes.margin}>
             <NativeSelect
+              defaultValue=""
               id="demo-customized-select-native"
+              onChange={handleChange("label")}
               input={<BootstrapInput />}
             >
+              <option value="" disabled>
+                Select lottery
+              </option>
               {options.map(val => (
                 <option value={val}>{val}</option>
               ))}

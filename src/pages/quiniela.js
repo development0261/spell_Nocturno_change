@@ -75,6 +75,7 @@ const App = props => {
   let rowHeader
   let sepecificData
   let options
+  let defaultOption
 
   // Get selected column header value
   if (time.includes(pathArray[2])) {
@@ -108,6 +109,8 @@ const App = props => {
     options = data.map(val => {
       return val.name
     })
+    // Default option value
+    defaultOption = rowHeader
   } else if (rowHeader) {
     // Data specific to row header
     displayData = data.filter(d => {
@@ -117,7 +120,8 @@ const App = props => {
     options = data.map(val => {
       return val.name
     })
-    // options
+    // Default options value
+    defaultOption = rowHeader
   } else {
     // Data specific to column header
     let temp = data?.map(item => {
@@ -127,6 +131,8 @@ const App = props => {
     displayData = temp !== undefined && temp?.map(i => i)
     // Table options
     options = ["Primera", "Matutino", "Vespertino", "Nocturna"]
+    // Default options value
+    defaultOption = colHeader
   }
 
   // 0: Selected Column
@@ -150,6 +156,7 @@ const App = props => {
               rowHeader={rowHeader}
               colHeader={colHeader}
               options={options}
+              defaultOption={defaultOption}
               // timeZone={timeZone}
               // flag={isPathCity}
               // tName={timeName}
