@@ -174,7 +174,17 @@ function LiveStream(props) {
               input={<BootstrapInput />}
             >
               {options.map(val => (
-                <option value={val.toLowerCase()}>{val}</option>
+                <option
+                  value={val
+                    .replace(" ", "")
+                    .replace("é", "e")
+                    .replace("á", "a")
+                    .replace("í", "i")
+                    .toLowerCase()
+                    .toLowerCase()}
+                >
+                  {val}
+                </option>
               ))}
             </NativeSelect>
           </FormControl>
