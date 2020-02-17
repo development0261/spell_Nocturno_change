@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 import useWS from "../components/home/useWs"
 import time from "../data/quiniela-time.json"
+import city from "../data/quiniela-city.json"
 
 const LoaderPlaceholder = () => (
   <div style={{ height: "100vh", width: "100vh" }}></div>
@@ -65,50 +66,82 @@ const useStyles = makeStyles(theme => ({
 
 const App = props => {
   const { pathname } = props.location
-  console.log("tat", props)
-  console.log("tatttt", pathname)
-
   const { data } = useWS()
-  console.log("data", data)
-  var displayData = []
-  var pathArray = pathname.split("/")
-  var cityName
-  if (!time.includes(pathArray[2])) {
-    cityName = pathArray[2]
-    var isPathCity = 0
-  }
+
+  let displayData = []
+  let pathArray = pathname.split("/")
+
+  let colHeader
+  let rowHeader
+  let sepecificData
+  let options
+  let defaultOption
+
+  // Get selected column header value
   if (time.includes(pathArray[2])) {
-    var timeName = pathArray[2]
-    isPathCity = 1
-  }
-  console.log("isPathCIt", isPathCity)
-  console.log("@@@@@@@", pathArray)
-  var timeZone = pathArray[3]
-
-  console.log("@@@@@@@", timeZone)
-  var urlType = 0 // 0: city, 1: time
-  console.log("pArr", pathArray)
-  console.log("cityname", cityName)
-  if (!isPathCity) {
-    for (let i = 0; i < data.length; i++) {
-      if (
-        cityName.replace("%20", "") ===
-        data[i].name.replace(" ", "").toLowerCase()
-      ) {
-        displayData = data[i]
-      }
+    colHeader = pathArray[2]
+    if (pathArray[3]) {
+      sepecificData = pathArray[3]
     }
-  } else {
-    data.forEach(item => {
-      displayData.push(item.expand)
-    })
-    console.log(displayData)
   }
 
-  timeZone == null || timeZone == undefined ? (urlType = 0) : (urlType = 1)
+  // Get selected row header value
+  if (city.includes(pathArray[2])) {
+    rowHeader = pathArray[2]
+    if (pathArray[3]) {
+      sepecificData = pathArray[3]
+    }
+  }
+
+  /*
+    Data extraction according to row / column / specific cell
+  */
+
+  if (sepecificData) {
+    // Specific cell data
+    let temp = data.filter(d => {
+      return rowHeader === d.name.toLowerCase().replace(" ", "")
+    })
+    displayData = temp[0]?.expand?.filter(d => {
+      return d.name.toLowerCase().search(sepecificData) >= 0
+    })
+    // Table options
+    options = data.map(val => {
+      return val.name
+    })
+    // Default option value
+    defaultOption = rowHeader
+  } else if (rowHeader) {
+    // Data specific to row header
+    displayData = data.filter(d => {
+      return rowHeader === d.name.toLowerCase().replace(" ", "")
+    })
+    // Table options
+    options = data.map(val => {
+      return val.name
+    })
+    // Default options value
+    defaultOption = rowHeader
+  } else {
+    // Data specific to column header
+    let temp = data?.map(item => {
+      // console.log("tt", item)
+      return item.expand
+    })
+    displayData = temp !== undefined && temp?.map(i => i)
+    // Table options
+    options = ["Primera", "Matutino", "Vespertino", "Nocturna"]
+    // Default options value
+    defaultOption = colHeader
+  }
+
+  // 0: Selected Column
+  // 1: Selected Row 10
+  // Selected specific cell
+  let urlType = sepecificData ? 10 : colHeader ? 0 : 1
 
   const classes = useStyles()
-  console.groupEnd("Test log from quiniela")
+
   return (
     <LoadableLayout
       title={"Quiniela de hoy | Resultados de Quiniela - al instante"}
@@ -120,10 +153,14 @@ const App = props => {
             <LoadableLiveStream
               data={displayData}
               type={urlType}
-              timeZone={timeZone}
-              flag={isPathCity}
-              tName={timeName}
-              selectData={data}
+              rowHeader={rowHeader}
+              colHeader={colHeader}
+              options={options}
+              defaultOption={defaultOption}
+              // timeZone={timeZone}
+              // flag={isPathCity}
+              // tName={timeName}
+              // selectData={data}
             />
             {/* <LoadableRemind />  */}
             {/* <LoadablePozoEstimado /> */}
