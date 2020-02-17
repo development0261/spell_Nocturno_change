@@ -186,10 +186,12 @@ const getBodyData = data => {
   return finalData
 }
 
-const CityTable = displayData => {
+const CityTable = ({ data }) => {
+  console.log("data in table", data)
   const classes = useStyles()
   var bodyData = []
-  if (displayData.data == null || displayData.data.values == null) {
+  // console.log("check data", data)
+  if (data == null || data.values == null) {
     for (let i = 0; i < 10; i++) {
       bodyData.push({
         id: i,
@@ -198,12 +200,12 @@ const CityTable = displayData => {
       })
     }
   } else {
-    bodyData = getBodyData(displayData.data.values)
+    bodyData = getBodyData(data.values)
   }
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
       <TableContainer component={Paper} className={classes.tableContainer}>
-        <div className={classes.head}>{displayData.data.name}</div>
+        <div className={classes.head}>{data.name}</div>
         <Table className={classes.table} aria-label="customized table">
           <TableBody>
             {bodyData.map((row, index) => (
@@ -252,14 +254,14 @@ const CityTable = displayData => {
           </TableBody>
         </Table>
       </TableContainer>
-      {displayData.data.name.search("Ciudad") >= 0 && (
+      {/* {data.name.search("Ciudad") >= 0 && (
         <div className={classes.bottomCards}>
           <span className={classes.cardItem}>A</span>
           <span className={classes.cardItem}>W</span>
           <span className={classes.cardItem}>Z</span>
           <span className={classes.cardItem}>Z</span>
         </div>
-      )}
+      )} */}
     </Grid>
   )
 }

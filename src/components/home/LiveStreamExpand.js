@@ -97,6 +97,31 @@ const useStyles = makeStyles(theme => ({
 
 function LiveStream(props) {
   const classes = useStyles()
+  const colHead = ["Primera", "Matutino", "Vespertino", "Nocturna"]
+  const rowHead = [
+    "Ciudad",
+    "Provincia",
+    "Cordoba",
+    "Santa Fe",
+    "Entre Rios",
+    "Mendoza",
+    "Santiago",
+    "Corrientes",
+    "Chaco",
+    "Neuquen",
+    "San Luis",
+    "Salta",
+    "Juujuy",
+    "Chubut",
+    "Formosa",
+    "Misiones",
+    "Catamarca",
+    "La Rioja",
+    "Rio Negro",
+    "Montevideo",
+    "Tucuman",
+    "San Juan",
+  ]
   const data = useStaticQuery(graphql`
     query {
       liveIcon: file(relativePath: { eq: "live_icon.png" }) {
@@ -120,17 +145,51 @@ function LiveStream(props) {
   let options = props.options
   const type = props.type
 
-  if (type == 0) {
-    const data = props.data
-    data.forEach(d => {
-      if (d) {
-        for (const val of d) {
-          if (val.name.toLowerCase().search(props.colHeader) >= 0)
-            cityData.push({ ...val })
+  // 0: Selected Column
+  // 1: Selected Row 10
+  // Selected specific cell
+  if (type === 0) {
+    const data = props.data && props.data
+    data &&
+      data.forEach((d, index) => {
+        let condition
+        // for (let a in d) {
+        //   console.log("tatti", a)
+        // }
+        console.log("d", d, index)
+        if (d != undefined) {
+          if (d.length > 0) {
+            for (const val of d) {
+              if (val?.name?.toLowerCase().search(props.colHeader) >= 0)
+                cityData.push({ ...val })
+            }
+          } else {
+            console.log("aya?", index)
+            console.log("testingggg?", props.colHeader)
+
+            cityData.push({
+              label: "empty",
+              name: `${rowHead[index]} - ${
+                props.colHeader === "primera" ? "La Primera" : props.colHeader
+              }`,
+            })
+          }
         }
+      })
+    console.log("data", cityData.length)
+    if (cityData.length < 3) {
+      cityData.length = 0
+      for (let i = cityData.length; i < 22; i++) {
+        cityData.push({
+          label: "empty",
+          name: `${rowHead[i]} - ${
+            props.colHeader === "primera" ? "La Primera" : props.colHeader
+          }`,
+        })
       }
-    })
-  } else if (type == 1) {
+    }
+    console.log("ary", cityData)
+  } else if (type === 1) {
     const data = props.data
     cityData = data[0]?.expand
   } else {
@@ -195,14 +254,14 @@ function LiveStream(props) {
             <BootstrapInput value="30/01/2020" />
           </FormControl>
         </div>
+        {console.log("table dataaa", cityData)}
         {cityData == null ? (
           <div style={{ textAlign: "center" }}>Loading</div>
         ) : (
           cityData.map((row, index) => {
             return (
               <div>
-                {/* {console.log("table data", props.data)} */}
-                <CityTable data={row} />
+                <CityTable data={row} type={type} />
               </div>
             )
           })
