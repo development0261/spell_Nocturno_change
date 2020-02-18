@@ -67,11 +67,9 @@ const useStyles = makeStyles(theme => ({
 const App = props => {
   const { pathname } = props.location
   const { data } = useWS()
-  console.log("check datas", data)
   const rowHead = data.map(item => {
     return item.name
   })
-  console.log("acsacascsacsacascRowHead.....", rowHead)
   let displayData = []
   let pathArray = pathname.split("/")
 
@@ -104,7 +102,15 @@ const App = props => {
   if (sepecificData) {
     // Specific cell data
     let temp = data.filter(d => {
-      return rowHeader === d.name.toLowerCase().replace(" ", "")
+      return (
+        rowHeader ===
+        d.name
+          .toLowerCase()
+          .replace("é", "e")
+          .replace("á", "a")
+          .replace("í", "i")
+          .replace(" ", "")
+      )
     })
     displayData = temp[0]?.expand?.filter(d => {
       return d.name.toLowerCase().search(sepecificData) >= 0
@@ -119,7 +125,6 @@ const App = props => {
   } else if (rowHeader) {
     // Data specific to row header
     const colHead = ["Primera", "Matutino", "Vespertino", "Nocturna"]
-    // console.log("ajeebsa", data)
     displayData = data.filter((d, i) => {
       if (
         rowHeader ===
@@ -139,18 +144,12 @@ const App = props => {
     options = data.map(val => {
       return val.name
     })
-    // console.log("filteredDataaaaa", displayData)
-    // console.log("displatData", displayData?.[0]?.expand?.length)
-    // console.log("colheadlength", colHead.length)
-    // console.log("displayDatacheck")
+
     const indexes = []
-    console.log("aja bhai", displayData?.[0]?.expand?.length)
     if (!!displayData?.[0]?.expand?.length) {
       for (let i in displayData?.[0].expand) {
         for (let j in colHead) {
           if (displayData?.[0].expand[i].name.search(colHead[j]) !== -1) {
-            console.log("tatatatat", j)
-            console.log("tatatatatasdasd", displayData?.[0].expand[i].name)
             indexes.push(j)
           }
         }
@@ -166,7 +165,6 @@ const App = props => {
     })
 
     displayData = array
-    console.log("array", array)
     // Default options value
     defaultOption = rowHeader
   } else {
@@ -174,18 +172,13 @@ const App = props => {
 
     let index
     displayData = data?.map(item => {
-      // console.log("tt", item)
       return item?.expand?.filter((ft, i) => {
-        // console.log("checkcccc", ft.name.toLowerCase().search(colHeader))
         if (ft.name.toLowerCase().search(colHeader) !== -1) {
           index = i
-          // console.log("aa", ft)
           return ft
         } else return false
       })
     })
-    // console.log("index", index)
-    // displayData = temp !== undefined && temp?.map(i => i)
     // Table options
     options = ["Primera", "Matutino", "Vespertino", "Nocturna"]
     // Default options value
@@ -194,7 +187,7 @@ const App = props => {
 
   // 0: Selected Column
   // 1: Selected Row 10
-  // Selected specific cell
+  // 10: Selected specific cell
   let urlType = sepecificData ? 10 : colHeader ? 0 : 1
 
   const classes = useStyles()
@@ -207,8 +200,6 @@ const App = props => {
         <LoadableHeader />
         <Container className={classes.container}>
           <Paper className={classes.root}>
-            {console.log("URL TYPE", urlType)}
-            {console.log("Data going forward", displayData)}
             <LoadableLiveStream
               data={displayData}
               type={urlType}
@@ -217,10 +208,6 @@ const App = props => {
               rowHead={rowHead}
               options={options}
               defaultOption={defaultOption}
-              // timeZone={timeZone}
-              // flag={isPathCity}
-              // tName={timeName}
-              // selectData={data}
             />
             {/* <LoadableRemind />  */}
             {/* <LoadablePozoEstimado /> */}

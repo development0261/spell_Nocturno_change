@@ -187,7 +187,6 @@ const getBodyData = data => {
 }
 
 const CityTable = ({ data }) => {
-  console.log("data in table", data)
   const classes = useStyles()
   var bodyData = []
   // console.log("check data", data)

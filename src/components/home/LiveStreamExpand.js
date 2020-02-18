@@ -1,21 +1,10 @@
 import React from "react"
 import { makeStyles, withStyles } from "@material-ui/core/styles"
 import CityTable from "./CityTable"
-import Icons from "./Icons"
 import Grid from "@material-ui/core/Grid"
-
-import InputLabel from "@material-ui/core/InputLabel"
-import MenuItem from "@material-ui/core/MenuItem"
-
 import FormControl from "@material-ui/core/FormControl"
-import Select from "@material-ui/core/Select"
 import NativeSelect from "@material-ui/core/NativeSelect"
 import InputBase from "@material-ui/core/InputBase"
-
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
-
-import TableHeader from "./tableHeader"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -99,24 +88,6 @@ function LiveStream(props) {
   const classes = useStyles()
   const colHead = ["Primera", "Matutino", "Vespertino", "Nocturna"]
   const rowHead = props.rowHead
-  const data = useStaticQuery(graphql`
-    query {
-      liveIcon: file(relativePath: { eq: "live_icon.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      quiniela: file(relativePath: { eq: "quinielas.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-    }
-  `)
 
   var cityData = []
   let options = props.options
@@ -124,9 +95,8 @@ function LiveStream(props) {
 
   // 0: Selected Column
   // 1: Selected Row 10
-  // 10 Selected specific cell
+  // 10: Selected specific cell
   if (type === 0) {
-    console.log("url 0 chala")
     const data = props.data && props.data
     data &&
       data.map((d, index) => {
@@ -154,15 +124,11 @@ function LiveStream(props) {
           .replace("í", "i")
           .toLowerCase() === props.rowHeader
     )
-    // let finalName =
-    //   props.rowHeader.charAt(0).toUpperCase() + props.rowHeader.substring(1)
     let finalNameArray = colHead.map(val => {
       return `${title} - ${val === "Primera" ? "La Primera" : val}`
     })
     const data = props.data
     cityData = data[0]?.expand
-    console.log("before beforeeee", props.data?.[0].expand)
-    console.log("before data", cityData)
 
     for (let val in cityData) {
       if (!cityData[val].name) {
@@ -172,7 +138,6 @@ function LiveStream(props) {
         }
       }
     }
-    console.log("after data", cityData)
   } else {
     const data = props?.data
     if (data === undefined || !data?.[0]) {
@@ -185,7 +150,6 @@ function LiveStream(props) {
             .replace("í", "i")
             .toLowerCase() === props.rowHeader
       )
-      console.log("test title", title)
       cityData = [
         {
           label: "empty",
@@ -218,10 +182,6 @@ function LiveStream(props) {
     window.location.pathname = newPath
   }
 
-  const { pathname } = window.location
-
-  // let pathArray = pathname?.split("/")[2]
-
   return (
     <div className={classes.root}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -234,8 +194,9 @@ function LiveStream(props) {
               onChange={handleChange("label")}
               input={<BootstrapInput />}
             >
-              {options.map(val => (
+              {options.map((val, index) => (
                 <option
+                  key={index}
                   value={val
                     .replace(" ", "")
                     .replace("é", "e")
@@ -258,7 +219,7 @@ function LiveStream(props) {
         </div>
         {cityData.map((row, index) => {
           return (
-            <div>
+            <div key={index}>
               <CityTable data={row} type={type} />
             </div>
           )
