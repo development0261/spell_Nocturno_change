@@ -130,7 +130,6 @@ function LiveStream(props) {
     const data = props.data && props.data
     data &&
       data.map((d, index) => {
-        let condition
         if (!!d?.[0]) {
           for (const val of d) {
             if (val?.name?.toLowerCase().search(props.colHeader) >= 0)
@@ -146,13 +145,24 @@ function LiveStream(props) {
         }
       })
   } else if (type === 1) {
-    let finalName =
-      props.rowHeader.charAt(0).toUpperCase() + props.rowHeader.substring(1)
+    let title = props.rowHead.filter(
+      data =>
+        data
+          .replace(" ", "")
+          .replace("é", "e")
+          .replace("á", "a")
+          .replace("í", "i")
+          .toLowerCase() === props.rowHeader
+    )
+    // let finalName =
+    //   props.rowHeader.charAt(0).toUpperCase() + props.rowHeader.substring(1)
     let finalNameArray = colHead.map(val => {
-      return `${finalName} - ${val === "Primera" ? "La Primera" : val}`
+      return `${title} - ${val === "Primera" ? "La Primera" : val}`
     })
     const data = props.data
     cityData = data[0]?.expand
+    console.log("before beforeeee", props.data?.[0].expand)
+    console.log("before data", cityData)
 
     for (let val in cityData) {
       if (!cityData[val].name) {
@@ -162,6 +172,7 @@ function LiveStream(props) {
         }
       }
     }
+    console.log("after data", cityData)
   } else {
     const data = props?.data
     if (data === undefined || !data?.[0]) {

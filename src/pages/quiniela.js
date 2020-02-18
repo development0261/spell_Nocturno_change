@@ -126,6 +126,9 @@ const App = props => {
         d.name
           .toLowerCase()
           .trim()
+          .replace("é", "e")
+          .replace("á", "a")
+          .replace("í", "i")
           .replace(" ", "")
       ) {
         return true
@@ -141,10 +144,13 @@ const App = props => {
     // console.log("colheadlength", colHead.length)
     // console.log("displayDatacheck")
     const indexes = []
+    console.log("aja bhai", displayData?.[0]?.expand?.length)
     if (!!displayData?.[0]?.expand?.length) {
       for (let i in displayData?.[0].expand) {
         for (let j in colHead) {
           if (displayData?.[0].expand[i].name.search(colHead[j]) !== -1) {
+            console.log("tatatatat", j)
+            console.log("tatatatatasdasd", displayData?.[0].expand[i].name)
             indexes.push(j)
           }
         }
