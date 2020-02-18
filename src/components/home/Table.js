@@ -199,7 +199,8 @@ function StreamTable({ width }) {
                             .replace("pri.", "primera")
                             .replace("mat.", "matutino")
                             .replace("ves.", "vespertino")
-                            .replace("noc.", "nocturno")
+                            .replace("noc.", "nocturno") +
+                          "/"
                         }
                         className={classes.link}
                       >
@@ -236,7 +237,8 @@ function StreamTable({ width }) {
                           .replace(" ", "")
                           .replace("é", "e")
                           .replace("á", "a")
-                          .replace("í", "i")
+                          .replace("í", "i") +
+                        "/"
                       }
                       className={classes.link}
                       style={{ color: "black" }}
@@ -263,7 +265,8 @@ function StreamTable({ width }) {
                                 .replace("á", "a")
                                 .replace("í", "i") +
                               "/" +
-                              key.toLowerCase().replace("/ |", "")
+                              key.toLowerCase().replace("/ |", "") +
+                              "/"
                             }
                             className={classes.link}
                             style={{ color: "black" }}
