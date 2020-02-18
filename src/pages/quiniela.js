@@ -68,7 +68,10 @@ const App = props => {
   const { pathname } = props.location
   const { data } = useWS()
   console.log("check datas", data)
-
+  const rowHead = data.map(item => {
+    return item.name
+  })
+  console.log("acsacascsacsacascRowHead.....", rowHead)
   let displayData = []
   let pathArray = pathname.split("/")
 
@@ -114,28 +117,70 @@ const App = props => {
     defaultOption = rowHeader
   } else if (rowHeader) {
     // Data specific to row header
-    displayData = data.filter(d => {
-      return (
+    const colHead = ["Primera", "Matutino", "Vespertino", "Nocturna"]
+    // console.log("ajeebsa", data)
+    displayData = data.filter((d, i) => {
+      if (
         rowHeader ===
         d.name
           .toLowerCase()
           .trim()
           .replace(" ", "")
-      )
+      ) {
+        // console.log("object", i)
+        return true
+      } else return false
     })
+
     // Table options
     options = data.map(val => {
       return val.name
     })
+    // console.log("filteredDataaaaa", displayData)
+    // console.log("displatData", displayData?.[0]?.expand?.length)
+    // console.log("colheadlength", colHead.length)
+    // console.log("displayDatacheck")
+    const indexes = []
+    if (!!displayData?.[0]?.expand?.length) {
+      for (let i in displayData?.[0].expand) {
+        for (let j in colHead) {
+          if (displayData?.[0].expand[i].name.search(colHead[j]) !== -1) {
+            indexes.push(j)
+          }
+        }
+      }
+    }
+    let array = [
+      {
+        expand: [{}, {}, {}, {}],
+      },
+    ]
+    indexes.map((val, index) => {
+      // console.log("ascaciNdexsacSSSSSS", displayData?.[0].expand[index])
+      array[0].expand[val] = displayData?.[0].expand[index]
+    })
+
+    displayData = array
+    console.log("array", array)
     // Default options value
     defaultOption = rowHeader
   } else {
     // Data specific to column header
-    let temp = data?.map(item => {
+
+    let index
+    displayData = data?.map(item => {
       // console.log("tt", item)
-      return item.expand
+      return item?.expand?.filter((ft, i) => {
+        // console.log("checkcccc", ft.name.toLowerCase().search(colHeader))
+        if (ft.name.toLowerCase().search(colHeader) !== -1) {
+          index = i
+          // console.log("aa", ft)
+          return ft
+        } else return false
+      })
     })
-    displayData = temp !== undefined && temp?.map(i => i)
+    // console.log("index", index)
+    // displayData = temp !== undefined && temp?.map(i => i)
     // Table options
     options = ["Primera", "Matutino", "Vespertino", "Nocturna"]
     // Default options value
@@ -157,11 +202,14 @@ const App = props => {
         <LoadableHeader />
         <Container className={classes.container}>
           <Paper className={classes.root}>
+            {console.log("URL TYPE", urlType)}
+            {console.log("Data going forward", displayData)}
             <LoadableLiveStream
               data={displayData}
               type={urlType}
               rowHeader={rowHeader}
               colHeader={colHeader}
+              rowHead={rowHead}
               options={options}
               defaultOption={defaultOption}
               // timeZone={timeZone}
