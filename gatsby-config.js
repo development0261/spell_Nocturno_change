@@ -68,7 +68,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/quiniela/*`] },
+      options: { prefixes: [`/quiniela/**`] },
     },
   ],
 }
