@@ -126,23 +126,17 @@ function LiveStream(props) {
   // 1: Selected Row 10
   // 10 Selected specific cell
   if (type === 0) {
+    console.log("url 0 chala")
     const data = props.data && props.data
     data &&
       data.map((d, index) => {
         let condition
-        // for (let a in d) {
-        //   console.log("tatti", a)
-        // }
-        // console.log("d", d, index)
         if (!!d?.[0]) {
           for (const val of d) {
             if (val?.name?.toLowerCase().search(props.colHeader) >= 0)
               cityData.push({ ...val })
           }
         } else {
-          // console.log("aya?", index)
-          // console.log("testingggg?", props.colHeader)
-
           cityData.push({
             label: "empty",
             name: `${rowHead[index]} - ${
@@ -170,7 +164,28 @@ function LiveStream(props) {
     }
   } else {
     const data = props?.data
-    cityData = props?.data
+    if (data === undefined || !data?.[0]) {
+      let title = props.rowHead.filter(
+        data =>
+          data
+            .replace(" ", "")
+            .replace("é", "e")
+            .replace("á", "a")
+            .replace("í", "i")
+            .toLowerCase() === props.rowHeader
+      )
+      console.log("test title", title)
+      cityData = [
+        {
+          label: "empty",
+          name: `${title} - ${
+            props.colHeader === "primera" ? "La Primera" : props.colHeader
+          }`,
+        },
+      ]
+    } else {
+      cityData = data
+    }
   }
 
   const [state, setState] = React.useState(props.defaultOption)
@@ -230,17 +245,13 @@ function LiveStream(props) {
             <BootstrapInput value="30/01/2020" />
           </FormControl>
         </div>
-        {cityData == null ? (
-          <div style={{ textAlign: "center" }}>Loading</div>
-        ) : (
-          cityData.map((row, index) => {
-            return (
-              <div>
-                <CityTable data={row} type={type} />
-              </div>
-            )
-          })
-        )}
+        {cityData.map((row, index) => {
+          return (
+            <div>
+              <CityTable data={row} type={type} />
+            </div>
+          )
+        })}
       </Grid>
     </div>
   )

@@ -109,6 +109,7 @@ const App = props => {
     displayData = temp[0]?.expand?.filter(d => {
       return d.name.toLowerCase().search(sepecificData) >= 0
     })
+    colHeader = sepecificData
     // Table options
     options = data.map(val => {
       return val.name
@@ -127,7 +128,6 @@ const App = props => {
           .trim()
           .replace(" ", "")
       ) {
-        // console.log("object", i)
         return true
       } else return false
     })
@@ -156,7 +156,6 @@ const App = props => {
       },
     ]
     indexes.map((val, index) => {
-      // console.log("ascaciNdexsacSSSSSS", displayData?.[0].expand[index])
       array[0].expand[val] = displayData?.[0].expand[index]
     })
 
