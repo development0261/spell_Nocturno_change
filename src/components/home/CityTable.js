@@ -254,14 +254,14 @@ const CityTable = ({ data }) => {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* {data.name.search("Ciudad") >= 0 && (
+      {data.name.search("Ciudad") >= 0 && (
         <div className={classes.bottomCards}>
           <span className={classes.cardItem}>A</span>
           <span className={classes.cardItem}>W</span>
           <span className={classes.cardItem}>Z</span>
           <span className={classes.cardItem}>Z</span>
         </div>
-      )} */}
+      )}
     </Grid>
   )
 }
