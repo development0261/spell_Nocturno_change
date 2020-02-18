@@ -186,8 +186,9 @@ const getBodyData = data => {
   return finalData
 }
 
-const CityTable = ({ data }) => {
+const CityTable = ({ data, type }) => {
   console.log("data in table", data)
+  console.log("type in table", type)
   const classes = useStyles()
   var bodyData = []
   // console.log("check data", data)
@@ -195,8 +196,8 @@ const CityTable = ({ data }) => {
     for (let i = 0; i < 10; i++) {
       bodyData.push({
         id: i,
-        value1: "---",
-        value2: "---",
+        value1: "----",
+        value2: "----",
       })
     }
   } else {

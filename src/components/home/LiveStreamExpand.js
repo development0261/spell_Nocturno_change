@@ -96,6 +96,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function LiveStream(props) {
+  console.log(props, "Live PRops")
   const classes = useStyles()
   const colHead = ["Primera", "Matutino", "Vespertino", "Nocturna"]
   const rowHead = [
@@ -142,6 +143,7 @@ function LiveStream(props) {
   `)
 
   var cityData = []
+
   let options = props.options
   const type = props.type
 
@@ -199,6 +201,7 @@ function LiveStream(props) {
 
   const [state, setState] = React.useState(props.defaultOption)
   React.useEffect(() => {
+    console.log(props.defaultOption, "DOP")
     !state && setState(props.defaultOption)
   }, [])
 
@@ -254,18 +257,38 @@ function LiveStream(props) {
             <BootstrapInput value="30/01/2020" />
           </FormControl>
         </div>
-        {console.log("table dataaa", cityData)}
-        {cityData == null ? (
-          <div style={{ textAlign: "center" }}>Loading</div>
-        ) : (
+        {(cityData == null || cityData.length <= 0) &&
+          (props.type === 0 || props.type === 1) &&
+          colHead.map(head => (
+            <CityTable
+              data={{
+                name: `${props.defaultOption} - ${
+                  head.toLowerCase() === "primera" ? "La Primera" : head
+                }`,
+                values: null,
+              }}
+              type={type}
+            />
+          ))}
+        {(cityData == null || cityData.length <= 0) && props.type === 10 && (
+          <CityTable
+            data={{
+              name: `${props.defaultOption}`,
+              values: null,
+            }}
+            type={type}
+          />
+        )}
+        {cityData &&
+          cityData.length > 0 &&
           cityData.map((row, index) => {
+            console.log("table dataaa", cityData)
             return (
               <div>
                 <CityTable data={row} type={type} />
               </div>
             )
-          })
-        )}
+          })}
       </Grid>
     </div>
   )

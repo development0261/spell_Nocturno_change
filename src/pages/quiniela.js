@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const App = props => {
+  console.log(props, "PProps")
   const { pathname } = props.location
   const { data } = useWS()
   console.log("check datas", data)
