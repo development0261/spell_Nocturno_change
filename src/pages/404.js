@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="404: Not found" />
+    {/* <SEO title="404: Not found" />
     <section className="container py-12">
       <div className="row align-content-center justify-content-center">
         <div className="text-center col-8">
@@ -15,7 +15,7 @@ const NotFoundPage = () => (
           </p>
         </div>
       </div>
-    </section>
+    </section> */}
   </Layout>
 )
 
