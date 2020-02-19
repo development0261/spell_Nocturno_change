@@ -172,7 +172,7 @@ function StreamTable({ width }) {
     }
   `)
 
-  const mappingKeys = ["Primera", "Matutina", "Vespertina", "Nocturno"]
+  const mappingKeys = ["Primera", "Matutina", "Vespertina", "Nocturna"]
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
       <TableContainer component={Paper} className={classes.tableContainer}>
@@ -199,7 +199,7 @@ function StreamTable({ width }) {
                             .replace("pri.", "primera")
                             .replace("mat.", "matutina")
                             .replace("ves.", "vespertina")
-                            .replace("noc.", "nocturno")
+                            .replace("noc.", "nocturna")
                         }
                         className={classes.link}
                       >
